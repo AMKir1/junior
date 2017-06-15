@@ -15,4 +15,8 @@ public class Calculate {
     public static void main(String[] args) {
         System.out.println("Hello World");
     }
+	
+	public final String echo(final String value){
+		return String.format("%s %s %s", value, value, value);
+	}
 }
