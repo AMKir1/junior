@@ -1,9 +1,9 @@
 package ru.job4j;
 
 /**
- * Calculate.
+ * Class Calculate решение задачи части 001 урок1.
  *
- * @author Petr Arsentev (parsentev@yandex.ru)
+ * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
  */
@@ -15,8 +15,4 @@ public class Calculate {
     public static void main(String[] args) {
         System.out.println("Hello World");
     }
-	
-	public final String echo(final String value){
-		return String.format("%s %s %s", value, value, value);
-	}
 }
