@@ -7,27 +7,49 @@ package ru.job4j.calculator;
  * @version $Id$
  * @since 0.1
  */
-public class Calculate {
- 
+public class Calculator {
+	/**
+	*
+	*/
 	private double result;
-	
-	public void add(double first, double second){
+	/**
+	*
+	*@param
+	*
+	*/
+	public void add(double first, double second) {
 		this.result = first + second;
 	}
-	
-	public void substruct(double first, double second){
+	/**
+	*
+	*@param
+	*
+	*/
+	public void substruct(double first, double second) {
 		this.result = first - second;
 	}
-	
-	public void multiple(double first, double second){
+	/**
+	*
+	*@param
+	*
+	*/
+	public void multiple(double first, double second) {
 		this.result = first * second;
 	}
-	
-	public void div(double first, double second){
+	/**
+	*
+	*@param
+	*
+	*/
+	public void div(double first, double second) {
 		this.result = first / second;
 	}
-	
-	public double getResult(){
+	/**
+	*
+	*@return
+	*
+	*/
+	public double getResult() {
 		return this.result;
 	}
 }
