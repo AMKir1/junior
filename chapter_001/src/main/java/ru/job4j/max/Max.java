@@ -19,4 +19,16 @@ public class Max {
 		maximum = first >= second ? first : second;
 		return maximum;
     }
+	/**
+	* Max first and second.
+	* @param first - first args.
+	* @param second - second args.
+	* @param third - third args.
+	* @return max number.
+	*/
+	public int max(int first, int second, int third) {
+		int maximum = max(first, second);
+		maximum = max(maximum, third);
+		return maximum;
+	}
 }
