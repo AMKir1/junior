@@ -16,7 +16,7 @@ public class Triangle {
 	*/
 	private Point b;
 	/**
-	* @args c - second args.
+	* @args c - third args.
 	*/
 	private Point c;
 	/**

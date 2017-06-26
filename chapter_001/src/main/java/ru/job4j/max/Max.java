@@ -15,10 +15,8 @@ public class Max {
 	* @return max number.
 	*/
     public int max(int first, int second) {
-        int maximum;
-		maximum = first >= second ? first : second;
-		return maximum;
-    }
+	return first >= second ? first : second;
+	}
 	/**
 	* Max first and second.
 	* @param first - first args.
@@ -27,8 +25,6 @@ public class Max {
 	* @return max number.
 	*/
 	public int max(int first, int second, int third) {
-		int maximum = max(first, second);
-		maximum = max(maximum, third);
-		return maximum;
+		return max(max(first, second), third);
 	}
 }

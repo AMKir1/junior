@@ -15,32 +15,24 @@ public class TriangleTest {
 	*/
 	@Test
 	public void whenTriangleIs() {
-		Point pointA = new Point();
-		Point pointB = new Point();
-		Point pointC = new Point();
-		pointA.point(-1, -2);
-		pointB.point(3, 2);
-		pointC.point(5, -2);
-		Triangle triangle = new Triangle();
-		triangle.Triangle(pointA, pointB, pointC);
+		Point pointA = new Point(-1, -2);
+		Point pointB = new Point(3, 2);
+		Point pointC = new Point(5, -2);
+		Triangle triangle = new Triangle(pointA, pointB, pointC);
 		double result = triangle.area();
-		double expected = 12;
+		double expected = 12.00;
 		assertThat(result, closeTo(expected, 0.01));
 	}
 	/**
 	*
 	*/
 	public void whenNoTriangle() {
-		Point pointA = new Point();
-		Point pointB = new Point();
-		Point pointC = new Point();
-		pointA.point(-1, -1);
-		pointB.point(3, 3);
-		pointC.point(5, 5);
-		Triangle triangle = new Triangle();
-		triangle.Triangle(pointA, pointB, pointC);
+		Point pointA = new Point(-1, -1);
+		Point pointB = new Point(3, 3);
+		Point pointC = new Point(5, 5);
+		Triangle triangle = new Triangle(pointA, pointB, pointC);
 		double result = triangle.area();
-		double expected = 0;
+		double expected = 0.0;
 		assertThat(result, closeTo(expected, 0.01));
 	}
 }

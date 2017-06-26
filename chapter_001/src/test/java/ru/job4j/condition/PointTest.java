@@ -13,8 +13,7 @@ public class PointTest {
 	*/
 	@Test
 	public void whenPointIs() {
-		Point point1 = new Point();
-		point1.point(1, 1);
+		Point point1 = new Point(1, 1);
 		boolean result = point1.is(1, 0);
 		boolean expected = true;
 		assertThat(result, is(expected));
@@ -23,8 +22,7 @@ public class PointTest {
 	*
 	*/
 	public void whenNoPoints() {
-		Point point1 = new Point();
-		point1.point(1, 1);
+		Point point1 = new Point(1, 1);
 		boolean result = point1.is(0, 0);
 		boolean expected = true;
 		assertThat(result, is(expected));

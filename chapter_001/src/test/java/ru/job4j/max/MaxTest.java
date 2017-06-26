@@ -36,22 +36,4 @@ public class MaxTest {
 		double expected = 2;
 		assertThat(result, is(expected));
 	}
-	/**
-	*
-	*/
-	public void whenMaxNumberIsTheThirdNumber() {
-		Max maxi = new Max();
-		double result = maxi.max(1, 2, 3);
-		double expected = 3;
-		assertThat(result, is(expected));
-	}
-	/**
-	*
-	*/
-	public void whenMaxNumberIsAllOfThem() {
-		Max maxi = new Max();
-		double result = maxi.max(1, 1, 1);
-		double expected = 1;
-		assertThat(result, is(expected));
-	}
 }
