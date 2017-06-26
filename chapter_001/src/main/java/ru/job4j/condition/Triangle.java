@@ -35,9 +35,9 @@ public class Triangle {
 	* @return answer about triangle.
 	*/
 	public double area() {
-		double ab = ((a.getX() - b.getX()) * (a.getX() - b.getX()) + (a.getY() - b.getY()) * (a.getY() - b.getY()));
-		double bc = ((b.getX() - c.getX()) * (b.getX() - c.getX()) + (b.getY() - c.getY()) * (b.getY() - c.getY()));
-		double ca = ((c.getX() - a.getX()) * (c.getX() - a.getX()) + (c.getY() - a.getY()) * (c.getY() - a.getY()));
+		double ab = Math.sqrt(((a.getX() - b.getX()) * (a.getX() - b.getX()) + (a.getY() - b.getY()) * (a.getY() - b.getY())));
+		double bc = Math.sqrt(((b.getX() - c.getX()) * (b.getX() - c.getX()) + (b.getY() - c.getY()) * (b.getY() - c.getY())));
+		double ca = Math.sqrt(((c.getX() - a.getX()) * (c.getX() - a.getX()) + (c.getY() - a.getY()) * (c.getY() - a.getY())));
 		if (ab + bc <= ca || ab + ca <= bc || bc + ca <= ab) {
 			return 0;
 		} else {

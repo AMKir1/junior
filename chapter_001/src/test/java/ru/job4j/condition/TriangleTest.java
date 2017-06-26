@@ -20,7 +20,7 @@ public class TriangleTest {
 		Point pointC = new Point(5, -2);
 		Triangle triangle = new Triangle(pointA, pointB, pointC);
 		double result = triangle.area();
-		double expected = 12.00;
+		double expected = 12;
 		assertThat(result, closeTo(expected, 0.01));
 	}
 	/**
@@ -32,7 +32,7 @@ public class TriangleTest {
 		Point pointC = new Point(5, 5);
 		Triangle triangle = new Triangle(pointA, pointB, pointC);
 		double result = triangle.area();
-		double expected = 0.0;
+		double expected = 0;
 		assertThat(result, closeTo(expected, 0.01));
 	}
 }
