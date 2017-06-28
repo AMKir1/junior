@@ -1,25 +1,24 @@
 package ru.job4j.loop;
 
 /**
- * Class Board решение задачи части 001 урок 4.3.
+ * Class Paint решение задачи части 001 урок 4.3.
  *
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
  */
-public class Board {
+public class Paint {
 	/**
 	* Chees.
-	* @param width - first args.
-	* @param heigh - second args.
+	* @param h - first args.
 	* @return result.
 	*/
-    public String paint(int width, int heigh) {
+	public String pairamid(int h) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = 1; i <= heigh; i++) {
-			for (int j = 1; j <= width; j++) {
-				if ((i + j) % 2 == 0) {
-					builder.append("x");
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < (h - i) + (2 * i + 1); j++) {
+				if (j > (h - i) - 1) {
+					builder.append("^");
 				} else {
 					builder.append(" ");
 				}
