@@ -15,7 +15,7 @@ public class PaintTest {
 	public void whenH() {
 		Paint pairam = new Paint();
 		String result = pairam.pairamid(3);
-		String expected = "   ^\r\n  ^^^\r\n ^^^^^\r\n";
+		String expected = "   ^" + System.getProperty("line.separator") + "  ^^^" + System.getProperty("line.separator") + " ^^^^^" + System.getProperty("line.separator");
 		assertThat(result, is(expected));
 	}
 	/**
@@ -24,7 +24,7 @@ public class PaintTest {
 	public void whenHNotEven() {
 		Paint pairam = new Paint();
 		String result = pairam.pairamid(4);
-		String expected = "    ^\r\n   ^^^\r\n  ^^^^^\r\n ^^^^^^^\r\n";
+		String expected = "    ^" + System.getProperty("line.separator") + "   ^^^" + System.getProperty("line.separator") + "  ^^^^^" + System.getProperty("line.separator") + " ^^^^^^^" + System.getProperty("line.separator");
 		assertThat(result, is(expected));
 		}
 }
