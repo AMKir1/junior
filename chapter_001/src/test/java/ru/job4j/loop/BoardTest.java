@@ -15,7 +15,7 @@ public class BoardTest {
 	public void whenWidthEqualsHeigh() {
 		Board board = new Board();
 		String result = board.paint(3, 3);
-		String expected = "x x" + System.getProperty("line.separator") + " x " + System.getProperty("line.separator") + "x x" + System.getProperty("line.separator");
+		String expected = String.format("x x%<s x %<sx x%<s", System.getProperty("line.separator"));
 		assertThat(result, is(expected));
 	}
 	/**
@@ -24,7 +24,7 @@ public class BoardTest {
 	public void whenWidthDoNotEqualsHeigh() {
 		Board board = new Board();
 		String result = board.paint(5, 4);
-		String expected = "x x x" + System.getProperty("line.separator") + " x x " + System.getProperty("line.separator") + "x x x" + System.getProperty("line.separator") + " x x " + System.getProperty("line.separator");
+		String expected = String.format("x x x%<s x x %<sx x x%<s x x %<s", System.getProperty("line.separator"));
 		assertThat(result, is(expected));
 		}
 }
