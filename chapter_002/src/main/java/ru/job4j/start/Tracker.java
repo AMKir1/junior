@@ -19,41 +19,50 @@ public class Tracker {
 	/**
 	* Params.
 	*/
-	private static final Random RN = New Random();
+	private static final Random RN = new Random();
 	/**
 	* Add.
 	* @param item - first ards.
-	* @return item.
+	* @return result.
 	*/
 	public Item add(Item item) {
-		item.setId(String.ValueOf(System.currentTimeMillis() + RN.nextInt()));
-		this.items[position++] = item;
-		return item;
+		Item result;
+		this.items[this.position] = item;
+		result = this.items[position];
+		this.position++;
+		return result;
 	}
 	/**
 	* Update.
 	* @param item - first ards.
 	*/
 	public void update(Item item) {
-		Item newItem = new Item ("NewItem","NewDesc","NewL");
-		this.items[item.getId()] = newItem;
+		for (int index = 0; index != this.position; index++) {
+			if (this.items[index].getId() == item.getId()) {
+			this.items[index] = item;
+			}
+		}
 	}
 	/**
 	* Delete.
 	* @param key - first ards.
 	* @return result.
 	*/
-	public void delete(Item item) {
-		this.items[item.getId()] = null;
+	public void delete(Item item) {	
+		for (int index = 0; index != this.position; index++) {
+			if (this.items[index].getId() == item.getId()) {
+			this.items[index] = null;
+			}
+		}
 	}
 	/**
 	* Find All.
 	* @return result.
 	*/
 	public Item[] findAll() {
-		Item[] result = new Item[position];
-		for (int index = 0; index!=this.position; index++) {
-			if(this.items[index] != null) {
+		Item[] result = new Item[this.position];
+		for (int index = 0; index != this.position; index++) {
+			if (this.items[index] != null) {
 			result[index] = this.items[index];
 			}
 		}
@@ -64,11 +73,11 @@ public class Tracker {
 	* @param key - first ards.
 	* @return result.
 	*/
-	public Item[] findByName(String key) {
-		Item[] result = new Item[position];
-		for (int index = 0; index!=this.position; index++) {
-			if(this.items[index].getName() == key) {
-			result[index] = this.items[index];
+	public Item findByName(String key) {
+		Item result = null;
+		for (int index = 0; index != this.position; index++) {
+			if (this.items[index].getName() == key) {
+			result = this.items[index];
 			}
 		}
 		return result;
@@ -79,9 +88,10 @@ public class Tracker {
 	* @return result.
 	*/
 	public Item findById(String id) {
+		Item result = null;
 		for (Item item : items) {
 			if (item != null && item.getId().equals(id)) {
-				result = itam;
+				result = item;
 				break;
 			}
 		}
