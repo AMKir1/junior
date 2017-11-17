@@ -73,11 +73,11 @@ public class Tracker {
 	* @param key - first ards.
 	* @return result.
 	*/
-	public Item findByName(String key) {
-		Item result = null;
-		for (int index = 0; index != this.position; index++) {
-			if (this.items[index].getName() == key) {
-			result = this.items[index];
+	public Item[] findByName(String key) {
+		Item[] result = new Item[position];
+		for (int i = 0; i != this.position; i++) {
+			if (this.items[i].getName().equals(key)) {
+			result[i] = this.items[i];
 			}
 		}
 		return result;
