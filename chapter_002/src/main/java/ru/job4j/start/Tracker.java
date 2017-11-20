@@ -5,7 +5,6 @@ package ru.job4j.start;
  * @version $Id$
  * @since 0.1
  */
-import ru.job4j.models.*;
 import java.util.*;
 public class Tracker {
 	/**
