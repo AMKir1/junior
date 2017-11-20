@@ -1,6 +1,5 @@
-package ru.job4j.models;
+package ru.job4j.start;
 
-	import ru.job4j.models.*;
 
 public class Item {
 	/**

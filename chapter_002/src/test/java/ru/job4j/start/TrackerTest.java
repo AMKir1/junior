@@ -3,7 +3,6 @@ package ru.job4j.start;
 	import org.junit.Test;
 	import static org.hamcrest.core.Is.is;
 	import static org.junit.Assert.assertThat;
-	import ru.job4j.models.*;
 	/**
 	* class TrackerTest
 	*/
