@@ -60,9 +60,11 @@ public class Tracker {
 	*/
 	public Item[] findAll() {
 		Item[] result = new Item[this.position];
-		for (int index = 0; index != this.position; index++) {
-			if (this.items[index] != null) {
-			result[index] = this.items[index];
+		int i = 0;
+		for (Item item : this.items) {
+			if (item != null) {
+				result[i] = item;
+				i++;
 			}
 		}
 		return result;

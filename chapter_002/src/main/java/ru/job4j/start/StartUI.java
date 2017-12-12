@@ -5,6 +5,7 @@ package ru.job4j.start;
  * @version $Id$
  * @since 0.1
  */
+ import ru.job4j.start.*;
 public class StartUI {
 	/**
 	* Params.
@@ -37,26 +38,34 @@ public class StartUI {
 	*/
 	public void init() {
 		Tracker tracker = new Tracker();
-		String selectedAction = showMenu();
-		boolean exit = false;
+		String selectedAction = this.showMenu();
+		boolean exit = true;
 		while (exit) {
 			switch (selectedAction) {
 				case ADDNEWITEM: this.addNewItem();
+								 break;
+								 
+				//case SHOWALLITEMS: 	this.showAllItems();
+				//					//System.out.println("BBB");
+				//					break;
+								   
+				//case EDITITEM: this.editItem();
+				//			   break;
+							
+				//case DELETEITEM: this.deleteItem();
+				//			     break;
+								 
+				//case FINDITEMBYID: this.findItembyId();
+				//			       break;
 					
-				case SHOWALLITEMS: this.showAllItems();
-					
-				case EDITITEM: this.editItem();
-					
-				case DELETEITEM: this.deleteItem();
-					
-				case FINDITEMBYID: this.findItembyId();
-					
-				case FINDITEMBYNAME: this.findItemsbyName();
-					
-				case EXIT:	this.input.ask("See you later!");
-							exit = true;
-					
-				default: input.ask("The menu has not this position"); init();
+				//case FINDITEMBYNAME: this.findItemsbyName();
+				//					 break;
+									 
+				case EXIT:	exit = false;
+							System.out.println(toMassage("See you later!"));
+							break;
+							
+				default: System.out.println(toMassage("The menu has not this position, please try again:)")); exit = false; init(); break;
 			}
 		}
 	}
@@ -65,105 +74,145 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void addNewItem() {
-		this.input.ask("Adding a new item");
-		String itemName = this.input.ask("Plesae, enter the item's name");
-		String itemDesc = this.input.ask("Plesae, enter the item's description");
-		this.tracker.add(new Item(itemName, itemDesc, System.currentTimeMillis()));
-		/*String yesno = input.ask("Thank you. Do you want to contionue work?" + "\n" + "1. Yes" + "\n" + "2. No");
-		if (yesno == "2") {
-			selectedAction = "6";
-			init();
-		} else {
-			init();
-		}*/
+		System.out.println(toMassage("Adding a new item"));
+		String itemName = "1"; //this.input.ask("Plesae, enter the item's name: ");
+		String itemDesc = "1"; //this.input.ask("Plesae, enter the item's description: ");
+		Item item1 = new Item(itemName, itemDesc, System.currentTimeMillis());
+		this.tracker.add(item1);
+		System.out.println(toMassage("Your item was added:"));
+		System.out.println("Name: " + item1.getName() + "\n" + "Description: " + item1.getDescription() + "\n" + "Cretae: " + item1.getCreate() + "\n");
+		System.out.println("Thank you. Do you want to contionue work?\n1. Yes\n2. No\nPlease, choose number for action: ");
+		this.init();
 	}
 	/**
 	* Show all items.
 	* @param tarcker - first param.
 	*/
 	private void showAllItems() {
-		tracker.findAll();
+		System.out.println(toMassage("All Items"));
+		Item[] items = tracker.findAll();
+		int position = 0;
+		if (items.length > 0) {
+			for (Item item : items) {
+				position++;
+				System.out.println("Position: " + position + "\n" + "Name: " + item.getName() + "\n" + "Description: " + item.getDescription() + "\n" + "Cretae: " + item.getCreate() + "\n");
+				this.init();
+			}
+		} else {
+			System.out.println("No items");
+			this.init();
+		}
 	}
 	/**
 	* Edit item.
 	* @param tarcker - first param.
 	*/
 	private void editItem() {
-		String itemName = this.input.ask("Plesae, enter the item's name");
-		String itemDesc = this.input.ask("Plesae, enter the item's description");
+		System.out.println(toMassage("Edit Item"));
+		String itemName = this.input.ask("Plesae, enter the item's name: ");
+		String itemDesc = this.input.ask("Plesae, enter the item's description: ");
 		Item editItem = new Item(itemName, itemDesc, System.currentTimeMillis());
 		this.tracker.update(editItem);
-		/*String yesno = input.ask("Thank you. Do you want to contionue work?" + "\n" + "1. Yes" + "\n" + "2. No");
-		if (yesno == "2") {
-			selectedAction = "6";
-			init();
-		} else {
-			init();
-		}*/
+		this.init();
 	}
 	/**
 	* Delete item.
 	* @param tarcker - first param.
 	*/
 	private void deleteItem() {
-		String itemId = input.ask("Plesae, enter the item's id, which you want to delete");
+		System.out.println(toMassage("Delete Item"));
+		String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
 		Item deletedItem = this.tracker.findById(itemId);
 		this.tracker.delete(deletedItem);
+		this.init();
 	}
 	/**
 	* Find item by id.
 	* @param tarcker - first param.
 	*/
 	private void findItembyId() {
-		String itemId = input.ask("Plesae, enter the item's id, which you want to find");
+		System.out.println(toMassage("Find Item by Id"));
+		String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
 		Item item = this.tracker.findById(itemId);
 		String itemName = item.getName();
 		String itemDesc = item.getDescription();
 		String itemCreate = String.valueOf(item.getCreate());
-		input.ask("It's your item:" + "\n" + "Name: " + itemName + "\n" + "Description: " + itemDesc + "\n" + "Cretae: " + itemCreate + "\n");
-		/*String yesno = this.input.ask("Thank you. Do you want to contionue work or contionue searching?" + "\n" + "1. Yes, I want to find item again" + "\n" + "2.Yes, Show me menu" + "\n" + "3. No, I want close this application.");
-		if (yesno == "3") {
-			selectedAction = "6";
-			init();
-		} else if (yesno == "2") {
-			findItembyId();
-		} else {
-			init();
-		}*/
+		System.out.println("It's your item:" + "\n" + "Name: " + itemName + "\n" + "Description: " + itemDesc + "\n" + "Cretae: " + itemCreate + "\n");
+		this.init();
 	}
 	/**
 	* Find item by name.
 	* @param tarcker - first param.
 	*/
 	private void findItemsbyName() {
-		String itemKey = this.input.ask("Plesae, enter the item's key, which you want to find");
+		System.out.println(toMassage("Find Items by Name"));
+		String itemKey = this.input.ask("Plesae, enter the item's key, which you want to find: ");
 		Item[] items = this.tracker.findByName(itemKey);		
 		for (Item item : items) {
 			String itemName = item.getName();
 			String itemDesc = item.getDescription();
 			String itemCreate = String.valueOf(item.getCreate());
-			this.input.ask("It's your item:" + "\n" + "Name: " + itemName + "\n" + "Description: " + itemDesc + "\n" + "Cretae: " + itemCreate + "\n");
+			System.out.println("It's your item:" + "\n" + "Name: " + itemName + "\n" + "Description: " + itemDesc + "\n" + "Cretae: " + itemCreate + "\n");
 		}
-		/*String yesno = input.ask("Thank you. Do you want to contionue work or contionue searching?" + "\n" + "1. Yes, I want to find item again" + "\n" + "2.Yes, Show me menu" + "\n" + "3. No, I want close this application.");
-		if (yesno == "3") {
-			selectedAction = "6";
-			init();
-		} else if (yesno == "2") {
-			findItemsbyName();
-		} else {
-			init();
-		}*/
+		this.init();
 	}
 
 	private String showMenu() {
-		input.ask("0. Add new Item");
-		input.ask("1. Show all items");
-		input.ask("2. Edit item");
-		input.ask("3. Delete item");
-		input.ask("4. Find item by id");
-		input.ask("5. Find items by name");
-		input.ask("6. Exit Program");
-		String selectedAction = input.ask("Please, choose number for action: ");
+		System.out.println(toMassage("MENU"));
+		System.out.println("0. Add new Item");
+		System.out.println("1. Show all items");
+		System.out.println("2. Edit item");
+		System.out.println("3. Delete item");
+		System.out.println("4. Find item by id");
+		System.out.println("5. Find items by name");
+		System.out.println("6. Exit Program");
+		String selectedAction = input.ask("\nPlease, choose number for action: ");
 		return selectedAction;
+	}
+	
+	private String toMassage(String mass) {
+		int length = mass.length() + 6;
+		String str1 = "";
+		String str2 = "";
+		String str3 = "";
+		if (length > 0) {
+			for (int i = 0; i < length; i++) {
+				for (int j = 0; j < 3; j++) {
+					if (j == 0 && i < length) {
+						str1 = str1 + "#";
+					}
+					if (j == 1) {
+						if (i == 0) {
+						str2 = str2 + "#";
+						} else if (i > 0 && i < length - 2) {
+							str2 = str2 + " ";
+						} else if (i == length - 1) {
+							str2 = str2 + " #";
+						}
+					}
+					if (j == 2) {
+						if (i == 0) {
+						str3 = str3 + "#";
+						} else if (i > 0 && i < 3) {
+							str3 = str3 + " ";
+						} else if (i > 2 && i < 4) {
+							str3 = str3 + mass;
+						} else if (i > 4 && i < length - 3) {
+							str3 = str3 + "";
+						} else if (i > length - 4 && i < length - 2) {
+							str3 = str3 + " ";
+						} else if (i == length - 1) {
+							str3 = str3 + " #";
+						}
+					}
+				}
+			}
+		}
+		str1 = "\n" + str1 + "\n" + str2 + "\n" + str3 + "\n" + str2 + "\n" + str1 + "\n";
+		return str1;
+	}
+	
+	private void exit() {
+		System.out.println(toMassage("See you later!"));
 	}
 }
