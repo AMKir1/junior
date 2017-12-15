@@ -62,10 +62,10 @@ public class StartUI {
 				//					 break;
 									 
 				case EXIT:	exit = false;
-							System.out.println(toMassage("See you later!"));
+							System.out.println("See you later!");
 							break;
 							
-				default: System.out.println(toMassage("The menu has not this position, please try again:)")); exit = false; init(); break;
+				default: System.out.println("The menu has not this position, please try again:)"); exit = false; init(); break;
 			}
 		}
 	}
@@ -74,12 +74,12 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void addNewItem() {
-		System.out.println(toMassage("Adding a new item"));
+		System.out.println("Adding a new item");
 		String itemName = "1"; //this.input.ask("Plesae, enter the item's name: ");
 		String itemDesc = "1"; //this.input.ask("Plesae, enter the item's description: ");
 		Item item1 = new Item(itemName, itemDesc, System.currentTimeMillis());
 		this.tracker.add(item1);
-		System.out.println(toMassage("Your item was added:"));
+		System.out.println("Your item was added:");
 		System.out.println("Name: " + item1.getName() + "\n" + "Description: " + item1.getDescription() + "\n" + "Cretae: " + item1.getCreate() + "\n");
 		System.out.println("Thank you. Do you want to contionue work?\n1. Yes\n2. No\nPlease, choose number for action: ");
 		this.init();
@@ -89,7 +89,7 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void showAllItems() {
-		System.out.println(toMassage("All Items"));
+		System.out.println("All Items");
 		Item[] items = tracker.findAll();
 		int position = 0;
 		if (items.length > 0) {
@@ -108,7 +108,7 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void editItem() {
-		System.out.println(toMassage("Edit Item"));
+		System.out.println("Edit Item");
 		String itemName = this.input.ask("Plesae, enter the item's name: ");
 		String itemDesc = this.input.ask("Plesae, enter the item's description: ");
 		Item editItem = new Item(itemName, itemDesc, System.currentTimeMillis());
@@ -120,7 +120,7 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void deleteItem() {
-		System.out.println(toMassage("Delete Item"));
+		System.out.println("Delete Item");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
 		Item deletedItem = this.tracker.findById(itemId);
 		this.tracker.delete(deletedItem);
@@ -131,7 +131,7 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void findItembyId() {
-		System.out.println(toMassage("Find Item by Id"));
+		System.out.println("Find Item by Id");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
 		Item item = this.tracker.findById(itemId);
 		String itemName = item.getName();
@@ -145,7 +145,7 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void findItemsbyName() {
-		System.out.println(toMassage("Find Items by Name"));
+		System.out.println("Find Items by Name");
 		String itemKey = this.input.ask("Plesae, enter the item's key, which you want to find: ");
 		Item[] items = this.tracker.findByName(itemKey);		
 		for (Item item : items) {
@@ -158,7 +158,7 @@ public class StartUI {
 	}
 
 	private String showMenu() {
-		System.out.println(toMassage("MENU"));
+		System.out.println("MENU");
 		System.out.println("0. Add new Item");
 		System.out.println("1. Show all items");
 		System.out.println("2. Edit item");
@@ -168,51 +168,5 @@ public class StartUI {
 		System.out.println("6. Exit Program");
 		String selectedAction = input.ask("\nPlease, choose number for action: ");
 		return selectedAction;
-	}
-	
-	private String toMassage(String mass) {
-		int length = mass.length() + 6;
-		String str1 = "";
-		String str2 = "";
-		String str3 = "";
-		if (length > 0) {
-			for (int i = 0; i < length; i++) {
-				for (int j = 0; j < 3; j++) {
-					if (j == 0 && i < length) {
-						str1 = str1 + "#";
-					}
-					if (j == 1) {
-						if (i == 0) {
-						str2 = str2 + "#";
-						} else if (i > 0 && i < length - 2) {
-							str2 = str2 + " ";
-						} else if (i == length - 1) {
-							str2 = str2 + " #";
-						}
-					}
-					if (j == 2) {
-						if (i == 0) {
-						str3 = str3 + "#";
-						} else if (i > 0 && i < 3) {
-							str3 = str3 + " ";
-						} else if (i > 2 && i < 4) {
-							str3 = str3 + mass;
-						} else if (i > 4 && i < length - 3) {
-							str3 = str3 + "";
-						} else if (i > length - 4 && i < length - 2) {
-							str3 = str3 + " ";
-						} else if (i == length - 1) {
-							str3 = str3 + " #";
-						}
-					}
-				}
-			}
-		}
-		str1 = "\n" + str1 + "\n" + str2 + "\n" + str3 + "\n" + str2 + "\n" + str1 + "\n";
-		return str1;
-	}
-	
-	private void exit() {
-		System.out.println(toMassage("See you later!"));
 	}
 }
