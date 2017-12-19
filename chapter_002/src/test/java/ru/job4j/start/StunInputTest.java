@@ -5,7 +5,7 @@ package ru.job4j.start;
 	import static org.junit.Assert.assertThat;
 
 public class StunInputTest {
-	@Test
+	/*@Test
 	public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
 	Tracker tracker = new Tracker(); // создаём Tracker
 	Input input = new StunInput(new String[]{"0", "1", "1", "6"}); //создаём StubInput с последовательностью действий
