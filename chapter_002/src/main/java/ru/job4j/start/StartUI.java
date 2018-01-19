@@ -12,6 +12,7 @@ public class StartUI {
 	*/
 	private Input input;
 	private Tracker tracker;
+	int id = 0;
 	private static final String ADDNEWITEM = "0";
 	private static final String SHOWALLITEMS = "1";
 	private static final String EDITITEM = "2";
@@ -30,8 +31,10 @@ public class StartUI {
 	*/
 	public static void main(String[] args) {
 		Input input = new ConsoleInput();
+		System.out.println(input);
 		Tracker tracker = new Tracker();
 		new StartUI(input, tracker).init();
+		System.out.println(input + " 123 4");
 	}	
 	/**
 	* Init
@@ -40,34 +43,25 @@ public class StartUI {
 		Tracker tracker = new Tracker();
 		String selectedAction = this.showMenu();
 		boolean exit = true;
-		while (exit) {
-			switch (selectedAction) {
-				case ADDNEWITEM: this.addNewItem();
-								 break;
-								 
-				//case SHOWALLITEMS: 	this.showAllItems();
-				//					//System.out.println("BBB");
-				//					break;
-								   
-				//case EDITITEM: this.editItem();
-				//			   break;
-							
-				//case DELETEITEM: this.deleteItem();
-				//			     break;
-								 
-				//case FINDITEMBYID: this.findItembyId();
-				//			       break;
-					
-				//case FINDITEMBYNAME: this.findItemsbyName();
-				//					 break;
-									 
-				case EXIT:	exit = false;
-							System.out.println("See you later!");
-							break;
-							
-				default: System.out.println("The menu has not this position, please try again:)"); exit = false; init(); break;
+			if (selectedAction == ADDNEWITEM) {
+				this.addNewItem();
+			} else if (selectedAction == SHOWALLITEMS) {
+				this.showAllItems();
+			} else if (selectedAction == EDITITEM) {				   
+				this.editItem();
+			} else if (selectedAction == DELETEITEM) {
+				this.deleteItem();
+			} else if (selectedAction == FINDITEMBYID) {
+				this.findItembyId();
+			} else if (selectedAction == FINDITEMBYNAME) {
+				this.findItemsbyName();
+			} else if (selectedAction == EXIT) {
+				System.out.println("See you later!");
+			} else {
+				System.out.println("The menu has not this position, please try again:)");
+				selectedAction = this.showMenu();
 			}
-		}
+		
 	}
 	/**
 	* Add new item.
@@ -75,13 +69,13 @@ public class StartUI {
 	*/
 	private void addNewItem() {
 		System.out.println("Adding a new item");
-		String itemName = "1"; //this.input.ask("Plesae, enter the item's name: ");
-		String itemDesc = "1"; //this.input.ask("Plesae, enter the item's description: ");
-		Item item1 = new Item(itemName, itemDesc, System.currentTimeMillis());
+		String itemId = Integer.toString(this.id++);
+		String itemName = this.input.ask("Plesae, enter the item's name: ");
+		String itemDesc = this.input.ask("Plesae, enter the item's description: ");
+		Item item1 = new Item(itemName, itemDesc, System.currentTimeMillis(), itemId);
 		this.tracker.add(item1);
 		System.out.println("Your item was added:");
-		System.out.println("Name: " + item1.getName() + "\n" + "Description: " + item1.getDescription() + "\n" + "Cretae: " + item1.getCreate() + "\n");
-		System.out.println("Thank you. Do you want to contionue work?\n1. Yes\n2. No\nPlease, choose number for action: ");
+		System.out.println("Name: " + item1.getName() + "\n" + "Description: " + item1.getDescription() + "\n" + "Cretae: " + item1.getCreate() + "\n" + "Id: " + item1.getId() + "\n");
 		this.init();
 	}
 	/**
@@ -94,12 +88,17 @@ public class StartUI {
 		int position = 0;
 		if (items.length > 0) {
 			for (Item item : items) {
-				position++;
-				System.out.println("Position: " + position + "\n" + "Name: " + item.getName() + "\n" + "Description: " + item.getDescription() + "\n" + "Cretae: " + item.getCreate() + "\n");
-				this.init();
-			}
+				if (item.getName() != null) {
+					position++;
+					System.out.println("Position: " + position + "\n" + "Name: " + item.getName() + "\n" + "Description: " + item.getDescription() + "\n" + "Cretae: " + item.getCreate() + "\n" + "Id: " + item.getId() + "\n");
+					this.init();
+				} else {
+					System.out.println("NO Items");
+					this.init();
+				}
+			} 
 		} else {
-			System.out.println("No items");
+			System.out.println("NO Items");
 			this.init();
 		}
 	}
@@ -111,8 +110,11 @@ public class StartUI {
 		System.out.println("Edit Item");
 		String itemName = this.input.ask("Plesae, enter the item's name: ");
 		String itemDesc = this.input.ask("Plesae, enter the item's description: ");
-		Item editItem = new Item(itemName, itemDesc, System.currentTimeMillis());
-		this.tracker.update(editItem);
+		String itemId =  input.ask("Plesae, enter the item's id, which you want to edit: ");
+		Item editItem1 = new Item(itemName, itemDesc, System.currentTimeMillis(), itemId);
+		this.tracker.update(editItem1);
+		System.out.println("It's Edited item:" + "\n");
+		System.out.println("Name: " + editItem1.getName() + "\n" + "Description: " + editItem1.getDescription() + "\n" + "Id: " + editItem1.getId() + "\n");
 		this.init();
 	}
 	/**
@@ -123,6 +125,8 @@ public class StartUI {
 		System.out.println("Delete Item");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
 		Item deletedItem = this.tracker.findById(itemId);
+		System.out.println("It's deleted item:" + "\n");
+		System.out.println("Name: " + deletedItem.getName() + "\n" + "Description: " + deletedItem.getDescription() + "\n" + "Id: " + deletedItem.getId() + "\n");
 		this.tracker.delete(deletedItem);
 		this.init();
 	}
@@ -133,12 +137,15 @@ public class StartUI {
 	private void findItembyId() {
 		System.out.println("Find Item by Id");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
-		Item item = this.tracker.findById(itemId);
-		String itemName = item.getName();
-		String itemDesc = item.getDescription();
-		String itemCreate = String.valueOf(item.getCreate());
-		System.out.println("It's your item:" + "\n" + "Name: " + itemName + "\n" + "Description: " + itemDesc + "\n" + "Cretae: " + itemCreate + "\n");
-		this.init();
+		if (this.tracker.findById(itemId) != null) {
+			Item item = this.tracker.findById(itemId);
+			System.out.println("It's your item:");
+			showItem(item);	
+			this.init();
+		} else {
+			System.out.println("NO Items");
+			this.init();
+		}
 	}
 	/**
 	* Find item by name.
@@ -147,14 +154,17 @@ public class StartUI {
 	private void findItemsbyName() {
 		System.out.println("Find Items by Name");
 		String itemKey = this.input.ask("Plesae, enter the item's key, which you want to find: ");
-		Item[] items = this.tracker.findByName(itemKey);		
-		for (Item item : items) {
-			String itemName = item.getName();
-			String itemDesc = item.getDescription();
-			String itemCreate = String.valueOf(item.getCreate());
-			System.out.println("It's your item:" + "\n" + "Name: " + itemName + "\n" + "Description: " + itemDesc + "\n" + "Cretae: " + itemCreate + "\n");
-		}
-		this.init();
+			if (this.tracker.findByName(itemKey) != null) {
+				Item[] items = this.tracker.findByName(itemKey);
+				for (Item item : items) {
+					System.out.println("It's your item:");
+					showItem(item);	
+				}
+				this.init();
+			} else {
+				System.out.println("NO Items");
+				this.init();
+			}
 	}
 
 	private String showMenu() {
@@ -164,9 +174,15 @@ public class StartUI {
 		System.out.println("2. Edit item");
 		System.out.println("3. Delete item");
 		System.out.println("4. Find item by id");
-		System.out.println("5. Find items by name");
+		System.out.println("5. Find item by name");
 		System.out.println("6. Exit Program");
 		String selectedAction = input.ask("\nPlease, choose number for action: ");
 		return selectedAction;
+	}
+	private void showItem(Item item) {
+        System.out.println("Name: " + item.getName());
+		System.out.println("Description: " + item.getDescription());
+		System.out.println("Create: " + item.getCreate());
+        System.out.println("Id: " + item.getId());
 	}
 }

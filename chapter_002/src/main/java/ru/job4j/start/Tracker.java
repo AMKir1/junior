@@ -15,10 +15,7 @@ public class Tracker {
 	* Params.
 	*/
 	private int position = 0;
-	/**
-	* Params.
-	*/
-	private static final Random RN = new Random();
+	
 	/**
 	* Add.
 	* @param item - first ards.
@@ -37,6 +34,7 @@ public class Tracker {
 	*/
 	public void update(Item item) {
 		for (int index = 0; index != this.position; index++) {
+			System.out.println(this.items[index].getId());
 			if (this.items[index].getId() == item.getId()) {
 			this.items[index] = item;
 			}
@@ -91,7 +89,7 @@ public class Tracker {
 	public Item findById(String id) {
 		Item result = null;
 		for (Item item : items) {
-			if (item != null && item.getId().equals(id)) {
+			if (item.getId().equals(id)) {
 				result = item;
 				break;
 			}

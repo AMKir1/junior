@@ -1,6 +1,6 @@
 package ru.job4j.start;
 
-
+import java.util.*;
 public class Item {
 	/**
 	* Params.
@@ -17,8 +17,10 @@ public class Item {
 	/**
 	* Params.
 	*/
-	public String id;
+	public int idint = 0;
+	public String id = String.valueOf(idint);
 
+	
 	/**
 	* Default Constructor.
 	*/
@@ -31,10 +33,12 @@ public class Item {
 	* @param create - third ards.
 	* @param comm - fourth ards.
 	*/
-	public Item(String name, String description, long create) {
+	public Item(String name, String description, long create, String id) {
 		this.name = name;
 		this.description = description;
 		this.create = create;
+		this.id = id;
+		this.idint++;
 	}
 	/**
 	* Get Name.

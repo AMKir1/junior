@@ -13,7 +13,7 @@ public class TrackerTest {
 	@Test
 	public void whenAddItem() {
 		Tracker tracker = new Tracker();
-		Item item1 = new Item("test1", "Description1", 123L);
+		Item item1 = new Item("test1", "Description1", 123L, "1");
 		tracker.add(item1);
 		assertThat(tracker.findAll()[0], is(item1));
 	}
@@ -22,9 +22,9 @@ public class TrackerTest {
 	*/
 	public void whenUpdateItem() {
 		Tracker tracker = new Tracker();
-		Item previous = new Item("test1", "testDescription", 1L);
+		Item previous = new Item("test1", "testDescription", 1L, "1");
 		tracker.add(previous);
-		Item next = new Item("test2", "testDescription2", 1L);
+		Item next = new Item("test2", "testDescription2", 1L, "1");
 		next.setId(previous.getId());
 		tracker.update(next);
 		assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
@@ -34,7 +34,7 @@ public class TrackerTest {
 	*/
 	public void whenDeleteItem() {
 		Tracker tracker = new Tracker();
-		Item item3 = new Item("Test3", "Desc3", 3L);
+		Item item3 = new Item("Test3", "Desc3", 3L, "1");
 		tracker.add(item3);
 		tracker.delete(item3);
 		Tracker expected = null;
@@ -46,9 +46,9 @@ public class TrackerTest {
 	public void whenFindAll() {
 		Tracker tracker = new Tracker();
 		Tracker tracker2 = new Tracker();
-		Item item1 = new Item("Test1", "Desc1", 1L);
-		Item item2 = new Item("Test2", "Desc2", 2L);
-		Item item3 = new Item("Test3", "Desc3", 3L);
+		Item item1 = new Item("Test1", "Desc1", 1L, "1");
+		Item item2 = new Item("Test2", "Desc2", 2L, "2");
+		Item item3 = new Item("Test3", "Desc3", 3L, "3");
 		tracker.add(item1);
 		tracker.add(item2);
 		tracker.add(item3);
@@ -62,10 +62,10 @@ public class TrackerTest {
 	*/
 	public void whenFindByName() {
 		Tracker tracker = new Tracker();
-		Item item1 = new Item("Test1", "Desc1", 1L);
-		Item item2 = new Item("Test2", "Desc2", 2L);
-		Item item3 = new Item("Test3", "Desc3", 3L);
-		Item item4 = new Item("Test4", "Desc4", 4L);
+		Item item1 = new Item("Test1", "Desc1", 1L, "1");
+		Item item2 = new Item("Test2", "Desc2", 2L, "2");
+		Item item3 = new Item("Test3", "Desc3", 3L, "3");
+		Item item4 = new Item("Test4", "Desc4", 4L, "4");
 		tracker.add(item1);
 		tracker.add(item2);
 		tracker.add(item3);
@@ -77,10 +77,10 @@ public class TrackerTest {
 	*/
 	public void whenFindByIdAndNotNull() {
 		Tracker tracker = new Tracker();
-		Item item1 = new Item("Test1", "Desc1", 1L);
-		Item item2 = new Item("Test2", "Desc2", 2L);
-		Item item3 = new Item("Test3", "Desc3", 3L);
-		Item item4 = new Item("Test4", "Desc4", 4L);
+		Item item1 = new Item("Test1", "Desc1", 1L, "1");
+		Item item2 = new Item("Test2", "Desc2", 2L, "2");
+		Item item3 = new Item("Test3", "Desc3", 3L, "3");
+		Item item4 = new Item("Test4", "Desc4", 4L, "4");
 		tracker.add(item1);
 		tracker.add(item2);
 		tracker.add(item3);
@@ -92,10 +92,10 @@ public class TrackerTest {
 	*/
 	public void whenFindByIdAndNull() {
 		Tracker tracker = new Tracker();
-		Item item1 = new Item("Test1", "Desc1", 1L);
-		Item item2 = new Item("Test2", "Desc2", 2L);
-		Item item3 = new Item("Test3", "Desc3", 3L);
-		Item item4 = new Item("Test4", "Desc4", 4L);
+		Item item1 = new Item("Test1", "Desc1", 1L, "1");
+		Item item2 = new Item("Test2", "Desc2", 2L, "2");
+		Item item3 = new Item("Test3", "Desc3", 3L, "3");
+		Item item4 = new Item("Test4", "Desc4", 4L, "4");
 		tracker.add(item1);
 		tracker.add(item2);
 		tracker.add(item3);
