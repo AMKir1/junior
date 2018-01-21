@@ -34,7 +34,6 @@ public class StartUI {
 		System.out.println(input);
 		Tracker tracker = new Tracker();
 		new StartUI(input, tracker).init();
-		System.out.println(input + " 123 4");
 	}	
 	/**
 	* Init
@@ -122,12 +121,21 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void deleteItem() {
+		boolean del = false;
 		System.out.println("Delete Item");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
-		Item deletedItem = this.tracker.findById(itemId);
-		System.out.println("It's deleted item:" + "\n");
-		System.out.println("Name: " + deletedItem.getName() + "\n" + "Description: " + deletedItem.getDescription() + "\n" + "Id: " + deletedItem.getId() + "\n");
-		this.tracker.delete(deletedItem);
+		Item[] items = this.tracker.findAll();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i].getId().equals(itemId)) {
+				System.out.println("It's your deleted item:");
+				showItem(items[i]);
+				this.tracker.delete(items[i]);
+				del = true;
+			}
+		}
+		if (!del) {
+			System.out.println("NO Such Items");
+		}
 		this.init();
 	}
 	/**
@@ -135,36 +143,42 @@ public class StartUI {
 	* @param tarcker - first param.
 	*/
 	private void findItembyId() {
-		System.out.println("Find Item by Id");
+		boolean id = false;
+		System.out.println("Find Items by Id");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
-		if (this.tracker.findById(itemId) != null) {
-			Item item = this.tracker.findById(itemId);
+		Item[] items = this.tracker.findAll();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i].getId().equals(itemId)) {
 			System.out.println("It's your item:");
-			showItem(item);	
-			this.init();
-		} else {
-			System.out.println("NO Items");
-			this.init();
+			showItem(items[i]);	
+			id = true;
+			}
 		}
+		if (!id) {
+			System.out.println("NO Items");
+		}
+		this.init();
 	}
 	/**
 	* Find item by name.
 	* @param tarcker - first param.
 	*/
 	private void findItemsbyName() {
+		boolean name = false;
 		System.out.println("Find Items by Name");
 		String itemKey = this.input.ask("Plesae, enter the item's key, which you want to find: ");
-			if (this.tracker.findByName(itemKey) != null) {
-				Item[] items = this.tracker.findByName(itemKey);
-				for (Item item : items) {
-					System.out.println("It's your item:");
-					showItem(item);	
-				}
-				this.init();
-			} else {
-				System.out.println("NO Items");
-				this.init();
+		Item[] items = this.tracker.findAll();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i].getName().equals(itemKey)) {
+			System.out.println("It's your item:");
+			showItem(items[i]);
+			name = true;
 			}
+		}
+		if (!name) {
+			System.out.println("NO Items");
+		}
+		this.init();
 	}
 
 	private String showMenu() {

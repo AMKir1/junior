@@ -83,7 +83,7 @@ public class StunInputTest {
     Item item = tracker.add(new Item("IUpd1", "DUpd1", 123L, "0")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"2", "IUpd2", "DUpd2", "0", "6"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker).init(); // создаём StartUI и вызываем метод init()
-	assertThat(tracker.findById(item.getId()).getName(), is("IUpd2")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+	assertThat(tracker.findById(item.getId())[0].getName(), is("IUpd2")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
 	}
 
 	@Test
@@ -115,44 +115,43 @@ public class StunInputTest {
  @Test
 	public void whenFindItemById() {
     Tracker tracker = new Tracker(); //создаём Tracker
-    Item item = tracker.add(new Item("I1id", "D1id", 123L, "1")); //Напрямую добавляем заявку
-    Input input = new StunInput(new String[]{"4", "1", "6"}); //создаём StubInput с последовательностью действий
+    Item item = tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
+    Input input = new StunInput(new String[]{"4", "0", "6"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
-	assertThat(tracker.findById(item.getId()).getName(), is("I1id")); //проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+	assertThat(tracker.findById(item.getId())[0].getName(), is("I1id")); //проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
  }
- /*
+ 
  @Test
 	public void whenFindItemByIdandNoItems() {
     Tracker tracker = new Tracker(); // создаём Tracker
-    Item item = tracker.add(new Item("I1id", "D1id", 123L, "1")); //Напрямую добавляем заявку
-	Item item2 = tracker.add(new Item("I1id", "D1id2", 123L, "2")); //Напрямую добавляем заявку
+    Item item = tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
+	Item item2 = tracker.add(new Item("I1id", "D1id2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"4", "123456", "6"}); //создаём StubInput с последовательностью действий
 	this.loadByteOut();
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
                  .append("Find Items by Id").append(lineSep)
-				 .append("NO items").append(lineSep)
+				 .append("NO Items").append(lineSep)
                  .append(this.menu)
                  .append("See you later!").append(lineSep)
                  .toString();
 	String result = new String(this.byteout.toByteArray());
 	assertThat(result, is(expected)); //проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
  }
-*/
+ 
  @Test
 	public void whenFindItemByNameandNoItems() {
     Tracker tracker = new Tracker(); // создаём Tracker
-    Item item = tracker.add(new Item("I1id", "D1id", 123L, "1")); //Напрямую добавляем заявку
-	Item item2 = tracker.add(new Item("I1id", "D1id2", 123L, "2")); //Напрямую добавляем заявку
+    Item item = tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
+	Item item2 = tracker.add(new Item("I1id", "D1id2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"5", "I1", "6"}); //создаём StubInput с последовательностью действий
 	this.loadByteOut();
-	System.out.println(this.loadByteOut());
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
                  .append("Find Items by Name").append(lineSep)
-				 .append("NO items").append(lineSep)
+				 .append("NO Items").append(lineSep) 
                  .append(this.menu)
                  .append("See you later!").append(lineSep)
                  .toString();
@@ -163,8 +162,8 @@ public class StunInputTest {
  @Test
 	public void whenFindItemByName() {
     Tracker tracker = new Tracker(); // создаём Tracker
-    Item item = tracker.add(new Item("I1name", "D1name", 123L, "1")); //Напрямую добавляем заявку
-	Item item2 = tracker.add(new Item("I1name", "D1name2", 123L, "2")); //Напрямую добавляем заявку
+    Item item = tracker.add(new Item("I1name", "D1name", 123L, "0")); //Напрямую добавляем заявку
+	Item item2 = tracker.add(new Item("I1name", "D1name2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"5", "I1name", "6"}); //создаём StubInput с последовательностью действий
 	this.loadByteOut();
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()

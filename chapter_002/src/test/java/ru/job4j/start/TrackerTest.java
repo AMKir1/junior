@@ -27,7 +27,7 @@ public class TrackerTest {
 		Item next = new Item("test2", "testDescription2", 1L, "1");
 		next.setId(previous.getId());
 		tracker.update(next);
-		assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
+		assertThat(tracker.findById(previous.getId())[1].getName(), is("test2"));
 	}
 	/**
 	*

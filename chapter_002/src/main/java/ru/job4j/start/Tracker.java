@@ -74,26 +74,27 @@ public class Tracker {
 	*/
 	public Item[] findByName(String key) {
 		Item[] result = new Item[position];
+		int size = 0; 
 		for (int i = 0; i != this.position; i++) {
 			if (this.items[i].getName().equals(key)) {
-			result[i] = this.items[i];
+			result[size++] = this.items[i];
 			}
 		}
-		return result;
+		return Arrays.copyOf(result, size);
 	}
 	/**
 	* Find By Id.
 	* @param id - first ards.
 	* @return result.
 	*/
-	public Item findById(String id) {
-		Item result = null;
-		for (Item item : items) {
-			if (item.getId().equals(id)) {
-				result = item;
-				break;
+	public Item[] findById(String id) {
+		Item[] result = new Item[position];
+		int size = 0;
+		for (int i = 0; i != this.position; i++) {
+			if (this.items[i].getId().equals(id)) {
+			result[size++] = this.items[i];
 			}
 		}
-		return result;
+		return Arrays.copyOf(result, size);
 	}
 }
