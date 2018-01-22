@@ -31,7 +31,6 @@ public class StartUI {
 	*/
 	public static void main(String[] args) {
 		Input input = new ConsoleInput();
-		System.out.println(input);
 		Tracker tracker = new Tracker();
 		new StartUI(input, tracker).init();
 	}	
@@ -42,19 +41,19 @@ public class StartUI {
 		Tracker tracker = new Tracker();
 		String selectedAction = this.showMenu();
 		boolean exit = true;
-			if (selectedAction == ADDNEWITEM) {
+			if (selectedAction.equals(ADDNEWITEM)) {
 				this.addNewItem();
-			} else if (selectedAction == SHOWALLITEMS) {
+			} else if (selectedAction.equals(SHOWALLITEMS)) {
 				this.showAllItems();
-			} else if (selectedAction == EDITITEM) {				   
+			} else if (selectedAction.equals(EDITITEM)) {				   
 				this.editItem();
-			} else if (selectedAction == DELETEITEM) {
+			} else if (selectedAction.equals(DELETEITEM)) {
 				this.deleteItem();
-			} else if (selectedAction == FINDITEMBYID) {
+			} else if (selectedAction.equals(FINDITEMBYID)) {
 				this.findItembyId();
-			} else if (selectedAction == FINDITEMBYNAME) {
+			} else if (selectedAction.equals(FINDITEMBYNAME)) {
 				this.findItemsbyName();
-			} else if (selectedAction == EXIT) {
+			} else if (selectedAction.equals(EXIT)) {
 				System.out.println("See you later!");
 			} else {
 				System.out.println("The menu has not this position, please try again:)");
@@ -90,16 +89,14 @@ public class StartUI {
 				if (item.getName() != null) {
 					position++;
 					System.out.println("Position: " + position + "\n" + "Name: " + item.getName() + "\n" + "Description: " + item.getDescription() + "\n" + "Cretae: " + item.getCreate() + "\n" + "Id: " + item.getId() + "\n");
-					this.init();
 				} else {
 					System.out.println("NO Items");
-					this.init();
 				}
 			} 
 		} else {
 			System.out.println("NO Items");
-			this.init();
 		}
+		this.init();
 	}
 	/**
 	* Edit item.

@@ -109,7 +109,7 @@ public class StunInputTest {
     Item item = tracker.add(new Item("I1", "D1", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"3", "1", "6"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker).init(); // создаём StartUI и вызываем метод init()
-	assertThat(tracker.findAll(), is(new Item[]{null})); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+	assertThat(tracker.findAll(), is(new Item[]{})); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
  }
  
  @Test
