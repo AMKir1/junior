@@ -3,18 +3,13 @@ package ru.job4j.start;
 	import org.junit.Test;
 	import static org.hamcrest.core.Is.is;
 	import static org.junit.Assert.assertThat;
-	
+	import org.junit.After;
+	import org.junit.Before;
 	import java.io.ByteArrayOutputStream;
 	import java.io.PrintStream;
-	
 	import ru.job4j.start.*;
 
 public class StunInputTest {
-	  /**
-      * Стандартный поток вывода.
-      * Используется для приведения системы в исходное состояние.
-      */
-     private final PrintStream stdout = System.out;
      /**
       * Байтовый поток вывода.
       * Используется для чтения и проверки вывода программы на соответствие ожидаемому.
@@ -30,17 +25,10 @@ public class StunInputTest {
 	 /**
       * Устанавливаем новый поток вывода.
       */
-     private void loadByteOut() {
+	 @Before 
+     public void loadByteOut() {
          System.setOut(new PrintStream(this.byteout));
      }
- 
-     /**
-      * Возвращаем стандартный поток вывода.
-      */
-     private void loadStandartOut() {
-         System.setOut(stdout);
-     }
- 
  
      /**
       * Вывод программы при показе меню.
@@ -91,7 +79,6 @@ public class StunInputTest {
     Tracker tracker = new Tracker(); // создаём Tracker
     Item item = tracker.add(new Item()); //Напрямую добавляем заявку
 	Input input = new StunInput(new String[]{"1", "6"}); //создаём StubInput с последовательностью действий
-	this.loadByteOut();
 	new StartUI(input, tracker).init(); // создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
@@ -127,7 +114,6 @@ public class StunInputTest {
     Item item = tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
 	Item item2 = tracker.add(new Item("I1id", "D1id2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"4", "123456", "6"}); //создаём StubInput с последовательностью действий
-	this.loadByteOut();
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
@@ -146,7 +132,6 @@ public class StunInputTest {
     Item item = tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
 	Item item2 = tracker.add(new Item("I1id", "D1id2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"5", "I1", "6"}); //создаём StubInput с последовательностью действий
-	this.loadByteOut();
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
@@ -165,7 +150,6 @@ public class StunInputTest {
     Item item = tracker.add(new Item("I1name", "D1name", 123L, "0")); //Напрямую добавляем заявку
 	Item item2 = tracker.add(new Item("I1name", "D1name2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"5", "I1name", "6"}); //создаём StubInput с последовательностью действий
-	this.loadByteOut();
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
@@ -186,7 +170,6 @@ public class StunInputTest {
     Tracker tracker = new Tracker(); // создаём Tracker
     Item item = tracker.add(new Item()); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"6"}); //создаём StubInput с последовательностью действий
-	this.loadByteOut();
 	new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
 	String expected = new StringBuilder()
                  .append(this.menu)
