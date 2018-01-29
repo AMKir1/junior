@@ -38,8 +38,15 @@ public class StartUI {
 	* Init
 	*/
 	public void init() {
-		Tracker tracker = new Tracker();
-		String selectedAction = this.showMenu();
+		MenuTracker menu = new MenuTracker(this.input, this.tracker);
+		menu.fillAction();
+		do {
+			menu.show();
+			int key = Integer.valueOf(input.ask("Select: "));
+			menu.select(key);
+		} while (!"y".equals(this.input.ask("Exit?(y)")));
+		/*String selectedAction = this.showMenu();
+		
 		boolean exit = true;
 			if (selectedAction.equals(ADDNEWITEM)) {
 				this.addNewItem();
@@ -59,6 +66,7 @@ public class StartUI {
 				System.out.println("The menu has not this position, please try again:)");
 				selectedAction = this.showMenu();
 			}
+			*/
 		
 	}
 	/**
