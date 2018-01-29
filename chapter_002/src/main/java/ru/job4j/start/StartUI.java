@@ -10,6 +10,7 @@ public class StartUI {
 	/**
 	* Params.
 	*/
+	private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6};
 	private Input input;
 	private Tracker tracker;
 	int id = 0;
@@ -30,7 +31,7 @@ public class StartUI {
 	* @param args - first args.
 	*/
 	public static void main(String[] args) {
-		Input input = new ConsoleInput();
+		Input input = new ValidateInput();
 		Tracker tracker = new Tracker();
 		new StartUI(input, tracker).init();
 	}	
@@ -42,8 +43,8 @@ public class StartUI {
 		menu.fillAction();
 		do {
 			menu.show();
-			int key = Integer.valueOf(input.ask("Select: "));
-			menu.select(key);
+			//int key = Integer.valueOf(input.ask("Select: "));
+			menu.select(input.ask("Select: ", this.range));
 		} while (!"y".equals(this.input.ask("Exit?(y)")));
 		/*String selectedAction = this.showMenu();
 		
