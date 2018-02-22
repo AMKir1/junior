@@ -5,11 +5,11 @@ package ru.job4j.start;
  * @version $Id$
  * @since 0.1
  */
- import ru.job4j.start.*;
+import ru.job4j.start.*;
 public class StartUI {
 	/**
-	* Params.
-	*/
+	 * Params.
+	 */
 	private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6};
 	private Input input;
 	private Tracker tracker;
@@ -21,24 +21,24 @@ public class StartUI {
 	private static final String FINDITEMBYID = "4";
 	private static final String FINDITEMBYNAME = "5";
 	private static final String EXIT = "6";
-	
+
 	public StartUI(Input input, Tracker tracker) {
 		this.input = input;
 		this.tracker = tracker;
 	}
 	/**
-	* Main.
-	* @param args - first args.
-	*/
+	 * Main.
+	 * @param args - first args.
+	 */
 	public static void main(String[] args) {
 		new StartUI(
-			new ValidateInput(new ConsoleInput()), 
-			new Tracker()
-			).init();
-	}	
+				new ValidateInput(new ConsoleInput()),
+				new Tracker()
+		).init();
+	}
 	/**
-	* Init
-	*/
+	 * Init
+	 */
 	public void init() {
 		MenuTracker menu = new MenuTracker(this.input, this.tracker);
 		menu.fillAction();
@@ -68,12 +68,12 @@ public class StartUI {
 				selectedAction = this.showMenu();
 			}
 			*/
-		
+
 	}
 	/**
-	* Add new item.
-	* @param tarcker - first param.
-	*/
+	 * Add new item.
+	 * @param tarcker - first param.
+	 */
 	private void addNewItem() {
 		System.out.println("Adding a new item");
 		String itemId = Integer.toString(this.id++);
@@ -86,9 +86,9 @@ public class StartUI {
 		this.init();
 	}
 	/**
-	* Show all items.
-	* @param tarcker - first param.
-	*/
+	 * Show all items.
+	 * @param tarcker - first param.
+	 */
 	private void showAllItems() {
 		System.out.println("All Items");
 		Item[] items = tracker.findAll();
@@ -101,16 +101,16 @@ public class StartUI {
 				} else {
 					System.out.println("NO Items");
 				}
-			} 
+			}
 		} else {
 			System.out.println("NO Items");
 		}
 		this.init();
 	}
 	/**
-	* Edit item.
-	* @param tarcker - first param.
-	*/
+	 * Edit item.
+	 * @param tarcker - first param.
+	 */
 	private void editItem() {
 		System.out.println("Edit Item");
 		String itemName = this.input.ask("Plesae, enter the item's name: ");
@@ -123,9 +123,9 @@ public class StartUI {
 		this.init();
 	}
 	/**
-	* Delete item.
-	* @param tarcker - first param.
-	*/
+	 * Delete item.
+	 * @param tarcker - first param.
+	 */
 	private void deleteItem() {
 		boolean del = false;
 		System.out.println("Delete Item");
@@ -145,9 +145,9 @@ public class StartUI {
 		this.init();
 	}
 	/**
-	* Find item by id.
-	* @param tarcker - first param.
-	*/
+	 * Find item by id.
+	 * @param tarcker - first param.
+	 */
 	private void findItembyId() {
 		boolean id = false;
 		System.out.println("Find Items by Id");
@@ -155,9 +155,9 @@ public class StartUI {
 		Item[] items = this.tracker.findAll();
 		for (int i = 0; i < items.length; i++) {
 			if (items[i].getId().equals(itemId)) {
-			System.out.println("It's your item:");
-			showItem(items[i]);	
-			id = true;
+				System.out.println("It's your item:");
+				showItem(items[i]);
+				id = true;
 			}
 		}
 		if (!id) {
@@ -166,9 +166,9 @@ public class StartUI {
 		this.init();
 	}
 	/**
-	* Find item by name.
-	* @param tarcker - first param.
-	*/
+	 * Find item by name.
+	 * @param tarcker - first param.
+	 */
 	private void findItemsbyName() {
 		boolean name = false;
 		System.out.println("Find Items by Name");
@@ -176,9 +176,9 @@ public class StartUI {
 		Item[] items = this.tracker.findAll();
 		for (int i = 0; i < items.length; i++) {
 			if (items[i].getName().equals(itemKey)) {
-			System.out.println("It's your item:");
-			showItem(items[i]);
-			name = true;
+				System.out.println("It's your item:");
+				showItem(items[i]);
+				name = true;
 			}
 		}
 		if (!name) {
@@ -200,9 +200,9 @@ public class StartUI {
 		return selectedAction;
 	}
 	private void showItem(Item item) {
-        System.out.println("Name: " + item.getName());
+		System.out.println("Name: " + item.getName());
 		System.out.println("Description: " + item.getDescription());
 		System.out.println("Create: " + item.getCreate());
-        System.out.println("Id: " + item.getId());
+		System.out.println("Id: " + item.getId());
 	}
 }
