@@ -10,6 +10,9 @@ import static org.junit.Assert.assertThat;
 
 public class ConvertListTest {
     @Test
+    /*
+     * Testing converter to Array from List
+     */
     public void convertListToArr() {
         int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
         ConvertList convertToList = new ConvertList();
@@ -22,6 +25,9 @@ public class ConvertListTest {
     }
 
     @Test
+    /*
+     * Testing converter to List from Array
+     */
     public void convertArrToList() {
         ConvertList convertToArr = new ConvertList();
         List <Integer> list = new LinkedList<>();
