@@ -2,8 +2,17 @@ package ru.job4j.search;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Chapter_003. Collection. Lite.
+ * Task: Конвертация двумерного массива в ArrayList и наоборот [#10035]
+ * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
+ * @version 1
+ */
 public class ConvertList {
+    /*
+     * This is converter from Array to List.
+     * @param array.
+     */
     public List<Integer> toList(int[][] array) {
         List<Integer> result = new ArrayList<>();
         for (int[] i : array) {
@@ -13,9 +22,10 @@ public class ConvertList {
         }
         return result;
     }
-
-
-
+    /*
+     * This is converter from List to Array.
+     * @param array.
+     */
     public int[][] toArray (List<Integer> list, int rows) {
         int step = 0;
         int cols = list.size() % rows == 0 ? list.size() / rows : (list.size() / rows) + 1;
