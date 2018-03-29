@@ -24,7 +24,8 @@ public class ConvertList {
     }
     /*
      * This is converter from List to Array.
-     * @param array.
+     * @param list.
+     * @param rows.
      */
     public int[][] toArray (List<Integer> list, int rows) {
         int step = 0;
