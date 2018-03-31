@@ -1,4 +1,4 @@
-package ru.job4j.cofe;
+package ru.job4j.coffee;
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;

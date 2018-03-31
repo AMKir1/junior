@@ -1,4 +1,4 @@
-package ru.job4j.cofe;
+package ru.job4j.coffee;
 /**
  * Chapter_002. CoffeeMachine.
  * Task: Реализовать выдачу сдачи
