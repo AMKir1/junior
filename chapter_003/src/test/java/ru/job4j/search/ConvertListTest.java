@@ -30,7 +30,6 @@ public class ConvertListTest {
         }
         assertThat(list, is(result));
     }
-
     @Test
     /*
      * Testing converter to List from Array.
@@ -44,5 +43,24 @@ public class ConvertListTest {
         int[][] arr = convertToArr.toArray(list,2);
         int[][] result = {{0, 1, 2, 3, 4 },{5, 6, 7, 8, 0}};
         assertThat(arr, is(result));
+    }
+
+    @Test
+    /*
+     * Testing converter list of arrays to one list.
+     */
+    public void convertArrListToList() {
+        ConvertList convertToListFromListWithArr = new ConvertList();
+        int[] array1 = new int[]{1, 2};
+        int[] array2 = new int[]{3, 4, 5};
+        List<int[]> list = new LinkedList<>();
+        list.add(array1);
+        list.add(array2);
+        List <Integer> correct = new LinkedList<>();
+        List <Integer> result = convertToListFromListWithArr.convert(list);
+        for (int i = 1; i < 6; i++) {
+            correct.add(i);
+        }
+        assertThat(correct, is(result));
     }
 }
