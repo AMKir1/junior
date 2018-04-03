@@ -3,7 +3,7 @@
  * Let's call this as the first sentence,
  * so here, we must place a period.
  *
- * Calculator
+ * CalculateTest
  *
  */
-package ru.job4j.profession;
+package ru.job4j.coffee;
