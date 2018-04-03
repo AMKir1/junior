@@ -10,14 +10,14 @@ package ru.job4j.search;
 public class UserModel implements Comparable<UserModel> {
 
     private String name;
-    private int age;
+    private Integer age;
 
     public UserModel(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
@@ -35,8 +35,7 @@ public class UserModel implements Comparable<UserModel> {
 
     @Override
     public int compareTo(UserModel o) {
-        int diff = this.getAge() - o.getAge();
-        return diff != 0 ? diff : 0;
+        return this.getAge() - o.getAge() == 0 ? 0 : this.age.compareTo(o.age) ;
     }
 
     @Override

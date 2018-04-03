@@ -18,19 +18,35 @@ public class SortUserTest {
     @Test
     public void testSortAgeOfUsers () {
         SortUser su = new SortUser();
-        List<UserModel> userModelList = new ArrayList<>();
-        userModelList.add(new UserModel("VASYA", 40));
-        userModelList.add(new UserModel("KOLYA", 15));
-        userModelList.add(new UserModel("BORIS", 37));
-        Set<UserModel> userModelSet = new TreeSet<>();
-        userModelSet.addAll(userModelList);
-        userModelSet = su.sort(userModelList);
-        assertThat(userModelSet.toString() , is(
-                new StringBuilder()
-                .append("[age = " + userModelList.get(1).getAge() + ", name = " + userModelList.get(1).getName())
-                .append(", age = " + userModelList.get(2).getAge() + ", name = " + userModelList.get(2).getName())
-                .append(", age = " + userModelList.get(0).getAge() + ", name = " + userModelList.get(0).getName() + "]")
-                .toString()
-            ));
+        List<UserModel> list = new ArrayList<>();
+        list.add(new UserModel("VASYA", 40));
+        list.add(new UserModel("KOLYA", 15));
+        list.add(new UserModel("BORIS", 37));
+        Set<UserModel> userSet = su.sort(list);
+        assertThat(userSet , is(-1));
     }
+
+        @Test
+        public void testSortUserByLenghtName() {
+            SortUser su = new SortUser();
+            List<UserModel> list = new ArrayList<>();
+            list.add(new UserModel("SEM", 40));
+            list.add(new UserModel("NIKOLAI", 15));
+            list.add(new UserModel("KIM", 37));
+            list.add(new UserModel("VASYA", 21));
+            List<UserModel> userlist = su.sortNameLength(list);
+            assertThat(userlist , is(-1));
+        }
+
+        @Test
+        public void testSortUserByNameAndAge() {
+            SortUser su = new SortUser();
+            List<UserModel> list = new ArrayList<>();
+            list.add(new UserModel("SEM", 40));
+            list.add(new UserModel("VASYA", 15));
+            list.add(new UserModel("KIM", 37));
+            list.add(new UserModel("VASYA", 21));
+            List<UserModel> userlist = su.sortByAllFields(list);
+            assertThat(userlist , is(-1));
+        }
 }

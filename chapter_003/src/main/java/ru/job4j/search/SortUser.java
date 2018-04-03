@@ -18,4 +18,29 @@ public class SortUser {
         }
         return setUser;
     }
+
+    public List<UserModel> sortNameLength (List<UserModel> list) {
+        list.sort(new Comparator<UserModel>() {
+            @Override
+            public int compare(UserModel o1, UserModel o2) {
+                Integer user1 = o1.getName().length();
+                Integer user2 = o2.getName().length();
+                return user1.compareTo(user2);
+            }
+        });
+        return list;
+    }
+
+
+    public List<UserModel> sortByAllFields (List<UserModel> list) {
+        list.sort(new Comparator<UserModel>() {
+            @Override
+            public int compare(UserModel o1, UserModel o2) {
+                Integer user1 = o1.getName().length();
+                Integer user2 = o2.getName().length();
+                return user1 == user2 ? o1.getAge().compareTo(o2.getAge()) : user1.compareTo(user2);
+            }
+                  });
+        return list;
+    }
 }

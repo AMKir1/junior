@@ -6,4 +6,4 @@
  * CalculateTest
  *
  */
-package ru.job4j.Start;
+package ru.job4j.start;

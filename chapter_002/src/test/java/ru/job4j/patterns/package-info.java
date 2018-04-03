@@ -6,4 +6,4 @@
  * CalculateTest
  *
  */
-package ru.job4j.Patterns;
+package ru.job4j.patterns;
