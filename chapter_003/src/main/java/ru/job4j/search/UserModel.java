@@ -2,7 +2,7 @@ package ru.job4j.search;
 
 /**
  * Chapter_003. Collection. Lite.
- * Task: 1. Организовать сортировку User [#10034]
+ * Task: 2. Сортировка User с использованием Comparator [#10036]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */

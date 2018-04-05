@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
     /**
      * Chapter_003. Collection. Lite.
-     * Task: 1. Организовать сортировку User [#10034]
+     * Task: 2. Сортировка User с использованием Comparator [#10036]
      * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
      * @version 1
      */
@@ -23,7 +23,11 @@ public class SortUserTest {
         list.add(new UserModel("KOLYA", 15));
         list.add(new UserModel("BORIS", 37));
         Set<UserModel> userSet = su.sort(list);
-        assertThat(userSet , is(-1));
+        assertThat(userSet.toString() , is( new StringBuilder()
+                .append("[age = " + list.get(1).getAge() + ", name = " + list.get(1).getName())
+                .append(", age = " + list.get(2).getAge() + ", name = " + list.get(2).getName())
+                .append(", age = " + list.get(0).getAge() + ", name = " + list.get(0).getName() + "]")
+                .toString()));
     }
 
         @Test
@@ -34,8 +38,8 @@ public class SortUserTest {
             list.add(new UserModel("NIKOLAI", 15));
             list.add(new UserModel("KIM", 37));
             list.add(new UserModel("VASYA", 21));
-            List<UserModel> userlist = su.sortNameLength(list);
-            assertThat(userlist , is(-1));
+            su.sortNameLength(list);
+            assertThat(list.get(0).getName() , is("SEM"));
         }
 
         @Test
@@ -46,7 +50,7 @@ public class SortUserTest {
             list.add(new UserModel("VASYA", 15));
             list.add(new UserModel("KIM", 37));
             list.add(new UserModel("VASYA", 21));
-            List<UserModel> userlist = su.sortByAllFields(list);
-            assertThat(userlist , is(-1));
+            su.sortByAllFields(list);
+            assertThat(list.get(0).getName() , is("KIM"));
         }
 }
