@@ -27,10 +27,10 @@ public class ConvertList {
      * @param list.
      * @param rows.
      */
-    public int[][] toArray (List<Integer> list, int rows) {
+    public int[][] toArray(List<Integer> list, int rows) {
         int step = 0;
         int cols = list.size() % rows == 0 ? list.size() / rows : (list.size() / rows) + 1;
-        int [][] array = new int[rows][cols];
+        int[][] array = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (step < list.size()) {
@@ -48,7 +48,7 @@ public class ConvertList {
         return array;
     }
 
-    public List<Integer> convert (List<int[]> list) {
+    public List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
         for (int[] l : list) {
             for (int j : l) {

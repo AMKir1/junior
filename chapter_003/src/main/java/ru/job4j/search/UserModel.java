@@ -35,7 +35,7 @@ public class UserModel implements Comparable<UserModel> {
 
     @Override
     public int compareTo(UserModel o) {
-        return this.getAge() - o.getAge() == 0 ? 0 : this.age.compareTo(o.age) ;
+        return this.getAge() - o.getAge() == 0 ? 0 : this.age.compareTo(o.age);
     }
 
     @Override

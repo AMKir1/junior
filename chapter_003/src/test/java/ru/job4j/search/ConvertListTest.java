@@ -21,10 +21,10 @@ public class ConvertListTest {
      * Testing converter to Array from List.
      */
     public void convertListToArr() {
-        int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         ConvertList convertToList = new ConvertList();
-        List <Integer> list = convertToList.toList(arr);
-        List <Integer> result = new LinkedList<>();
+        List<Integer> list = convertToList.toList(arr);
+        List<Integer> result = new LinkedList<>();
         for (int i = 1; i < 10; i++) {
             result.add(i);
         }
@@ -36,12 +36,12 @@ public class ConvertListTest {
      */
     public void convertArrToList() {
         ConvertList convertToArr = new ConvertList();
-        List <Integer> list = new LinkedList<>();
+        List<Integer> list = new LinkedList<>();
         for (int i = 0; i < 9; i++) {
             list.add(i);
         }
-        int[][] arr = convertToArr.toArray(list,2);
-        int[][] result = {{0, 1, 2, 3, 4 },{5, 6, 7, 8, 0}};
+        int[][] arr = convertToArr.toArray(list, 2);
+        int[][] result = {{0, 1, 2, 3, 4 }, {5, 6, 7, 8, 0}};
         assertThat(arr, is(result));
     }
 
@@ -56,8 +56,8 @@ public class ConvertListTest {
         List<int[]> list = new LinkedList<>();
         list.add(array1);
         list.add(array2);
-        List <Integer> correct = new LinkedList<>();
-        List <Integer> result = convertToListFromListWithArr.convert(list);
+        List<Integer> correct = new LinkedList<>();
+        List<Integer> result = convertToListFromListWithArr.convert(list);
         for (int i = 1; i < 6; i++) {
             correct.add(i);
         }

@@ -1,21 +1,16 @@
 package ru.job4j.search;
 
 import java.util.*;
-
-/**
+/*
  * Chapter_003. Collection. Lite.
  * 2. Сортировка User с использованием Comparator [#10036]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
-
 public class SortUser {
 
     Set<UserModel> sort(List<UserModel> list) {
         Set<UserModel> setUser = new TreeSet<>(list);
-        /*for (UserModel user : list) {
-            setUser.add(user);
-        }*/
         return setUser;
     }
 
@@ -30,7 +25,6 @@ public class SortUser {
         });
         return list;
     }
-
 
     public List<UserModel> sortByAllFields(List<UserModel> list) {
         list.sort(new Comparator<UserModel>() {

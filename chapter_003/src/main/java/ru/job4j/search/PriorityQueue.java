@@ -18,10 +18,10 @@ public class PriorityQueue {
      */
     public void put(Task task) {
         //TODO добавить вставку в связанный список
-        if (tasks.size() != 0){
-           for(Task t: tasks)  {
+        if (tasks.size() != 0) {
+           for (Task t : tasks) {
                 if (t.getPriority() > task.getPriority()) {
-                    tasks.add(tasks.indexOf(t),task);
+                    tasks.add(tasks.indexOf(t), task);
                     break;
                 }
             }

@@ -19,15 +19,15 @@ public class User {
         this.city = city;
     }
 
-    public void setId (int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setName (String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setCity (String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
@@ -35,11 +35,11 @@ public class User {
         return id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getCity(){
+    public String getCity() {
         return city;
     }
 }

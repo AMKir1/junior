@@ -14,14 +14,14 @@ public class ListCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
         int result = 0;
-        int minsize = Math.min(left.length(),right.length());
+        int minsize = Math.min(left.length(), right.length());
         int i = 0;
         do {
-            if(left.charAt(i) < right.charAt(i)) {
+            if (left.charAt(i) < right.charAt(i)) {
                 result = -1;
                 i++;
                 break;
-            } else if(left.charAt(i) > right.charAt(i)) {
+            } else if (left.charAt(i) > right.charAt(i)) {
                 result = 1;
                 i++;
                 break;

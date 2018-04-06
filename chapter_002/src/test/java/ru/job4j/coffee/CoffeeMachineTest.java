@@ -14,9 +14,9 @@ import static org.junit.Assert.assertThat;
 public class CoffeeMachineTest {
 
     @Test
-    public void TestCoffeeMachine () {
+    public void coinsTest() {
         CoffeeMachine coffeeMachine = new CoffeeMachine();
-        int[] result = new int[] {99, 1, 2 ,0};
+        int[] result = new int[]{99, 1, 2, 0};
         assertThat(result, is(coffeeMachine.toGiveChange(1000, 1)));
     }
 }

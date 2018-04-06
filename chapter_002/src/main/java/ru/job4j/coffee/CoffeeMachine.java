@@ -6,7 +6,7 @@ package ru.job4j.coffee;
  * @version 1
  */
 public class CoffeeMachine {
-    final static int[] coins = new int[]{10, 5, 2, 1};
+    private final static int[] COINS = new int[]{10, 5, 2, 1};
 
     public int[] toGiveChange(int value, int price) {
         int surrender = value - price; // сдача
@@ -14,7 +14,7 @@ public class CoffeeMachine {
         int i = 0;
         int[] result = new int[4];
         if (value >= price) {
-            for (int c : coins) {
+            for (int c : COINS) {
                 remainder = surrender % c;
                 result[i] = (surrender - remainder) / c;
                 i++;
