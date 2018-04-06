@@ -1,5 +1,5 @@
 package ru.job4j.start;
-/**
+/*
  * Class Tracker.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
@@ -7,92 +7,79 @@ package ru.job4j.start;
  */
 import java.util.*;
 public class Tracker {
-	/**
+	/*
 	* Params.
 	*/
-	private Item[] items = new Item[100];
-	/**
-	* Params.
-	*/
-	private int position = 0;
-	
-	/**
+	private ArrayList<Item> items = new ArrayList<>();
+
+	/*
 	* Add.
-	* @param item - first ards.
+	* @param item - first args.
 	* @return result.
 	*/
 	public Item add(Item item) {
-		Item result;
-		this.items[this.position] = item;
-		result = this.items[position];
-		this.position++;
-		return result;
+		this.items.add(item);
+		return item;
 	}
-	/**
+	/*
 	* Update.
-	* @param item - first ards.
+	* @param item - first args.
 	*/
 	public void update(Item item) {
-		for (int index = 0; index != this.position; index++) {
-			if (this.items[index].getId().equals(item.getId())) {
-			this.items[index] = item;
+		for (Item i : this.items) {
+			if (i.getId().equals(item.getId())) {
+				this.items.set(Integer.valueOf(item.getId()), item);
 			}
 		}
 	}
-	/**
+	/*
 	* Delete.
-	* @param key - first ards.
+	* @param item - first args.
 	* @return result.
 	*/
 	public void delete(Item item) {	
-		for (int index = 0; index != this.position; index++) {
-			if (this.items[index].getId() == item.getId()) {
-			this.items[index] = null;
+		for (Item i : this.items) {
+			if (i.getId().equals(item.getId())) {
+			this.items.remove(i);
+			break;
 			}
 		}
 	}
-	/**
+	/*
 	* Find All.
 	* @return result.
 	*/
-	public Item[] findAll() {
-		Item[] result = new Item[this.position];
-		int size = 0;
-		for (Item item : this.items) {
-			if (item != null) {
-				result[size++] = item;
-			}
-		}
-		return Arrays.copyOf(result, size);
+	public ArrayList<Item> findAll() {
+		return this.items;
 	}
-	/**
+	/*
 	* Find By Name.
-	* @param key - first ards.
+	* @param key - first args.
 	* @return result.
 	*/
-	public Item[] findByName(String key) {
-		Item[] result = new Item[this.position];
-		int size = 0; 
-		for (int i = 0; i != this.position; i++) {
-			if (this.items[i].getName().equals(key)) {
-			result[size++] = this.items[i];
+	public ArrayList<Item> findByName(String key) {
+		ArrayList<Item> result = new ArrayList<>();
+		//int size = 0;
+		for (Item item : this.items) {
+			if (item.getName().equals(key)) {
+				result.add(item);
 			}
 		}
-		return Arrays.copyOf(result, size);
+		return result;
 	}
-	/**
+	/*
 	* Find By Id.
-	* @param id - first ards.
+	* @param id - first args.
 	* @return result.
 	*/
-	public Item[] findById(String id) {
-		Item[] result = new Item[this.position];
-		int size = 0;
-		for (int i = 0; i != this.position; i++) {
-			if (this.items[i].getId().equals(id)) {
-			result[size++] = this.items[i];
+	public ArrayList<Item> findById(String id) {
+		ArrayList<Item> result = new ArrayList<>();
+		//int size = 0;
+		for (Item item : this.items) {
+			if (item.getId().equals(id)) {
+			result.add(item);
 			}
 		}
-		return Arrays.copyOf(result, size);
+		return result;
 	}
 }

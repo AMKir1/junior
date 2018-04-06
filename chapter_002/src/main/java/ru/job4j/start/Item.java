@@ -1,74 +1,72 @@
 package ru.job4j.start;
 
-import java.util.*;
 public class Item {
-	/**
+	/*
 	* Params.
 	*/
-	public String name;
-	/**
+	private String name;
+	/*
 	* Params.
 	*/
-	public String description;
-	/**
+	private String description;
+	/*
 	* Params.
 	*/
-	public long create;
-	/**
+	private long create;
+	/*
 	* Params.
 	*/
-	public int idint = 0;
+	private int idint = 0;
 	public String id = String.valueOf(idint);
 
 	
-	/**
+	/*
 	* Default Constructor.
 	*/
-	public Item() {
+	protected Item() {
 	}
-	/**
+	/*
 	* Constructor
 	* @param name - first ards.
 	* @param description - second ards.
 	* @param create - third ards.
-	* @param comm - fourth ards.
 	*/
-	public Item(String name, String description, long create, String id) {
+	protected Item(String name, String description, long create, String id) {
 		this.name = name;
 		this.description = description;
 		this.create = create;
 		this.id = id;
 		this.idint++;
 	}
-	/**
+	/*
 	* Get Name.
 	* @return this.name.
 	*/
 	public String getName() {
 		return this.name;
 	}
-	/**
+	/*
 	* Get Description.
 	* @return this.description.
 	*/
 	public String getDescription() {
 		return this.description;
 	}
-	/**
+	/*
 	* Get Create.
 	* @return this.create.
 	*/
 	public long getCreate() {
 		return this.create;
 	}
-	/**
+	/*
 	* Get Id.
 	* @return this.id.
 	*/
 	public String getId() {
 		 return this.id;
 	}
-	/**
+	/*
 	* Set Id.
 	* @param id - first ards.
 	*/

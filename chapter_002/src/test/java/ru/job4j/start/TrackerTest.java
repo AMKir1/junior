@@ -3,11 +3,11 @@ package ru.job4j.start;
 	import org.junit.Test;
 	import static org.hamcrest.core.Is.is;
 	import static org.junit.Assert.assertThat;
-	/**
+	/*
 	* class TrackerTest
 	*/
 public class TrackerTest {
-	/**
+	/*
 	*
 	*/
 	@Test
@@ -15,9 +15,9 @@ public class TrackerTest {
 		Tracker tracker = new Tracker();
 		Item item1 = new Item("test1", "Description1", 123L, "1");
 		tracker.add(item1);
-		assertThat(tracker.findAll()[0], is(item1));
+		assertThat(tracker.findAll().get(0), is(item1));
 	}
-	/**
+	/*
 	*
 	*/
 	public void whenUpdateItem() {
@@ -27,9 +27,9 @@ public class TrackerTest {
 		Item next = new Item("test2", "testDescription2", 1L, "1");
 		next.setId(previous.getId());
 		tracker.update(next);
-		assertThat(tracker.findById(previous.getId())[1].getName(), is("test2"));
+		assertThat(tracker.findById(previous.getId()).get(0).getName(), is("test2"));
 	}
-	/**
+	/*
 	*
 	*/
 	public void whenDeleteItem() {
@@ -40,7 +40,7 @@ public class TrackerTest {
 		Tracker expected = null;
 		assertThat(tracker.findById(item3.getId()), is(expected));
 	}
-	/**
+	/*
 	*
 	*/
 	public void whenFindAll() {
@@ -57,7 +57,7 @@ public class TrackerTest {
 		tracker2.add(item2);
 		assertThat(tracker.findAll(), is(tracker2));
 	}
-	/**
+	/*
 	*
 	*/
 	public void whenFindByName() {
@@ -72,7 +72,7 @@ public class TrackerTest {
 		tracker.add(item4);
 		assertThat(tracker.findByName("Test2"), is(item2));
 	}
-	/**
+	/*
 	*
 	*/
 	public void whenFindByIdAndNotNull() {
@@ -87,7 +87,7 @@ public class TrackerTest {
 		tracker.add(item4);
 		assertThat(tracker.findById("2"), is(item3));
 	}
-	/**
+	/*
 	*
 	*/
 	public void whenFindByIdAndNull() {

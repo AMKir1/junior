@@ -1,12 +1,11 @@
 package ru.job4j.start;
-/**
+/*
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
  */
-	import ru.job4j.start.*;
 
-class Exit extends BaseAction {
+	class Exit extends BaseAction {
 		public Exit(int key, String name) {
                 super(key, name);
             }
@@ -15,7 +14,7 @@ class Exit extends BaseAction {
 	}	
 	
 
-public class MenuTracker {
+	public class MenuTracker {
 	
 	private Input input;
 	private Tracker tracker;
@@ -62,7 +61,7 @@ public class MenuTracker {
 	}
 	
 	private class AddItem extends BaseAction {
-		 public AddItem(int key, String name) {
+		 private AddItem(int key, String name) {
                 super(key, name);
             }
 		 public void execute(Input input, Tracker tracker) {
@@ -77,12 +76,12 @@ public class MenuTracker {
 	}
 	
 	private class ShowAllItems extends BaseAction {
-		public ShowAllItems(int key, String name) {
+		private ShowAllItems(int key, String name) {
                 super(key, name);
             }
 		@Override
 		public void execute(Input input, Tracker tracker) {
-			if (tracker.findAll().length > 0) {
+			if (tracker.findAll().size() > 0) {
 				for (Item item : tracker.findAll()) {
 					if (item.getName() != null) {
 						showItem(item);
@@ -97,18 +96,18 @@ public class MenuTracker {
 	}
 	
 	private class DeleteItem extends BaseAction {
-		public DeleteItem(int key, String name) {
+		private DeleteItem(int key, String name) {
                 super(key, name);
         }
 		@Override
 		public void execute(Input input, Tracker tracker) {
 			boolean del = false;
 			String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
-			for (int i = 0; i < tracker.findAll().length; i++) {
-				if (tracker.findAll()[i].getId().equals(itemId)) {
+			for (int i = 0; i < tracker.findAll().size(); i++) {
+				if (tracker.findAll().get(i).getId().equals(itemId)) {
 					System.out.println("It's your deleted item:");
-					showItem(tracker.findAll()[i]);
-					tracker.delete(tracker.findAll()[i]);
+					showItem(tracker.findAll().get(i));
+					tracker.delete(tracker.findAll().get(i));
 					del = true;
 				}
 			}
@@ -119,17 +118,17 @@ public class MenuTracker {
 	}
 	
 	private class FindItemById extends BaseAction {
-		public FindItemById(int key, String name) {
+		private FindItemById(int key, String name) {
                 super(key, name);
         }
 		@Override
 		public void execute(Input input, Tracker tracker) {
 			boolean id = false;
 			String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
-			for (int i = 0; i < tracker.findAll().length; i++) {
-				if (tracker.findAll()[i].getId().equals(itemId)) {
+			for (int i = 0; i < tracker.findAll().size(); i++) {
+				if (tracker.findAll().get(i).getId().equals(itemId)) {
 				System.out.println("It's your item:");
-				showItem(tracker.findAll()[i]);	
+				showItem(tracker.findAll().get(i));
 				id = true;
 				}
 			}
@@ -140,17 +139,17 @@ public class MenuTracker {
 	}
 	
 	private class FindItemsByName extends BaseAction {
-		public FindItemsByName(int key, String name) {
+		private FindItemsByName(int key, String name) {
                 super(key, name);
         }
 		@Override
 		public void execute(Input input, Tracker tracker) {
 			boolean name = false;
 			String itemKey = input.ask("Plesae, enter the item's key, which you want to find: ");
-			for (int i = 0; i < tracker.findAll().length; i++) {
-				if (tracker.findAll()[i].getName().equals(itemKey)) {
+			for (int i = 0; i < tracker.findAll().size(); i++) {
+				if (tracker.findAll().get(i).getName().equals(itemKey)) {
 					System.out.println("It's your item:");
-					showItem(tracker.findAll()[i]);
+					showItem(tracker.findAll().get(i));
 					name = true;
 				}
 			}
@@ -161,7 +160,7 @@ public class MenuTracker {
 	}
 	
 	static class EditItem extends BaseAction {
-		public EditItem(int key, String name) {
+		private EditItem(int key, String name) {
                 super(key, name);
         }
 		@Override

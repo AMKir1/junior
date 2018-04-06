@@ -1,5 +1,5 @@
 package ru.job4j.start;
-/**
+/*
  * Class ValidateInputTest.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
