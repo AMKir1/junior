@@ -16,14 +16,14 @@ import static org.junit.Assert.assertThat;
 public class SortUserTest {
 
     @Test
-    public void testSortAgeOfUsers () {
+    public void testSortAgeOfUsers() {
         SortUser su = new SortUser();
         List<UserModel> list = new ArrayList<>();
         list.add(new UserModel("VASYA", 40));
         list.add(new UserModel("KOLYA", 15));
         list.add(new UserModel("BORIS", 37));
         Set<UserModel> userSet = su.sort(list);
-        assertThat(userSet.toString() , is( new StringBuilder()
+        assertThat(userSet.toString(), is(new StringBuilder()
                 .append("[age = " + list.get(1).getAge() + ", name = " + list.get(1).getName())
                 .append(", age = " + list.get(2).getAge() + ", name = " + list.get(2).getName())
                 .append(", age = " + list.get(0).getAge() + ", name = " + list.get(0).getName() + "]")
@@ -39,7 +39,7 @@ public class SortUserTest {
             list.add(new UserModel("KIM", 37));
             list.add(new UserModel("VASYA", 21));
             su.sortNameLength(list);
-            assertThat(list.get(0).getName() , is("SEM"));
+            assertThat(list.get(0).getName(), is("SEM"));
         }
 
         @Test
@@ -51,6 +51,6 @@ public class SortUserTest {
             list.add(new UserModel("KIM", 37));
             list.add(new UserModel("VASYA", 21));
             su.sortByAllFields(list);
-            assertThat(list.get(0).getName() , is("KIM"));
+            assertThat(list.get(0).getName(), is("KIM"));
         }
 }

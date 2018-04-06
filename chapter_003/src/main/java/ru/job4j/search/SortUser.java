@@ -11,15 +11,15 @@ import java.util.*;
 
 public class SortUser {
 
-    Set<UserModel> sort (List<UserModel> list) {
-        Set<UserModel> setUser = new TreeSet<>();
-        for(UserModel user : list) {
+    Set<UserModel> sort(List<UserModel> list) {
+        Set<UserModel> setUser = new TreeSet<>(list);
+        /*for (UserModel user : list) {
             setUser.add(user);
-        }
+        }*/
         return setUser;
     }
 
-    public List<UserModel> sortNameLength (List<UserModel> list) {
+    public List<UserModel> sortNameLength(List<UserModel> list) {
         list.sort(new Comparator<UserModel>() {
             @Override
             public int compare(UserModel o1, UserModel o2) {
@@ -32,13 +32,13 @@ public class SortUser {
     }
 
 
-    public List<UserModel> sortByAllFields (List<UserModel> list) {
+    public List<UserModel> sortByAllFields(List<UserModel> list) {
         list.sort(new Comparator<UserModel>() {
             @Override
             public int compare(UserModel o1, UserModel o2) {
                 Integer user1 = o1.getName().length();
                 Integer user2 = o2.getName().length();
-                return user1 == user2 ? o1.getAge().compareTo(o2.getAge()) : user1.compareTo(user2);
+                return user1.equals(user2) ? o1.getAge().compareTo(o2.getAge()) : user1.compareTo(user2);
             }
                   });
         return list;
