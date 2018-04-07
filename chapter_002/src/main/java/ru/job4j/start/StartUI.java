@@ -1,5 +1,5 @@
 package ru.job4j.start;
-/*
+/**
  * Class StartUI.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
@@ -9,26 +9,19 @@ package ru.job4j.start;
 import java.util.ArrayList;
 
 public class StartUI {
-	/*
+	/**
 	 * Params.
 	 */
 	private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6};
 	private Input input;
 	private Tracker tracker;
 	private int id = 0;
-	private static final String ADDNEWITEM = "0";
-	private static final String SHOWALLITEMS = "1";
-	private static final String EDITITEM = "2";
-	private static final String DELETEITEM = "3";
-	private static final String FINDITEMBYID = "4";
-	private static final String FINDITEMBYNAME = "5";
-	private static final String EXIT = "6";
 
 	public StartUI(Input input, Tracker tracker) {
 		this.input = input;
 		this.tracker = tracker;
 	}
-	/*
+	/**
 	 * Main.
 	 * @param args - first args.
 	 */
@@ -38,7 +31,7 @@ public class StartUI {
 				new Tracker()
 		).init();
 	}
-	/*
+	/**
 	 * Init
 	 */
 	public void init() {
@@ -50,7 +43,7 @@ public class StartUI {
 		} while (!"y".equals(this.input.ask("Exit?(y)")));
 
 	}
-	/*
+	/**
 	 * Add new item.
 	 */
 	private void addNewItem() {
@@ -64,7 +57,7 @@ public class StartUI {
 		System.out.println("Name: " + item1.getName() + "\n" + "Description: " + item1.getDescription() + "\n" + "Cretae: " + item1.getCreate() + "\n" + "Id: " + item1.getId() + "\n");
 		this.init();
 	}
-	/*
+	/**
 	 * Show all items.
 	 */
 	private void showAllItems() {
@@ -85,7 +78,7 @@ public class StartUI {
 		}
 		this.init();
 	}
-	/*
+	/**
 	 * Edit item.
 	 */
 	private void editItem() {
@@ -99,7 +92,7 @@ public class StartUI {
 		System.out.println("Name: " + editItem1.getName() + "\n" + "Description: " + editItem1.getDescription() + "\n" + "Id: " + editItem1.getId() + "\n");
 		this.init();
 	}
-	/*
+	/**
 	 * Delete item.
 	 */
 	private void deleteItem() {
@@ -120,7 +113,7 @@ public class StartUI {
 		}
 		this.init();
 	}
-	/*
+	/**
 	 * Find item by id.
 	 */
 	private void findItembyId() {
@@ -138,7 +131,7 @@ public class StartUI {
 		}
 		this.init();
 	}
-	/*
+	/**
 	 * Find item by name.
 	 */
 	private void findItemsbyName() {

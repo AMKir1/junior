@@ -1,5 +1,5 @@
 package ru.job4j.start;
-/*
+/**
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
