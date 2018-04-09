@@ -96,21 +96,9 @@ public class StartUI {
 	 * Delete item.
 	 */
 	private void deleteItem() {
-		boolean del = false;
 		System.out.println("Delete Item");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
-		ArrayList<Item> items = this.tracker.findAll();
-		for (Item item : items) {
-			if (item.getId().equals(itemId)) {
-				System.out.println("It's your deleted item:");
-				showItem(item);
-				this.tracker.delete(item);
-				del = true;
-			}
-		}
-		if (!del) {
-			System.out.println("NO Such Items");
-		}
+		this.tracker.delete(itemId);
 		this.init();
 	}
 	/**

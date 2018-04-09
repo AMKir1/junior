@@ -36,15 +36,20 @@ public class Tracker {
 	}
 	/**
 	* Delete.
-	* @param item - first args.
+	* @param id - first args.
 	* @return result.
 	*/
-	public void delete(Item item) {	
+	public void delete(String id) {
+		boolean eq = false;
 		for (Item i : this.items) {
-			if (i.getId().equals(item.getId())) {
-			this.items.remove(i);
-			break;
+			if (i.getId().equals(id)) {
+				this.items.remove(i);
+				eq = true;
+				break;
 			}
+		}
+		if (!eq) {
+			System.out.println("NO Such Items");
 		}
 	}
 	/**

@@ -97,23 +97,18 @@ package ru.job4j.start;
 	
 	private class DeleteItem extends BaseAction {
 		private DeleteItem(int key, String name) {
-                super(key, name);
-        }
+			super(key, name);
+		}
+
 		@Override
 		public void execute(Input input, Tracker tracker) {
-			boolean del = false;
 			String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
-			for (int i = 0; i < tracker.findAll().size(); i++) {
-				if (tracker.findAll().get(i).getId().equals(itemId)) {
-					System.out.println("It's your deleted item:");
-					showItem(tracker.findAll().get(i));
-					tracker.delete(tracker.findAll().get(i));
-					del = true;
+			for (Item item : tracker.findAll()) {
+				if (item.getId().equals(itemId)) {
+					showItem(tracker.findAll().get(Integer.parseInt(itemId)));
 				}
 			}
-			if (!del) {
-				System.out.println("NO Such Items");
-			}
+			tracker.delete(itemId);
 		}
 	}
 	

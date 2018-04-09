@@ -38,7 +38,7 @@ public class TrackerTest {
 		Tracker tracker = new Tracker();
 		Item item3 = new Item("Test3", "Desc3", 3L, "1");
 		tracker.add(item3);
-		tracker.delete(item3);
+		tracker.delete(item3.getId());
 		Tracker expected = null;
 		assertThat(tracker.findById(item3.getId()), is(expected));
 	}
@@ -54,7 +54,7 @@ public class TrackerTest {
 		tracker.add(new Item("Test3", "Desc3", 3L, "3"));
 		tracker2.add(tracker.findAll().get(1));
 		tracker2.add(tracker.findAll().get(0));
-		tracker.delete(tracker.findAll().get(1));
+		tracker.delete(tracker.findAll().get(1).getId());
 		assertThat(tracker.findAll().size(), is(2));
 	}
 	/**
