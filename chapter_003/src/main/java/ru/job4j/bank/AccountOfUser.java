@@ -7,13 +7,12 @@ package ru.job4j.bank;
  */
 public class AccountOfUser {
     /**
-     * Поля счета
+     * Поля счета.
      */
     private double value; //кол-во денег
     private String requisites; //банковский счёт
-
     /**
-     * Конструктор класса
+     * Конструктор класса.
      * @param value
      * @param requisites
      */
@@ -21,33 +20,29 @@ public class AccountOfUser {
         this.value = value;
         this.requisites = requisites;
     }
-
     /**
-     * Получаем количесвто денег на счету
+     * Получаем количесвто денег на счету.
      * @return
      */
     public double getValue() {
         return value;
     }
-
     /**
-     * Получаем номер счета
+     * Получаем номер счета.
      * @return
      */
     public String getRequisites() {
         return requisites;
     }
-
     /**
-     * Устанавливаем номер счета
+     * Устанавливаем номер счета.
      * @param requisites
      */
     public void setRequisites(String requisites) {
         this.requisites = requisites;
     }
-
     /**
-     * Записываем сумму денег на счету
+     * Записываем сумму денег на счету.
      * @param value
      */
     public void setValue(double value) {

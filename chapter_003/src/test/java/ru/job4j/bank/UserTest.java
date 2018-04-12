@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
  */
 public class UserTest {
     /**
-     * Получение имени пользователя
+     * Получение имени пользователя.
      */
     @Test
     public void testGetName() {
@@ -29,7 +29,7 @@ public class UserTest {
         assertThat(user.getName(), is("Osterwald"));
     }
     /**
-     * Получение номера паспорта пользователя
+     * Получение номера паспорта пользователя.
      */
     @Test
     public void testGetPassport() {
@@ -37,7 +37,7 @@ public class UserTest {
         assertThat(user.getPassport(), is("0000 000000"));
     }
     /**
-     * Изменения паспортных данных
+     * Изменения паспортных данных.
      */
     @Test
     public void testSetPassport() {
@@ -46,12 +46,11 @@ public class UserTest {
         assertThat(user.getPassport(), is("1234 123321"));
     }
     /**
-     * Проверка метода сравнения
+     * Проверка метода сравнения.
      */
     @Test
     public void testEquals() {
         User user = new User("Petr", "0000 000000");
         assertThat(user.getPassport().equals("0000 000000"), is(true));
     }
-
 }

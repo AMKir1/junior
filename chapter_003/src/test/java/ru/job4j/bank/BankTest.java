@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 
 public class BankTest {
     /**
-     * User Addition Test
+     * User Addition Test.
      */
     @Test
     public void testAddUser() {
@@ -26,7 +26,7 @@ public class BankTest {
         assertThat(bank.findUser(user.getPassport()), is(user));
     }
     /**
-     * Test for adding an account to a user
+     * Test for adding an account to a user.
      */
     @Test
     public void testAddAccountToUser() {
@@ -40,7 +40,7 @@ public class BankTest {
         assertThat(bank.getUserAccounts(user.getPassport()), is(accs));
     }
     /**
-     * User deletion test
+     * User deletion test.
      */
     @Test
     public void testDeleteUser() {
@@ -51,7 +51,7 @@ public class BankTest {
         assertThat(bank.findUser(user.getPassport()), is(result));
     }
     /**
-     * User account deletion test
+     * User account deletion test.
      */
     @Test
     public void testDeleteAccountFromUser() {
@@ -70,7 +70,7 @@ public class BankTest {
         assertThat(bank.getUserAccounts(user.getPassport()), is(accs));
     }
     /**
-     * Test of obtaining the list of user accounts
+     * Test of obtaining the list of user accounts.
      */
     @Test
     public void testGetUserAccounts() {
@@ -87,7 +87,7 @@ public class BankTest {
         assertThat(bank.getUserAccounts(user.getPassport()), is(accs));
     }
     /**
-     * Transaction failure test when there are not enough funds on the account
+     * Transaction failure test when there are not enough funds on the account.
      */
     @Test
     public void testImpossible1TransferMoney() {
@@ -101,7 +101,7 @@ public class BankTest {
         assertThat(bank.transferMoney(user.getPassport(), acc.getRequisites(), user.getPassport(), acc2.getRequisites(), 100), is(false));
     }
     /**
-     * Test failure of the transaction, when there is no account from which you need to send money
+     * Test failure of the transaction, when there is no account from which you need to send money.
      */
     @Test
     public void testImpossible2TransferMoney() {
@@ -113,7 +113,7 @@ public class BankTest {
         assertThat(bank.transferMoney(user.getPassport(), "0000 0000 0000 0000", user.getPassport(), acc.getRequisites(), 100), is(false));
     }
     /**
-     * Test failure of the transaction, when there is no account to which you need to send money
+     * Test failure of the transaction, when there is no account to which you need to send money.
      */
     @Test
     public void testImpossible3TransferMoney() {
@@ -125,7 +125,7 @@ public class BankTest {
         assertThat(bank.transferMoney(user.getPassport(), acc.getRequisites(), user.getPassport(), "0000 0000 0000 0001", 100), is(false));
     }
     /**
-     * Successful transaction test
+     * Successful transaction test.
      */
     @Test
     public void testTransferMoney() {
@@ -139,7 +139,7 @@ public class BankTest {
         assertThat(bank.transferMoney(user.getPassport(), acc.getRequisites(), user.getPassport(), acc2.getRequisites(), 100), is(true));
     }
     /**
-     * User search test when not found
+     * User search test when not found.
      */
     @Test
     public void testNotFindUser() {
@@ -149,9 +149,8 @@ public class BankTest {
         User result = null;
         assertThat(bank.findUser("0000 000001"), is(result));
     }
-
     /**
-     * User search test
+     * User search test.
      */
     @Test
     public void testFindUser() {

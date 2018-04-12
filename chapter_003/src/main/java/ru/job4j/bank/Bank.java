@@ -15,7 +15,7 @@ public class Bank {
     /**
      * Добавление пользователя.
      *
-     * @param user пользователь
+     * @param user пользователь.
      */
     public void addUser(User user) {
         this.accounts.putIfAbsent(user, new ArrayList<>());
@@ -65,7 +65,7 @@ public class Bank {
      * @param destPassport паспорт получателя.
      * @param dstRequisite номер счета получателя.
      * @param amount       сумма.
-     * @return результат перечисления
+     * @return результат перечисления.
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean status = false;

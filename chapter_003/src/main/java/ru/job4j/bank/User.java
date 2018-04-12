@@ -9,13 +9,12 @@ import java.util.Objects;
  */
 public class User {
     /**
-     * Поля пользователя
+     * Поля пользователя.
      */
     private String name;
     private String passport;
-
     /**
-     * Конструктор
+     * Конструктор.
      * @param name
      * @param passport
      */
@@ -23,41 +22,35 @@ public class User {
         this.name = name;
         this.passport = passport;
     }
-
     /**
-     * Назыаем пользователя
+     * Назыаем пользователя.
      * @param name
      */
     public void setName(String name) {
         this.name = name;
     }
-
     /**
-     * Вписываем паспортные данные
+     * Вписываем паспортные данные.
      * @param passport
      */
     public void setPassport(String passport) {
         this.passport = passport;
     }
-
     /**
-     * Узнаем имя пользователя
+     * Узнаем имя пользователя.
      * @return
      */
     public String getName() {
         return name;
     }
-
     /**
-     * Получаем паспортные данные
-     * @return
+     * Получаем паспортные данные.
      */
     public String getPassport() {
         return passport;
     }
-
     /**
-     * Метод сравнения
+     * Метод сравнения.
      * @param obj
      * @return
      */
@@ -73,15 +66,12 @@ public class User {
             return user.passport.equals(this.passport);
         }
     }
-
     /**
-     * HashCode
+     * HashCode.
      * @return
      */
     @Override
     public int hashCode() {
         return Objects.hash(name, passport);
     }
-
-
 }
