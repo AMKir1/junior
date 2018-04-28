@@ -68,7 +68,7 @@ public class StartUI {
 			for (Item item : items) {
 				if (item.getName() != null) {
 					position++;
-					System.out.println("Position: " + position + "\n" + "Name: " + item.getName() + "\n" + "Description: " + item.getDescription() + "\n" + "Cretae: " + item.getCreate() + "\n" + "Id: " + item.getId() + "\n");
+					System.out.println("Space: " + position + "\n" + "Name: " + item.getName() + "\n" + "Description: " + item.getDescription() + "\n" + "Cretae: " + item.getCreate() + "\n" + "Id: " + item.getId() + "\n");
 				} else {
 					System.out.println("NO Items");
 				}

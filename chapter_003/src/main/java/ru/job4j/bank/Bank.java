@@ -92,7 +92,7 @@ public class Bank {
                 accTo.setValue(accTo.getValue() + amount);
             }
         }
-        return status;
+        return status && true;
     }
     /**
      * Поиск пользователя по паспорту.
