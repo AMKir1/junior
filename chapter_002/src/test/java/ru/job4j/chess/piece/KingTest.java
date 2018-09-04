@@ -16,7 +16,7 @@ public class KingTest {
         Piece king = new King(new Space(0, 3));
         board.setPieceInSpace(king);
         boolean result = true;
-        assertThat(board.move(king.getPieceSpace(),new Space(1, 2)), is(result));
+        assertThat(board.move(king.getPieceSpace(), new Space(1, 2)), is(result));
     }
     /**
      * Попытка пойти королем ВВЕРХ
@@ -27,7 +27,7 @@ public class KingTest {
         Piece king = new King(new Space(0, 3));
         board.setPieceInSpace(king);
         boolean result = true;
-        assertThat(board.move(king.getPieceSpace(),new Space(1, 3)), is(result));
+        assertThat(board.move(king.getPieceSpace(), new Space(1, 3)), is(result));
     }
     /**
      * Попытка пойти королем в НИЗ когда в низу обрывается доска
@@ -38,7 +38,7 @@ public class KingTest {
         Piece king = new King(new Space(0, 3));
         board.setPieceInSpace(king);
         boolean result = true;
-        assertThat(board.move(king.getPieceSpace(),new Space(-1, 2)), is(!result));
+        assertThat(board.move(king.getPieceSpace(), new Space(-1, 2)), is(!result));
     }
     /**
      * Попытка пойти королем в НИЗ
@@ -49,7 +49,7 @@ public class KingTest {
         Piece king = new King(new Space(1, 3));
         board.setPieceInSpace(king);
         boolean result = true;
-        assertThat(board.move(king.getPieceSpace(),new Space(0, 3)), is(result));
+        assertThat(board.move(king.getPieceSpace(), new Space(0, 3)), is(result));
     }
     /**
      * Попытка пойти королем ВЛЕВО
@@ -60,7 +60,7 @@ public class KingTest {
         Piece king = new King(new Space(0, 3));
         board.setPieceInSpace(king);
         boolean result = true;
-        assertThat(board.move(king.getPieceSpace(),new Space(0, 4)), is(result));
+        assertThat(board.move(king.getPieceSpace(), new Space(0, 4)), is(result));
     }
     /**
      * Попытка пойти королем, больше одной клетки за ход
@@ -71,7 +71,7 @@ public class KingTest {
         Piece king = new King(new Space(0, 3));
         board.setPieceInSpace(king);
         boolean result = true;
-        assertThat(board.move(king.getPieceSpace(),new Space(7, 3)), is(!result));
+        assertThat(board.move(king.getPieceSpace(), new Space(7, 3)), is(!result));
     }
 
 
