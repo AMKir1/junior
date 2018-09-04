@@ -9,7 +9,7 @@ public class ChessBoard {
     private final Piece[][] cheesboard = new Piece[8][8];
     private Piece piece;
 
-    public Piece[][] getCheesboard(){
+    public Piece[][] getCheesboard() {
         return this.cheesboard;
     }
 
@@ -26,21 +26,21 @@ public class ChessBoard {
     public boolean move(Space currSpace, Space nextSpace) {
         boolean result = true;
 
-        if((currSpace.getX() < 0 || currSpace.getX() > 7) || (currSpace.getY() < 0 || currSpace.getY() > 7)
+        if ((currSpace.getX() < 0 || currSpace.getX() > 7) || (currSpace.getY() < 0 || currSpace.getY() > 7)
          || (nextSpace.getX() < 0 || nextSpace.getX() > 7) || (nextSpace.getY() < 0 || nextSpace.getY() > 7)) {
             result = false;
         }
 
         Piece piece = this.cheesboard[currSpace.getX()][currSpace.getY()];
         Space[] place = piece.toGoFromCurrentSpaceToNextSpace(currSpace, nextSpace);
-        if (place != null && result != false) {
+        if ((place != null) && result) {
             for (Space sp : place) {
                 if (this.cheesboard[sp.getX()][sp.getY()] != null) {
                     result = false;
                 }
             }
         }
-        if(this.cheesboard[currSpace.getX()][currSpace.getY()] == null) {
+        if (this.cheesboard[currSpace.getX()][currSpace.getY()] == null) {
             result = false;
         }
         if (result) {

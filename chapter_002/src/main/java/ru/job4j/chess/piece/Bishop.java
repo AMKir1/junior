@@ -34,16 +34,16 @@ public class Bishop implements Piece {
 
         Space[] result = new Space[Math.abs(currX - nextX)];
 
-        if(Math.abs(currX - nextX)!= Math.abs(currY - nextY)
+        if (Math.abs(currX - nextX) != Math.abs(currY - nextY)
                 || !((currY <= 7 && currY >= 0)
                 && (currX <= 7 && currX >= 0)
                 && (nextY <= 7 && nextY >= 0)
-                && (nextX <= 7 && nextX >= 0))){
+                && (nextX <= 7 && nextX >= 0))) {
             result = null;
         } else {
             int h = Integer.compare(nextX, currX);
             int v = Integer.compare(nextY, currY);
-            for(int i = 0; i < result.length; i++) {
+            for (int i = 0; i < result.length; i++) {
                 currX += h;
                 currY += v;
                 result[i] = new Space(currX, currY);

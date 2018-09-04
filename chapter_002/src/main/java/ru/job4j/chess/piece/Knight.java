@@ -37,7 +37,7 @@ public class Knight implements Piece {
         if (!(((Math.abs(nextX - currX) == 2 && Math.abs(nextY - currY) == 1) || (Math.abs(nextY - currY) == 2 && Math.abs(nextX - currX) == 1))
                 && Math.abs(nextY - currY) + Math.abs(nextX - currX) == 3
                 && (currX >= 0 && currY >= 0 && currY <= 7 && currX <= 7)
-                && (nextX >= 0 && nextY >= 0 && nextY <= 7 && nextX <= 7))){
+                && (nextX >= 0 && nextY >= 0 && nextY <= 7 && nextX <= 7))) {
             result = null;
         } else {
             result[0] = new Space(nextX, nextY);

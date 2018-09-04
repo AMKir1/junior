@@ -16,7 +16,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(1, 1));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(1, 2)), is(!result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(1, 2)), is(!result));
     }
     /**
      * Попытка пойти слоном по горизонтали
@@ -27,7 +27,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(1, 1));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(2, 1)), is(!result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(2, 1)), is(!result));
     }
     /**
      * Попытка пойти слоном по диагонали НИЗ-СПРАВА
@@ -38,7 +38,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(3, 3));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(6, 0)), is(result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(6, 0)), is(result));
     }
     /**
      * Попытка пойти слоном по диагонали НИЗ-СЛЕВА если закончилась доска
@@ -49,7 +49,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(1, 1));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(5, 1)), is(!result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(5, 1)), is(!result));
     }
     /**
      * Попытка пойти слоном по диагонали ВВЕРХ-СЛЕВА
@@ -60,7 +60,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(3, 3));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(0, 0)), is(result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(0, 0)), is(result));
     }
     /**
      * Попытка пойти слоном по диагонали ВВЕРХ-СЛЕВА
@@ -71,7 +71,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(3, 3));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(0, 6)), is(result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(0, 6)), is(result));
     }
     /**
      * Попытка пойти слоном по диагонали НИЗ-СЛЕВА
@@ -82,7 +82,7 @@ public class BishopTest {
         Piece bishop = new Bishop(new Space(3, 3));
         board.setPieceInSpace(bishop);
         boolean result = true;
-        assertThat(board.move(bishop.getPieceSpace(),new Space(6, 6)), is(result));
+        assertThat(board.move(bishop.getPieceSpace(), new Space(6, 6)), is(result));
     }
 
 

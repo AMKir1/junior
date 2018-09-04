@@ -34,7 +34,7 @@ public class Rook implements Piece {
 
         Space[] result = new Space[Math.abs(currX - nextX) + Math.abs(currY - nextY)];
 
-        if(!((currX == nextX && currY != nextY) || (currY == nextY && currX != nextX))
+        if (!((currX == nextX && currY != nextY) || (currY == nextY && currX != nextX))
                 || !((currY <= 7 && currY >= 0)
                 && (currX <= 7 && currX >= 0)
                 && (nextY <= 7 && nextY >= 0)

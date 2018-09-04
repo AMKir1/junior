@@ -57,7 +57,7 @@ public class Queen implements Piece {
                 || !((currY >= 0 && currY <= 7)
                 && (currX >= 0 && currX <= 7)
                 && (nextY >= 0 && nextY <= 7)
-                && (nextX >= 0 && nextX <= 7))){
+                && (nextX >= 0 && nextX <= 7))) {
             result = null;
         } else {
             int h = Integer.compare(nextX, currX);

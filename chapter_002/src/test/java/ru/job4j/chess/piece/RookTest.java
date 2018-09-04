@@ -16,7 +16,7 @@ public class RookTest {
         Piece rook = new Rook(new Space(0, 1));
         board.setPieceInSpace(rook);
         boolean result = true;
-        assertThat(board.move(rook.getPieceSpace(),new Space(2, 2)), is(!result));
+        assertThat(board.move(rook.getPieceSpace(), new Space(2, 2)), is(!result));
     }
     /**
      * Попытка пойти прямо
@@ -27,7 +27,7 @@ public class RookTest {
         Piece rook = new Rook(new Space(0, 1));
         board.setPieceInSpace(rook);
         boolean result = true;
-        assertThat(board.move(rook.getPieceSpace(),new Space(6, 1)), is(result));
+        assertThat(board.move(rook.getPieceSpace(), new Space(6, 1)), is(result));
     }
     /**
      * Попытка выйти за рамки дозаоленного
@@ -38,7 +38,7 @@ public class RookTest {
         Piece rook = new Rook(new Space(0, 1));
         board.setPieceInSpace(rook);
         boolean result = true;
-        assertThat(board.move(rook.getPieceSpace(),new Space(-1, 1)), is(!result));
+        assertThat(board.move(rook.getPieceSpace(), new Space(-1, 1)), is(!result));
     }
     /**
      * Попытка пойти как слон
@@ -49,7 +49,7 @@ public class RookTest {
         Piece rook = new Rook(new Space(0, 1));
         board.setPieceInSpace(rook);
         boolean result = true;
-        assertThat(board.move(rook.getPieceSpace(),new Space(4, 5)), is(!result));
+        assertThat(board.move(rook.getPieceSpace(), new Space(4, 5)), is(!result));
     }
     /**
      * Попытка пойти в бок
@@ -60,7 +60,7 @@ public class RookTest {
         Piece rook = new Rook(new Space(0, 1));
         board.setPieceInSpace(rook);
         boolean result = true;
-        assertThat(board.move(rook.getPieceSpace(),new Space(0, 7)), is(result));
+        assertThat(board.move(rook.getPieceSpace(), new Space(0, 7)), is(result));
     }
 
 

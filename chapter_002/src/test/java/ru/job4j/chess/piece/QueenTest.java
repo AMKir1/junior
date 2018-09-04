@@ -27,7 +27,7 @@ public class QueenTest {
         Piece queen = new Queen(new Space(0, 1));
         board.setPieceInSpace(queen);
         boolean result = true;
-        assertThat(board.move(queen.getPieceSpace(),new Space(1, 1)), is(result));
+        assertThat(board.move(queen.getPieceSpace(), new Space(1, 1)), is(result));
     }
     /**
      * Ферзь решил выйти за рамки дозаоленного
@@ -38,7 +38,7 @@ public class QueenTest {
         Piece queen = new Queen(new Space(0, 1));
         board.setPieceInSpace(queen);
         boolean result = true;
-        assertThat(board.move(queen.getPieceSpace(),new Space(-1, 3)), is(!result));
+        assertThat(board.move(queen.getPieceSpace(), new Space(-1, 3)), is(!result));
     }
     /**
      * Попытка пойти Ферзем как слоном
@@ -49,7 +49,7 @@ public class QueenTest {
         Piece queen = new Queen(new Space(0, 1));
         board.setPieceInSpace(queen);
         boolean result = true;
-        assertThat(board.move(queen.getPieceSpace(),new Space(4, 5)), is(result));
+        assertThat(board.move(queen.getPieceSpace(), new Space(4, 5)), is(result));
     }
     /**
      * Попытка пойти Ферзем как ладьей
@@ -60,7 +60,7 @@ public class QueenTest {
         Piece queen = new Queen(new Space(0, 1));
         board.setPieceInSpace(queen);
         boolean result = true;
-        assertThat(board.move(queen.getPieceSpace(),new Space(7, 1)), is(result));
+        assertThat(board.move(queen.getPieceSpace(), new Space(7, 1)), is(result));
     }
     /**
      * Попытка пойти Ферзем как обычная пешка
@@ -71,6 +71,6 @@ public class QueenTest {
         Piece queen = new Queen(new Space(1, 1));
         board.setPieceInSpace(queen);
         boolean result = true;
-        assertThat(board.move(queen.getPieceSpace(),new Space(2, 1)), is(result));
+        assertThat(board.move(queen.getPieceSpace(), new Space(2, 1)), is(result));
     }
 }

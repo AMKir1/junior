@@ -16,7 +16,7 @@ public class PawnTest {
         Piece pawn = new Pawn(new Space(1, 1));
         board.setPieceInSpace(pawn);
         boolean result = true;
-        assertThat(board.move(pawn.getPieceSpace(),new Space(1, 2)), is(result));
+        assertThat(board.move(pawn.getPieceSpace(), new Space(1, 2)), is(result));
     }
     /**
      * Проверка хода вверх на две клетки
@@ -27,7 +27,7 @@ public class PawnTest {
         Piece pawn = new Pawn(new Space(1, 1));
         board.setPieceInSpace(pawn);
         boolean result = true;
-        assertThat(board.move(pawn.getPieceSpace(),new Space(1, 3)), is(result));
+        assertThat(board.move(pawn.getPieceSpace(), new Space(1, 3)), is(result));
     }
     /**
      * Проверка хода вверх на три клетки
@@ -38,7 +38,7 @@ public class PawnTest {
         Piece pawn1 = new Pawn(new Space(1, 1));
         board.setPieceInSpace(pawn1);
         boolean result = true;
-        assertThat(board.move(pawn1.getPieceSpace(),new Space(1, 4)), is(!result));
+        assertThat(board.move(pawn1.getPieceSpace(), new Space(1, 4)), is(!result));
     }
     /**
      * Проверка хода назад
@@ -49,7 +49,7 @@ public class PawnTest {
         Piece pawn2 = new Pawn(new Space(1, 2));
         board.setPieceInSpace(pawn2);
         boolean result = true;
-        assertThat(board.move(pawn2.getPieceSpace(),new Space(0, 2)), is(!result));
+        assertThat(board.move(pawn2.getPieceSpace(), new Space(0, 2)), is(!result));
     }
     /**
      * Проверка хода в сторону
@@ -60,6 +60,6 @@ public class PawnTest {
         Piece pawn = new Pawn(new Space(1, 2));
         board.setPieceInSpace(pawn);
         boolean result = true;
-        assertThat(board.move(pawn.getPieceSpace(),new Space(3, 2)), is(!result));
+        assertThat(board.move(pawn.getPieceSpace(), new Space(3, 2)), is(!result));
     }
 }

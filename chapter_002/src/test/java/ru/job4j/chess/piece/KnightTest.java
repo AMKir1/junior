@@ -16,7 +16,7 @@ public class KnightTest {
         Piece knight = new Knight(new Space(0, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace(),new Space(2, 2)), is(result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(2, 2)), is(result));
     }
     /**
      * Попытка коня пойти королевской походкой
@@ -27,7 +27,7 @@ public class KnightTest {
         Piece knight = new Knight(new Space(0, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace(),new Space(1, 1)), is(!result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(1, 1)), is(!result));
     }
     /**
      * Конь решил выйти за рамки дозаоленного
@@ -38,7 +38,7 @@ public class KnightTest {
         Piece knight = new Knight(new Space(0, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace(),new Space(-1, 3)), is(!result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(-1, 3)), is(!result));
     }
     /**
      * Попытка пойти конем как слоном
@@ -49,7 +49,7 @@ public class KnightTest {
         Piece knight = new Knight(new Space(0, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace(),new Space(4, 5)), is(!result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(4, 5)), is(!result));
     }
     /**
      * Попытка пойти конем как ладьей
@@ -60,7 +60,7 @@ public class KnightTest {
         Piece knight = new Knight(new Space(0, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace(),new Space(7, 1)), is(!result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(7, 1)), is(!result));
     }
     /**
      * Попытка пойти конем если есть ограничение
@@ -71,6 +71,6 @@ public class KnightTest {
         Piece knight = new Knight(new Space(1, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace(),new Space(0, 3)), is(result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(0, 3)), is(result));
     }
 }
