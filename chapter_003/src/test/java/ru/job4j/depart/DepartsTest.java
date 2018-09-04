@@ -4,9 +4,15 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-
+/**
+ * Chapter_003. Departs.
+ * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
+ * @version 1
+ */
 public class DepartsTest {
-
+    /**
+     * Провекра на восстановление и сортировку по возрастанию
+     */
     @Test
     public void testRecoveryandSortUp() {
         String[] arr = {
@@ -24,7 +30,9 @@ public class DepartsTest {
                 "K1\\SK2"};
         Assert.assertThat(result, is(excepted));
     }
-
+    /**
+     * Проверка на востановление и сортировку по убыванию
+     */
     @Test
     public void testRecoveryandSortDown() {
         String[] arr = {
@@ -49,5 +57,4 @@ public class DepartsTest {
                 "K1\\SK1\\SSK1"};
         Assert.assertThat(result, is(excepted));
     }
-
 }

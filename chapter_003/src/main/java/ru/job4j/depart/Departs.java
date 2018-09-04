@@ -1,9 +1,16 @@
 package ru.job4j.depart;
-
 import java.util.*;
-
-public class Departs {
-
+/**
+ * Chapter_003. Departs.
+ * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
+ * @version 1
+ */
+public class Departs{
+    /**
+     * Воостановление Департаментов
+     * @param departs - перепутанные и неполные каталоги департаментов
+     * @return result - восстановленные департаменты
+     */
     private String[] recoveryDep(String[] departs) {
         Set<String> depSet = new TreeSet<>();
         depSet.addAll((Arrays.asList(departs)));
@@ -16,16 +23,20 @@ public class Departs {
             }
             for (Integer pos : posns) {
                 char[] departchar = depart.toCharArray();
-                String str = new String(departchar,0,pos);
+                String str = new String(departchar, 0, pos);
                 depSet.add(str);
             }
         }
         return depSet.toArray(new String[depSet.size()]);
     }
-
+    /**
+     * Сортировка по возрастанию
+     * @param departs - восстановленные департаменты
+     * @return result - Отсортерованные восстановленные департаменты
+     */
     public String[] sortUp(String[] departs) {
         String[] sort = this.recoveryDep(departs);
-        Set<String> sortSet = new TreeSet<>(new Comparator<String>(){
+        Set<String> sortSet = new TreeSet<>(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 return o1.compareTo(o2);
@@ -35,10 +46,14 @@ public class Departs {
         String[] result = new String[sortSet.size()];
         return sortSet.toArray(result);
     }
-
+    /**
+     * Сортировка по убыванию
+     * @param departs - восстановленные департаменты
+     * @return result - Отсортерованные восстановленные департаменты
+     */
     public String[] sortDown(String[] departs) {
         String[] sort = this.recoveryDep(departs);
-        Set<String> sortSet = new TreeSet<>(new Comparator<String>(){
+        Set<String> sortSet = new TreeSet<>(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 int min = Math.min(o1.length(), o2.length());
