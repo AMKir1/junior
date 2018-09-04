@@ -5,7 +5,7 @@ import java.util.*;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
-public class Departs{
+public class Departs {
     /**
      * Воостановление Департаментов
      * @param departs - перепутанные и неполные каталоги департаментов
@@ -57,7 +57,7 @@ public class Departs{
             @Override
             public int compare(String o1, String o2) {
                 int min = Math.min(o1.length(), o2.length());
-                for (int i = 0; i < min; i++){
+                for (int i = 0; i < min; i++) {
                     Character left = o1.charAt(i);
                     Character right = o2.charAt(i);
                     if (right.compareTo(left) != 0) {
