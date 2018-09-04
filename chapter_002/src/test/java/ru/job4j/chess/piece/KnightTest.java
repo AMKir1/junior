@@ -38,7 +38,7 @@ public class KnightTest {
         Piece knight = new Knight(new Space(0, 1));
         board.setPieceInSpace(knight);
         boolean result = true;
-        assertThat(board.move(knight.getPieceSpace() , new Space(-1, 3)), is(!result));
+        assertThat(board.move(knight.getPieceSpace(), new Space(-1, 3)), is(!result));
     }
     /**
      * Попытка пойти конем как слоном
