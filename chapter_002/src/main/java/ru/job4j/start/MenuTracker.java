@@ -1,4 +1,7 @@
 package ru.job4j.start;
+
+import java.util.function.Consumer;
+
 /**
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
@@ -21,17 +24,19 @@ package ru.job4j.start;
 	private UserAction[] actions = new UserAction[7];
 	private int id;
 	private int position = 0;
+	private final Consumer<String> output;
 	
-	public MenuTracker(Input input, Tracker tracker) {
+	public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
 	this.input = input;
 	this.tracker = tracker;
+	this.output = output;
 	}
 	
 	private void showItem(Item item) {
-        System.out.println("Name: " + item.getName());
-		System.out.println("Description: " + item.getDescription());
-		System.out.println("Create: " + item.getCreate());
-        System.out.println("Id: " + item.getId());
+		output.accept("Name: " + item.getName());
+		output.accept("Description: " + item.getDescription());
+		output.accept("Create: " + item.getCreate());
+		output.accept("Id: " + item.getId());
 	}
 	
 	public void fillAction() {
@@ -55,7 +60,7 @@ package ru.job4j.start;
 	public void show() {
 		for (UserAction action : this.actions) {
 			if (action != null) {
-				System.out.println(action.info());
+				output.accept(action.info());
 			}
 		}
 	}
@@ -70,7 +75,7 @@ package ru.job4j.start;
 			String itemDesc = input.ask("Plesae, enter the item's description: ");
 			Item item = new Item(itemName, itemDesc, System.currentTimeMillis(), itemId);
 			tracker.add(item);
-			System.out.println("Your item was added:");
+			 output.accept("Your item was added:");
 			showItem(item);
 		}
 	}
@@ -86,11 +91,11 @@ package ru.job4j.start;
 					if (item.getName() != null) {
 						showItem(item);
 					} else {
-						System.out.println("NO Items");
+						output.accept("NO Items");
 					}
 				} 
 			} else {
-				System.out.println("NO Items");
+				output.accept("NO Items");
 			}
 		}
 	}
@@ -122,13 +127,13 @@ package ru.job4j.start;
 			String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
 			for (int i = 0; i < tracker.findAll().size(); i++) {
 				if (tracker.findAll().get(i).getId().equals(itemId)) {
-				System.out.println("It's your item:");
+					output.accept("It's your item:");
 				showItem(tracker.findAll().get(i));
 				id = true;
 				}
 			}
 			if (!id) {
-				System.out.println("NO Items");
+				output.accept("NO Items");
 			}
 		}
 	}
@@ -143,13 +148,13 @@ package ru.job4j.start;
 			String itemKey = input.ask("Plesae, enter the item's key, which you want to find: ");
 			for (int i = 0; i < tracker.findAll().size(); i++) {
 				if (tracker.findAll().get(i).getName().equals(itemKey)) {
-					System.out.println("It's your item:");
+					output.accept("It's your item:");
 					showItem(tracker.findAll().get(i));
 					name = true;
 				}
 			}
 			if (!name) {
-				System.out.println("NO Items");
+				output.accept("NO Items");
 			}
 		}
 	}
