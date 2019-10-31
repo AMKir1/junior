@@ -2,6 +2,7 @@ package main.java.ru.job4j.addresslist;
 /**
  * Chapter_004. FP, Lambda, Stream API[#17951].
  * Список адресов [#110062]
+ * Уникальность элементов и сортировка. [#110225]
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
