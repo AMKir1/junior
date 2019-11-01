@@ -1,30 +1,40 @@
-package main.java.ru.job4j.addresslist;
-/**
+package ru.job4j.addresslist;
+/*
  * Chapter_004. FP, Lambda, Stream API[#17951].
  * Список адресов [#110062]
  * Уникальность элементов и сортировка. [#110225]
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
- * @since 0.1
+ * @since 0.2
  */
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Profile {
+class Profile {
     private Address address;
 
-    public Profile(Address address){
+    Profile() {
+
+    }
+
+    Profile(Address address) {
         this.address = address;
     }
 
-    public Address getAddress(){
+    private Address getAddress() {
         return this.address;
     }
 
-    public List<Address> collect(List<Profile> profiles ) {
-        List<Address> addressList = profiles.stream().map(
+    List<Address> collect(List<Profile> profiles) {
+        return profiles.stream().map(
                 profile -> profile.address
         ).collect(Collectors.toList());
-        return addressList;
+    }
+
+    List<Address> getUnicAddresses(List<Profile> profiles) {
+        return profiles.stream().map(
+                Profile::getAddress
+        ).sorted(Comparator.comparing(Address::getCity)).distinct().collect(Collectors.toList());
     }
 }

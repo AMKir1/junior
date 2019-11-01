@@ -1,11 +1,11 @@
-package main.java.ru.job4j.addresslist;
+package ru.job4j.addresslist;
 /**
  * Chapter_004. FP, Lambda, Stream API[#17951].
  * Список адресов [#110062]
  * Уникальность элементов и сортировка. [#110225]
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
- * @since 0.1
+ * @since 0.2
  */
 public class Address {
     private int id;
@@ -14,7 +14,7 @@ public class Address {
     private int home;
     private int apartment;
 
-    public Address(int id, String city, String street, int home, int apartment){
+    Address(int id, String city, String street, int home, int apartment) {
         this.id = id;
         this.city = city;
         this.street = street;
@@ -22,35 +22,35 @@ public class Address {
         this.apartment = apartment;
     }
 
-    public String getStreet() {
-        return street;
+    String getStreet() {
+        return this.street;
     }
 
     public int getHome() {
-        return home;
+        return this.home;
     }
 
     public int getApartment() {
-        return apartment;
+        return this.apartment;
     }
 
-    public String getCity() {
-        return city;
+    String getCity() {
+        return this.city;
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(this == obj){
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if(obj == null||getClass()!= obj.getClass()){
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        Address address =(Address) obj;
-        return  city.equals(address.city) &&
-                street.equals(address.street) &&
-                home == address.home &&
-                apartment == address.apartment;
+        Address address = (Address) obj;
+        return  city.equals(address.city)
+                && street.equals(address.street)
+                && home == address.home
+                && apartment == address.apartment;
     }
 
     @Override
