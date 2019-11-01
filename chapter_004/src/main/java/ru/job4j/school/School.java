@@ -1,7 +1,8 @@
 package main.java.ru.job4j.school;
-/**
+/*
  * Chapter_004. FP, Lambda, Stream API[#17951].
  * Фильтрация учеников. [#110058]
+ * Преобразование List в Map. [#110226]
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
@@ -12,7 +13,6 @@ import java.util.stream.Collectors;
 
 public class School {
     List<Student> collect(List<Student> students, Predicate<Student> predict){
-        List<Student> studClass = students.stream().filter(predict).collect(Collectors.toList());
-        return studClass;
+        return students.stream().filter(predict).collect(Collectors.toList());
     }
 }
