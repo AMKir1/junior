@@ -1,5 +1,5 @@
 package ru.job4j.start;
-/**
+/*
  * Class StartUI.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
@@ -19,10 +19,10 @@ public class StartUI {
 	private int id = 0;
     private static Consumer<String> output;
 
-	public StartUI(Input input, Tracker tracker, Consumer<String> output) {
+	StartUI(Input input, Tracker tracker, Consumer<String> output) {
 		this.input = input;
 		this.tracker = tracker;
-        this.output = output;
+		this.output = output;
     }
 	/**
 	 * Main.
@@ -37,8 +37,8 @@ public class StartUI {
 	/**
 	 * Init
 	 */
-	public void init() {
-		MenuTracker menu = new MenuTracker(this.input, this.tracker,this.output);
+    void init() {
+		MenuTracker menu = new MenuTracker(this.input, this.tracker, output);
 		menu.fillAction();
 		do {
 			menu.show();
