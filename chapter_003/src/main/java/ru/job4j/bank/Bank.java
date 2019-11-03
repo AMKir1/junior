@@ -1,9 +1,9 @@
 package ru.job4j.bank;
-
 import java.util.*;
 /**
  * Chapter_003. Collection. Lite.
  * Task: Банковские переводы. [#10038]
+ * Тестовое задание из модуля коллекции Lite переделать на Stream API. [#24260]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -71,21 +71,27 @@ public class Bank {
         boolean status = false;
         User userFrom = findUser(srcPassport);
         User userTo = findUser(destPassport);
-        AccountOfUser accTo = null;
-        AccountOfUser accFrom = null;
+        AccountOfUser accTo;
+        AccountOfUser accFrom;
         if (userFrom != null && userTo != null) {
-            for (AccountOfUser acc : this.accounts.get(userFrom)) {
-                if (acc.getRequisites().equals(srcRequisite) && acc.getValue() >= amount) {
-                    accFrom = acc;
-                    break;
-                }
-            }
-            for (AccountOfUser acc : this.accounts.get(userTo)) {
-                if (acc.getRequisites().equals(dstRequisite)) {
-                    accTo = acc;
-                    break;
-                }
-            }
+//            for (AccountOfUser acc : this.accounts.get(userFrom)) {
+//                if (acc.getRequisites().equals(srcRequisite) && acc.getValue() >= amount) {
+//                    accFrom = acc;
+//                    break;
+//                }
+//            }
+            accFrom = this.accounts.get(userFrom).stream().filter(acc ->
+                acc.getRequisites().equals(srcRequisite) && acc.getValue() >= amount).findFirst().orElse(null);
+
+//            for (AccountOfUser acc : this.accounts.get(userTo)) {
+//                if (acc.getRequisites().equals(dstRequisite)) {
+//                    accTo = acc;
+//                    break;
+//                }
+//            }
+            accTo = this.accounts.get(userTo).stream().filter(acc ->
+                    acc.getRequisites().equals(dstRequisite)).findFirst().orElse(null);
+
             if (accFrom != null && accTo != null) {
                 status = true;
                 accFrom.setValue(accFrom.getValue() - amount);
@@ -101,13 +107,14 @@ public class Bank {
      * @return пользователь.
      */
     public User findUser(String passport) {
-        User user = null;
-        for (User key : this.accounts.keySet()) {
-            if (key.getPassport().equals(passport)) {
-                user = key;
-                break;
-            }
-        }
-        return user;
+//        User user = null;
+//        for (User key : this.accounts.keySet()) {
+//            if (key.getPassport().equals(passport)) {
+//                user = key;
+//                break;
+//            }
+//        }
+//        return user;
+        return this.accounts.keySet().stream().filter(key -> key.getPassport().equals(passport)).findFirst().orElse(null);
     }
 }
