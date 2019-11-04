@@ -1,5 +1,6 @@
 package ru.job4j.bank;
 import java.util.*;
+import java.util.stream.Collectors;
 /**
  * Chapter_003. Collection. Lite.
  * Task: Банковские переводы. [#10038]
@@ -55,7 +56,11 @@ public class Bank {
      * @return список счетов.
      */
     public List<AccountOfUser> getUserAccounts(String passport) {
-        return this.accounts.get(findUser(passport));
+//        return this.accounts.get(findUser(passport));
+        return this.accounts.entrySet().stream()
+                .filter(key -> key.getKey().getPassport().equals(passport))
+                .flatMap(acc -> acc.getValue().stream())
+                .collect(Collectors.toList());
     }
     /**
      * Перечисление денег.
