@@ -1,5 +1,6 @@
 package ru.job4j.bank;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 /**
  * Chapter_003. Collection. Lite.
@@ -85,8 +86,8 @@ public class Bank {
 //                    break;
 //                }
 //            }
-            accFrom = this.accounts.get(userFrom).stream().filter(acc ->
-                acc.getRequisites().equals(srcRequisite) && acc.getValue() >= amount).findFirst().orElse(null);
+            accFrom = getAccountByUsers(userTo, acc ->
+                    acc.getRequisites().equals(srcRequisite) && acc.getValue() >= amount);
 
 //            for (AccountOfUser acc : this.accounts.get(userTo)) {
 //                if (acc.getRequisites().equals(dstRequisite)) {
@@ -94,8 +95,8 @@ public class Bank {
 //                    break;
 //                }
 //            }
-            accTo = this.accounts.get(userTo).stream().filter(acc ->
-                    acc.getRequisites().equals(dstRequisite)).findFirst().orElse(null);
+            accTo = getAccountByUsers(userTo, acc ->
+                    acc.getRequisites().equals(dstRequisite));
 
             if (accFrom != null && accTo != null) {
                 status = true;
@@ -121,5 +122,15 @@ public class Bank {
 //        }
 //        return user;
         return this.accounts.keySet().stream().filter(key -> key.getPassport().equals(passport)).findFirst().orElse(null);
+    }
+    /**
+     * Поиск аккаунта по пользователю.
+     *
+     * @param user  - пользователь
+     * @param predict - предикат
+     * @return Аккаунт пользователя.
+     */
+    public AccountOfUser getAccountByUsers(User user, Predicate<AccountOfUser> predict) {
+        return this.accounts.get(user).stream().filter(predict).findFirst().orElse(null);
     }
 }
