@@ -86,7 +86,7 @@ public class Bank {
 //                    break;
 //                }
 //            }
-            accFrom = getAccountByUsers(userTo, acc ->
+            accFrom = getAccountByUser(userFrom, acc ->
                     acc.getRequisites().equals(srcRequisite) && acc.getValue() >= amount);
 
 //            for (AccountOfUser acc : this.accounts.get(userTo)) {
@@ -95,7 +95,7 @@ public class Bank {
 //                    break;
 //                }
 //            }
-            accTo = getAccountByUsers(userTo, acc ->
+            accTo = getAccountByUser(userTo, acc ->
                     acc.getRequisites().equals(dstRequisite));
 
             if (accFrom != null && accTo != null) {
@@ -130,7 +130,7 @@ public class Bank {
      * @param predict - предикат
      * @return Аккаунт пользователя.
      */
-    public AccountOfUser getAccountByUsers(User user, Predicate<AccountOfUser> predict) {
+    public AccountOfUser getAccountByUser(User user, Predicate<AccountOfUser> predict) {
         return this.accounts.get(user).stream().filter(predict).findFirst().orElse(null);
     }
 }
