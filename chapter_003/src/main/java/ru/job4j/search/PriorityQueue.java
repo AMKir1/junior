@@ -4,6 +4,7 @@ import java.util.LinkedList;
 /*
  * Chapter_003. Collection. Lite.
  * Task: 2. Очередь с приоритетом на LinkedList [#41670]
+ * Local-Variable Type Inference [#70626]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -19,7 +20,7 @@ public class PriorityQueue {
     public void put(Task task) {
         //TODO добавить вставку в связанный список
         if (tasks.size() != 0) {
-           for (Task t : tasks) {
+           for (var t : tasks) {
                 if (t.getPriority() > task.getPriority()) {
                     tasks.add(tasks.indexOf(t), task);
                     break;
