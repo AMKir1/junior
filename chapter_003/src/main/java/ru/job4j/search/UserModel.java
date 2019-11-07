@@ -2,7 +2,8 @@ package ru.job4j.search;
 
 /**
  * Chapter_003. Collection. Lite.
- * Task: 2. Сортировка User с использованием Comparator [#10036]
+ * Сортировка User с использованием Comparator [#10036]
+ * Collection API Улучшения [#70623]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -35,7 +36,7 @@ public class UserModel implements Comparable<UserModel> {
 
     @Override
     public int compareTo(UserModel o) {
-        return this.getAge() - o.getAge() == 0 ? 0 : this.age.compareTo(o.age);
+        return Integer.compare(this.age, o.age);
     }
 
     @Override

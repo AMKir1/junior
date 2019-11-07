@@ -8,49 +8,59 @@ import static org.junit.Assert.assertThat;
 
     /**
      * Chapter_003. Collection. Lite.
-     * Task: 2. Сортировка User с использованием Comparator [#10036]
+     * Сортировка User с использованием Comparator [#10036]
+     * Collection API Улучшения [#70623]
      * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
      * @version 1
      */
 
 public class SortUserTest {
+    public SortUser su = new SortUser();
+
+    public  List<UserModel> list = List.of(
+        new UserModel("SEM", 40),
+        new UserModel("NIKOLAI", 15),
+        new UserModel("KIM", 37),
+        new UserModel("VASYA", 21),
+        new UserModel("NIKOLAI", 10)
+    );
 
     @Test
     public void testSortAgeOfUsers() {
-        SortUser su = new SortUser();
-        List<UserModel> list = new ArrayList<>();
-        list.add(new UserModel("VASYA", 40));
-        list.add(new UserModel("KOLYA", 15));
-        list.add(new UserModel("BORIS", 37));
-        Set<UserModel> userSet = su.sort(list);
-        assertThat(userSet.toString(), is(new StringBuilder()
-                .append("[age = " + list.get(1).getAge() + ", name = " + list.get(1).getName())
-                .append(", age = " + list.get(2).getAge() + ", name = " + list.get(2).getName())
-                .append(", age = " + list.get(0).getAge() + ", name = " + list.get(0).getName() + "]")
-                .toString()));
+        List<UserModel> expected = List.of(
+            new UserModel("NIKOLAI", 10),
+            new UserModel("NIKOLAI", 15),
+            new UserModel("VASYA", 21),
+            new UserModel("KIM", 37),
+            new UserModel("SEM", 40)
+        );
+        Set<UserModel> result = su.sort(list);
+        assertThat(result.toString(), is(expected.toString()));
     }
 
-        @Test
-        public void testSortUserByLenghtName() {
-            SortUser su = new SortUser();
-            List<UserModel> list = new ArrayList<>();
-            list.add(new UserModel("SEM", 40));
-            list.add(new UserModel("NIKOLAI", 15));
-            list.add(new UserModel("KIM", 37));
-            list.add(new UserModel("VASYA", 21));
-            su.sortNameLength(list);
-            assertThat(list.get(0).getName(), is("SEM"));
-        }
+    @Test
+    public void testSortUserByLenghtName() {
+        List<UserModel> expected = List.of(
+                new UserModel("SEM", 40),
+                new UserModel("KIM", 37),
+                new UserModel("VASYA", 21),
+                new UserModel("NIKOLAI", 15),
+                new UserModel("NIKOLAI", 10)
+        );
+        List<UserModel> result = su.sortNameLength(list);
+        assertThat(result.toString(), is(expected.toString()));
+    }
 
-        @Test
-        public void testSortUserByNameAndAge() {
-            SortUser su = new SortUser();
-            List<UserModel> list = new ArrayList<>();
-            list.add(new UserModel("SEM", 40));
-            list.add(new UserModel("VASYA", 15));
-            list.add(new UserModel("KIM", 37));
-            list.add(new UserModel("VASYA", 21));
-            su.sortByAllFields(list);
-            assertThat(list.get(0).getName(), is("KIM"));
-        }
+    @Test
+    public void testSortUserByNameAndAge() {
+        List<UserModel> expected = List.of(
+                new UserModel("KIM", 37),
+                new UserModel("NIKOLAI", 10),
+                new UserModel("NIKOLAI", 15),
+                new UserModel("SEM", 40),
+                new UserModel("VASYA", 21)
+        );
+        List<UserModel> result = su.sortByAllFields(list);
+        assertThat(result.toString(), is(expected.toString()));
+    }
 }

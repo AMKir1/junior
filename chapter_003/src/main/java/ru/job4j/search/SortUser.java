@@ -1,40 +1,24 @@
 package ru.job4j.search;
-
 import java.util.*;
+import java.util.stream.Collectors;
 /*
  * Chapter_003. Collection. Lite.
- * 2. Сортировка User с использованием Comparator [#10036]
+ * Сортировка User с использованием Comparator [#10036]
+ * Collection API Улучшения [#70623]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
 public class SortUser {
 
     Set<UserModel> sort(List<UserModel> list) {
-        Set<UserModel> setUser = new TreeSet<>(list);
-        return setUser;
+        return new TreeSet<>(list);
     }
 
     public List<UserModel> sortNameLength(List<UserModel> list) {
-        list.sort(new Comparator<UserModel>() {
-            @Override
-            public int compare(UserModel o1, UserModel o2) {
-                Integer user1 = o1.getName().length();
-                Integer user2 = o2.getName().length();
-                return user1.compareTo(user2);
-            }
-        });
-        return list;
+        return list.stream().sorted(Comparator.comparing(userModel -> userModel.getName().length())).collect(Collectors.toList());
     }
 
     public List<UserModel> sortByAllFields(List<UserModel> list) {
-        list.sort(new Comparator<UserModel>() {
-            @Override
-            public int compare(UserModel o1, UserModel o2) {
-                Integer user1 = o1.getName().length();
-                Integer user2 = o2.getName().length();
-                return user1.equals(user2) ? o1.getAge().compareTo(o2.getAge()) : user1.compareTo(user2);
-            }
-                  });
-        return list;
+        return list.stream().sorted(Comparator.comparing(UserModel::getName).thenComparing(UserModel::getAge)).collect(Collectors.toList());
     }
 }
