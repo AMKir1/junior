@@ -24,56 +24,21 @@ class Logic3T {
     }
 
     boolean isWinnerX() {
-                //horizontal left-right
-        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0)
-                || this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0)
-                || this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 1, 0)
-                //horizontal right-left
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 0)
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 1, -1, 0)
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, this.table.length - 1, -1, 0)
-                //vertical top-bottom
-                || this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, 0, 1)
-                //vertical bottom-top
-                || this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 0, -1)
-                || this.fillBy(Figure3T::hasMarkX, 1, this.table.length - 1, 0, -1)
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, this.table.length - 1, 0, -1)
-                //horizontal top-to-bottom-right
-                || this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1)
-                //horizontal top-to-bottom-left
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1)
-                //horizontal bottom-to-top-right
-                || this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 1, -1)
-                //horizontal bottom-to-top-left
-                || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, this.table.length - 1, -1, -1);
+        return checkWin();
     }
 
     boolean isWinnerO() {
-                //horizontal left-right
+        return checkWin();
+    }
+
+    boolean checkWin() {
         return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0)
                 || this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0)
                 || this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, 0)
-                //horizontal right-left
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 0)
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 1, -1, 0)
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, this.table.length - 1, -1, 0)
-                //vertical top-bottom
                 || this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1)
                 || this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1)
                 || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 0, 1)
-                //vertical bottom-top
-                || this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 0, -1)
-                || this.fillBy(Figure3T::hasMarkO, 1, this.table.length - 1, 0, -1)
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, this.table.length - 1, 0, -1)
-                //horizontal top-to-bottom-right
-                || this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1)
-                //horizontal top-to-bottom-left
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1)
-                //horizontal bottom-to-top-right
                 || this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, -1)
-                //horizontal bottom-to-top-left
                 || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, this.table.length - 1, -1, -1);
     }
 
