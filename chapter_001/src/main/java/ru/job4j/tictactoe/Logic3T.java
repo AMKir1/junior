@@ -24,22 +24,22 @@ class Logic3T {
     }
 
     boolean isWinnerX() {
-        return checkWin();
+        return checkWin(Figure3T::hasMarkX);
     }
 
     boolean isWinnerO() {
-        return checkWin();
+        return checkWin(Figure3T::hasMarkO);
     }
 
-    boolean checkWin() {
-        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0)
-                || this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0)
-                || this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, 0)
-                || this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 0, 1)
-                || this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, -1)
-                || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, this.table.length - 1, -1, -1);
+    boolean checkWin(Predicate<Figure3T> predicate) {
+        return this.fillBy(predicate, 0, 0, 1, 0)
+                || this.fillBy(predicate, 0, 1, 1, 0)
+                || this.fillBy(predicate, 0, this.table.length - 1, 1, 0)
+                || this.fillBy(predicate, 0, 0, 0, 1)
+                || this.fillBy(predicate, 1, 0, 0, 1)
+                || this.fillBy(predicate, this.table.length - 1, 0, 0, 1)
+                || this.fillBy(predicate, 0, this.table.length - 1, 1, -1)
+                || this.fillBy(predicate, this.table.length - 1, this.table.length - 1, -1, -1);
     }
 
     boolean hasGap() {
