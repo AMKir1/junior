@@ -22,6 +22,7 @@ public class EvenNumbersIterator implements Iterator {
         boolean result = false;
         for (int k = this.i; k < this.values.length; k++) {
             result = isEven(k);
+            this.i = k;
             if (result) {
                 break;
             }
@@ -36,13 +37,9 @@ public class EvenNumbersIterator implements Iterator {
             throw new NoSuchElementException();
         }
         while (hasNext()) {
-            if (isEven(this.i)) {
-                result = this.values[this.i];
-                this.i++;
-                return result;
-            } else {
-                this.i++;
-            }
+            result = this.values[this.i];
+            this.i++;
+            return result;
         }
         return result;
     }
