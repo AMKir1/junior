@@ -36,11 +36,8 @@ public class EvenNumbersIterator implements Iterator {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        while (hasNext()) {
-            result = this.values[this.i];
-            this.i++;
-            return result;
-        }
+        result = this.values[this.i];
+        this.i++;
         return result;
     }
 
