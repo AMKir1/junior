@@ -3,7 +3,7 @@ package ru.job4j.generic;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.2.1. Реализовать SimpleArray<T> [#156]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.util.NoSuchElementException;
 
@@ -28,9 +28,7 @@ public class SimpleArray<T> {
 
     public void remove(int index) {
         checkIndex(index);
-        for (int i = index; i < array.length - 1; i++) {
-            this.array[i] = this.array[i + 1];
-        }
+        System.arraycopy(array, index + 1, array, index, array.length - index - 1);
     }
 
     public T get(int index) {
