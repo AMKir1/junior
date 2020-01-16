@@ -3,11 +3,13 @@ package ru.job4j.generic;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.2.1. Реализовать SimpleArray<T> [#156]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
+
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SimpleArray<T> {
+public class SimpleArray<T> implements Iterable<T> {
 
     int index = 0;
     T[] array;
@@ -17,7 +19,9 @@ public class SimpleArray<T> {
     }
 
     public void add(T model) {
-        checkIndex(index);
+        if (this.index == this.array.length) {
+            throw new NoSuchElementException("Array is full");
+        }
         this.array[this.index++] = model;
     }
 
@@ -28,7 +32,7 @@ public class SimpleArray<T> {
 
     public void remove(int index) {
         checkIndex(index);
-        System.arraycopy(array, index + 1, array, index, array.length - index - 1);
+        System.arraycopy(this.array, index + 1, this.array, index, this.array.length - index - 1);
     }
 
     public T get(int index) {
@@ -37,9 +41,29 @@ public class SimpleArray<T> {
     }
 
     public void checkIndex(int index) {
-        if (index >= this.array.length || index < 0) {
+        if (index >= this.index || index < 0) {
             throw new NoSuchElementException("false");
         }
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+
+            private int pos;
+
+            @Override
+            public boolean hasNext() {
+                return pos < index;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return array[pos++];
+            }
+        };
+    }
 }

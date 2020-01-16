@@ -3,9 +3,11 @@ package ru.job4j.generic;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.2.1. Реализовать SimpleArray<T> [#156]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 3
  */
 import org.junit.Test;
+
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,11 +17,6 @@ import static org.hamcrest.Matchers.is;
 public class SimpleArrayTest {
 
     SimpleArray array = new SimpleArray(4);
-
-//    @Before
-//    public void setUp() {
-//        array;
-//    }
 
     @Test
     public void testAddElement() {
@@ -52,6 +49,26 @@ public class SimpleArrayTest {
         assertThat(this.array.get(0), is(2));
         assertThat(this.array.get(1), is(3));
         assertThat(this.array.get(2), is(4));
+    }
+
+    @Test
+    public void whenIterateOverElements() {
+        array.add("1");
+        array.add("2");
+        Iterator<String> it = array.iterator();
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is("1"));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is("2"));
+        assertThat(it.hasNext(), is(false));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenIteratorAfterLastElement() {
+        array.add("1");
+        Iterator<String> it = array.iterator();
+        it.next();
+        it.next();
     }
 
 }
