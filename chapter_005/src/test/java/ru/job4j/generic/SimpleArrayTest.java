@@ -3,8 +3,9 @@ package ru.job4j.generic;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.2.1. Реализовать SimpleArray<T> [#156]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 3
+ * @version 4
  */
+
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -20,8 +21,9 @@ public class SimpleArrayTest {
 
     @Test
     public void testAddElement() {
+        assertThat(this.array.toString(), is("[ null, null, null, null]"));
         this.array.add(1);
-        assertThat(this.array.get(0), is(1));
+        assertThat(this.array.toString(), is("[ 1, null, null, null]"));
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -33,9 +35,9 @@ public class SimpleArrayTest {
     @Test
     public void testSetElement() {
         this.array.add(1);
-        assertThat(this.array.get(0), is(1));
+        assertThat(this.array.toString(), is("[ 1, null, null, null]"));
         this.array.set(0, 5);
-        assertThat(this.array.get(0), is(5));
+        assertThat(this.array.toString(), is("[ 5, null, null, null]"));
     }
 
     @Test
@@ -44,11 +46,13 @@ public class SimpleArrayTest {
         this.array.add(2);
         this.array.add(3);
         this.array.add(4);
-        assertThat(this.array.get(0), is(1));
+        assertThat(this.array.toString(), is("[ 1, 2, 3, 4]"));
+
         this.array.remove(0);
-        assertThat(this.array.get(0), is(2));
-        assertThat(this.array.get(1), is(3));
-        assertThat(this.array.get(2), is(4));
+        assertThat(this.array.toString(), is("[ 2, 3, 4, null]"));
+
+        this.array.remove(0);
+        assertThat(this.array.toString(), is("[ 3, 4, null, null]"));
     }
 
     @Test
