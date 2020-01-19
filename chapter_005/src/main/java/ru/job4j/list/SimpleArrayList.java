@@ -3,7 +3,7 @@ package ru.job4j.list;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.3.0 Создать метод delete для односвязного списка [#51424]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 public class SimpleArrayList<E> {
     private int size;
@@ -23,8 +23,7 @@ public class SimpleArrayList<E> {
      * Реализовать метод удаления первого элемент в списке.
      */
     public E delete() {
-        E result = null;
-        result = this.first.data;
+        E result = this.first.data;
         this.first = this.first.next;
         size--;
         return result;
