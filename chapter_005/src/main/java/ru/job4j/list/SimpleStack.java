@@ -1,9 +1,10 @@
 package ru.job4j.list;
+
 /*
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.3.3. Используя контейнер на базе связанного списка создать контейнер Stack [#71474]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 public class SimpleStack<T> {
 
@@ -16,6 +17,10 @@ public class SimpleStack<T> {
 
     public void push(T value) {
         collection.add(value);
+    }
+
+    public int size() {
+        return collection.size();
     }
 
     @Override
