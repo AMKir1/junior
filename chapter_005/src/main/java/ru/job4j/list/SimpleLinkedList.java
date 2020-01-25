@@ -3,7 +3,7 @@ package ru.job4j.list;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.3.2. Создать контейнер на базе связанного списка  [#159]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 
 import java.util.ConcurrentModificationException;
@@ -50,8 +50,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         return result.value;
     }
 
-    public E remove(int index) {
-        check(index);
+    public E remove() {
         Node<E> findres = this.first;
         this.first = this.first.next;
         size--;
