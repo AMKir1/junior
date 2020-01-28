@@ -4,6 +4,7 @@ package ru.job4j.map;
  * Task: 2. Не перекрывать equals hashCode [#1005]
  *       3. Переопределить только hashCode [#1003]
  *       4. Переопределить только equals [#1004]
+ *       5. Перекрывать и equals и hashCode [#1002]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -26,9 +27,11 @@ public class UserTest {
     @Test
     public void mapTest() {
         userObjectMap.put(user1, "ALEX");
-        userObjectMap.put(user2, "ALEX");
+        userObjectMap.put(user2, "JERY");
         System.out.println(user1.equals(user2));
         userObjectMap.forEach((user, o) -> System.out.println(user.hashCode()));
         System.out.println(userObjectMap);
+        System.out.println(userObjectMap.get(user1));
+        System.out.println(userObjectMap.get(user2));
     }
 }
