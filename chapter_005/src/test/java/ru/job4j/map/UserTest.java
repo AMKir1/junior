@@ -3,6 +3,7 @@ package ru.job4j.map;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 2. Не перекрывать equals hashCode [#1005]
  *       3. Переопределить только hashCode [#1003]
+ *       4. Переопределить только equals [#1004]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
