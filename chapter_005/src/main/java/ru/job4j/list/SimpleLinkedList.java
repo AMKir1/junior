@@ -3,7 +3,7 @@ package ru.job4j.list;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.3.2. Создать контейнер на базе связанного списка  [#159]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 3
+ * @version 4
  */
 
 import java.util.ConcurrentModificationException;
@@ -103,7 +103,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     @Override
     public String toString() {
         Node<E> res = first;
-        String result = "LinkedList is empty";
+        String result = "Collection is empty";
         if (res != null) {
             result = "[ ";
             for (int i = 0; i < this.size; i++) {

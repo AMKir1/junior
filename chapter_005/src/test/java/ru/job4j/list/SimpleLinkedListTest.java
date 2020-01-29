@@ -3,7 +3,7 @@ package ru.job4j.list;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 5.3.2. Создать контейнер на базе связанного списка  [#159]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class SimpleLinkedListTest {
 
     @Test
     public void whenAddElements() {
-        assertThat(linkedlist.toString(), is("LinkedList is empty"));
+        assertThat(linkedlist.toString(), is("Collection is empty"));
         linkedlist.add("1");
         assertThat(linkedlist.toString(), is("[ 1 ]"));
     }
@@ -47,7 +47,6 @@ public class SimpleLinkedListTest {
     public void whenUseIterator() {
         linkedlist.add("1");
         linkedlist.add("2");
-        System.out.println(linkedlist.toString());
         Iterator<String> it = linkedlist.iterator();
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is("2"));
