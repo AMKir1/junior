@@ -8,7 +8,12 @@ package ru.job4j.map;
 import org.junit.Test;
 
 import java.util.Iterator;
-
+/*
+ * Chapter_005. Collections. Pro.[#146]
+ * Task: 8. Реализовать собственную структуру данных - HashMap [#1008]
+ * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
+ * @version 2
+ */
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 

@@ -3,7 +3,7 @@ package ru.job4j.map;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 8. Реализовать собственную структуру данных - HashMap [#1008]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.util.*;
 
