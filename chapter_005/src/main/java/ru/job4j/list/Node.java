@@ -41,6 +41,6 @@ public class Node<T> {
 
     @Override
     public String toString() {
-        return next != null ? "Node: { value: " + this.value + ", next: " + next.value + " }" : "Node: { value: " + this.value + ", next: null }";
+        return this.next != null ? "Node: { value: " + this.value + ", next: " + this.next.value + " }" : "Node: { value: " + this.value + ", next: null }";
     }
 }

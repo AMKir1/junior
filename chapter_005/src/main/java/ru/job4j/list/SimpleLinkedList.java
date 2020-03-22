@@ -31,14 +31,14 @@ public class SimpleLinkedList<E> implements Iterable<E> {
 
     public void add(E element) {
         Node<E> newnode = new Node<E>(element);
-        if (first == null) {
-            first = newnode;
+        if (this.first == null) {
+            this.first = newnode;
         } else {
-            newnode.next = first;
-            first = newnode;
+            newnode.next = this.first;
+            this.first = newnode;
         }
-        size++;
-        modCount++;
+        this.size++;
+        this.modCount++;
     }
 
     public E get(int index) {
@@ -53,8 +53,8 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     public E remove() {
         Node<E> findres = this.first;
         this.first = this.first.next;
-        size--;
-        modCount++;
+        this.size--;
+        this.modCount++;
         return findres.value;
     }
 
@@ -102,7 +102,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
 
     @Override
     public String toString() {
-        Node<E> res = first;
+        Node<E> res = this.first;
         String result = "LinkedList is empty";
         if (res != null) {
             result = "[ ";

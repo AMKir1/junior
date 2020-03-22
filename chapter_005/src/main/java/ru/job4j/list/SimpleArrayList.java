@@ -25,7 +25,7 @@ public class SimpleArrayList<E> {
     public E delete() {
         E result = this.first.data;
         this.first = this.first.next;
-        size--;
+        this.size--;
         return result;
     }
 
@@ -63,8 +63,8 @@ public class SimpleArrayList<E> {
     @Override
     public String toString() {
         String result = "[ ";
-        for (int i = 0; i < size; i++) {
-            result += i == size - 1 ? get(i) + " ]" : get(i) + ", ";
+        for (int i = 0; i < this.size; i++) {
+            result += i == this.size - 1 ? get(i) + " ]" : get(i) + ", ";
         }
         return result;
     }
