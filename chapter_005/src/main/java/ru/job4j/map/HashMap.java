@@ -30,8 +30,9 @@ public class HashMap<K, V> implements Iterable<K> {
     }
 
     boolean insert(K key, V value) {
-        if (table[hash(key)] == null && (!key.equals(null) || !value.equals(null))) {
-            table[hash(key)] = new Obj<>(key, value);
+        int i = hash(key);
+        if (table[i] == null || !table[i].getKey().equals(key)) {
+            table[i] = new Obj<>(key, value);
             this.count++;
             checkSize(this.count);
             return true;
@@ -40,12 +41,14 @@ public class HashMap<K, V> implements Iterable<K> {
     }
 
     V get(K key) {
-        return this.table[hash(key)].getValue();
+        int i = hash(key);
+        return table[i].getKey().equals(key) ? this.table[i].getValue() : null;
     }
 
     boolean delete(K key) {
-        if (this.table[hash(key)] != null) {
-            this.table[hash(key)] = null;
+        int i = hash(key);
+        if (this.table[i] != null && this.table[i].getKey().equals(key)) {
+            this.table[i] = null;
             count--;
             return true;
         }
