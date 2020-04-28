@@ -40,4 +40,25 @@ class Tree<E> implements SimpleTree<E> {
         return rsl;
     }
 
+    public boolean isBinary() {
+        return this.checkbranch(root);
+    }
+
+    public boolean checkbranch(Node<E> parent) {
+        boolean result = true;
+        if (parent != null) {
+            if (parent.children.size() > 2) {
+                result = false;
+            } else {
+                for (Node<E> node : parent.children) {
+                    result = checkbranch(node);
+                    if (!result) {
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
 }
