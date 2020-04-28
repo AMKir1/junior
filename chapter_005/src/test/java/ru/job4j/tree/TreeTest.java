@@ -1,5 +1,10 @@
 package ru.job4j.tree;
-
+/*
+ * Chapter_005. Collections. Pro.[#146]
+ * Task: 1. Создать элементарную структуру дерева [#1711]
+ * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
+ * @version 1
+ */
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 

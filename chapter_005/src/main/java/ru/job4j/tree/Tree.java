@@ -1,4 +1,10 @@
 package ru.job4j.tree;
+/*
+ * Chapter_005. Collections. Pro.[#146]
+ * Task: 1. Создать элементарную структуру дерева [#1711]
+ * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
+ * @version 1
+ */
 
 import java.util.*;
 
@@ -11,7 +17,9 @@ class Tree<E> implements SimpleTree<E> {
 
     @Override
     public boolean add(E parent, E child) {
-        if ((findBy(parent).isPresent() && findBy(child).isPresent())) return false;
+        if ((findBy(parent).isPresent() && findBy(child).isPresent())) {
+            return false;
+        }
         findBy(parent).get().children.add(new Node<E>(child));
         return true;
     }
