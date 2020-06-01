@@ -22,7 +22,7 @@ public class FreezeStr {
             HashMap<Character, Integer> map1 = new HashMap<>();
             HashMap<Character, Integer> map2 = new HashMap<>();
 
-            for(int i = 0; i < chLeft.length; i++){
+            for (int i = 0; i < chLeft.length; i++) {
                 map1.put(chLeft[i], i);
                 map2.put(chRight[i], i);
             }
