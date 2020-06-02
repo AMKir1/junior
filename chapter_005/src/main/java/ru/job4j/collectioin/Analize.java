@@ -3,7 +3,7 @@ package ru.job4j.collectioin;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 2. Статистику по коллекции. [#45889]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +21,6 @@ public class Analize {
             for (User uc : current) {
                 if (up.equals(uc)) {
                     noAddDel++;
-                    continue;
                 } else {
                     if (up.id == uc.id && !up.name.equals(uc.name)) {
                         noAddDel++;
@@ -32,11 +31,9 @@ public class Analize {
         }
 
         if (noAddDel < previous.size()) {
+            info.deleted = Math.abs(noAddDel - previous.size());
             if (diffSize == 0 || info.added != 0) {
-                info.deleted = Math.abs(noAddDel - previous.size());
                 info.added += info.deleted;
-            } else {
-                info.deleted = Math.abs(noAddDel - previous.size());
             }
         }
         return info;
