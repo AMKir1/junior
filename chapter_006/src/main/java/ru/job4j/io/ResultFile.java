@@ -5,7 +5,9 @@ package ru.job4j.io;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 2
  */
+import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.io.PrintWriter;
 
 public class ResultFile {
     public static void main(String[] args) {
@@ -18,8 +20,11 @@ public class ResultFile {
             }
             matr.append(System.lineSeparator());
         }
-        try (FileOutputStream out = new FileOutputStream("result.txt")) {
-            out.write(matr.toString().getBytes());
+        try (PrintWriter out = new PrintWriter(
+                new BufferedOutputStream(
+                        new FileOutputStream("result.txt")
+                ))) {
+            out.write(matr.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
