@@ -5,17 +5,19 @@ package ru.job4j.io;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReadFile {
     public static void main(String[] args) {
-        try (FileInputStream in = new FileInputStream("input.txt")) {
-            StringBuilder text = new StringBuilder();
-            int read;
-            while ((read = in.read()) != -1) {
-                text.append((char) read);
+        try (BufferedReader in = new BufferedReader(new FileReader("input.txt"))) {
+            List<String> lines = new ArrayList<String>();
+            in.lines().forEach(lines::add);
+            for (String line : lines) {
+                System.out.println(line);
             }
-            System.out.println(text);
         } catch (Exception e) {
             e.printStackTrace();
         }
