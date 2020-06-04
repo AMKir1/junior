@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 1. Читаем файл конфигурации [#858]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,7 +21,7 @@ public class Config {
 
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
-            read.lines().forEach(s -> values.put(s.split("=")[0], s.split("=")[1]));
+            read.lines().filter(s -> s.length() != 0).filter(s -> !s.contains("#")).forEach(s -> values.put(s.split("=")[0], s.split("=")[1]));
         } catch (Exception e) {
             e.printStackTrace();
         }
