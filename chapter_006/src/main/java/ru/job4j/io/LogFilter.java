@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 0.3. BufferedReader. [#252489]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class LogFilter {
     public static List<String> filter(String file) {
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(new FileReader(file))) {
             in.lines().filter(s -> s.contains("404")).forEach(lines::add);
         } catch (Exception e) {
@@ -25,7 +25,10 @@ public class LogFilter {
                 new BufferedOutputStream(
                         new FileOutputStream(file)
                 ))) {
-            out.write(log.toString());
+            for (String s : log) {
+                out.write(s + System.lineSeparator());
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
