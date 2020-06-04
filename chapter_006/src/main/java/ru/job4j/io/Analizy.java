@@ -3,20 +3,37 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 2. Анализ доступности сервера. [#859]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.io.*;
 import java.util.*;
 
 
 public class Analizy {
+
+    boolean error = false;
+
     public void unavailable(String source, String target) {
 
         final List<String> values = new ArrayList<>();
-        boolean error = false;
 
         try (BufferedReader read = new BufferedReader(new FileReader(source))) {
-            read.lines().forEach(values::add);
+
+            read.lines().forEach(l -> {
+                if (l.contains("400") || l.contains("500")) {
+                    if (!this.error) {
+                        values.add(l.split(" ")[1] + ";");
+                        this.error = true;
+                    }
+                }
+
+                if (l.contains("200") || l.contains("300")) {
+                    if (this.error) {
+                        values.add(l.split(" ")[1] + ";" + System.lineSeparator());
+                        this.error = false;
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,21 +43,8 @@ public class Analizy {
                         new FileOutputStream(target)
                 ))) {
             for (String s : values) {
-                if (s.contains("400") || s.contains("500")) {
-                    if (!error) {
-                        out.write(s.split(" ")[1] + ";");
-                        error = true;
-                    }
-                }
-
-                if (s.contains("200") || s.contains("300")) {
-                    if (error) {
-                        out.write(s.split(" ")[1] + ";" + System.lineSeparator());
-                        error = false;
-                    }
-                }
+                out.write(s);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,5 +68,4 @@ public class Analizy {
         }
         return out.toString();
     }
-
 }
