@@ -3,9 +3,8 @@ package ru.job4j.collectioin;
  * Chapter_005. Collections. Pro.[#146]
  * Task: 2. Статистику по коллекции. [#45889]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 4
+ * @version 5
  */
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,7 +23,7 @@ public class Analize {
                 info.added++;
             }
 
-            if ( res != null && res != u.name) {
+            if (res != null && !res.equals(u.name)) {
                 info.changed++;
             }
         }
