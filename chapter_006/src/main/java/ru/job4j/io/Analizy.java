@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 2. Анализ доступности сервера. [#859]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 import java.io.*;
 import java.util.*;
@@ -11,33 +11,30 @@ import java.util.*;
 
 public class Analizy {
 
-    boolean error = false;
-
     public void unavailable(String source, String target) {
-
+        class Unavailable {
+            boolean value = false;
+        }
+        Unavailable unavailable = new Unavailable();
         final List<String> values = new ArrayList<>();
-
         try (BufferedReader read = new BufferedReader(new FileReader(source))) {
-
             read.lines().forEach(l -> {
                 if (l.contains("400") || l.contains("500")) {
-                    if (!this.error) {
+                    if (!unavailable.value) {
                         values.add(l.split(" ")[1] + ";");
-                        this.error = true;
+                        unavailable.value = true;
                     }
                 }
-
                 if (l.contains("200") || l.contains("300")) {
-                    if (this.error) {
+                    if (unavailable.value) {
                         values.add(l.split(" ")[1] + ";" + System.lineSeparator());
-                        this.error = false;
+                        unavailable.value = false;
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         try (PrintWriter out = new PrintWriter(
                 new BufferedOutputStream(
                         new FileOutputStream(target)
