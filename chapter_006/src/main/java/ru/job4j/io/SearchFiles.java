@@ -4,6 +4,7 @@ package ru.job4j.io;
  * Task: 4.1. Сканирование файловой системы. [#106929]
  * Task: 3.0. Тестирование IO [#173905]
  * Task: 5. Валидация параметров запуска. [#246865]
+ * Task: 5.2. Архивировать проект [#861]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -36,9 +37,7 @@ public class SearchFiles  implements FileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        if (file.toFile().getName().endsWith(ext)) {
-            pathes.add(file.toAbsolutePath());
-        }
+        pathes.add(file.toAbsolutePath());
         return CONTINUE;
     }
 
@@ -54,5 +53,13 @@ public class SearchFiles  implements FileVisitor<Path> {
 
     public List<Path> getPaths() {
         return this.pathes;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public boolean checkExclude(Path file) {
+       return file.toFile().getName().endsWith(this.ext.substring(1));
     }
 }
