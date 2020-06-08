@@ -3,9 +3,11 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 4.1. Сканирование файловой системы. [#106929]
  * Task: 3.0. Тестирование IO [#173905]
+ * Task: 5. Валидация параметров запуска. [#246865]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
@@ -18,12 +20,12 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class SearchFiles  implements FileVisitor<Path> {
 
-    List<Path> pathes = new ArrayList<>();
-    Path path;
-    String ext;
+    private List<Path> pathes = new ArrayList<>();
+    private File file;
+    private String ext;
 
-    public SearchFiles(Path path, String ext) {
-        this.path = path;
+    public SearchFiles(File file, String ext) {
+        this.file = file;
         this.ext = ext;
     }
 
@@ -35,7 +37,7 @@ public class SearchFiles  implements FileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         if (file.toFile().getName().endsWith(ext)) {
-            pathes.add(file);
+            pathes.add(file.toAbsolutePath());
         }
         return CONTINUE;
     }
