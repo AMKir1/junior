@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 2. Анализ доступности сервера. [#859]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 3
+ * @version 4
  */
 import java.io.*;
 import java.util.*;
@@ -35,16 +35,7 @@ public class Analizy {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try (PrintWriter out = new PrintWriter(
-                new BufferedOutputStream(
-                        new FileOutputStream(target)
-                ))) {
-            for (String s : values) {
-                out.write(s);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        printFile(values, target);
     }
 
     public static void main(String[] args) {
@@ -64,5 +55,18 @@ public class Analizy {
             e.printStackTrace();
         }
         return out.toString();
+    }
+
+    public void printFile(List<String> values, String target) {
+        try (PrintWriter out = new PrintWriter(
+                new BufferedOutputStream(
+                        new FileOutputStream(target)
+                ))) {
+            for (String s : values) {
+                out.write(s);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
