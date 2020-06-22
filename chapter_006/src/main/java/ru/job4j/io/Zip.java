@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 5.2. Архивировать проект [#861]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.io.*;
 import java.nio.file.Files;
@@ -20,7 +20,6 @@ public class Zip {
                         ZipEntry zipEntry = new ZipEntry(String.valueOf(file.toPath()));
                         try {
                             zs.putNextEntry(zipEntry);
-                            Files.copy(file.toPath(), zs);
                             zs.closeEntry();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -42,12 +41,7 @@ public class Zip {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        new Zip().packSingleFile(
-                new File("./chapter_005/pom.xml"),
-                new File("./chapter_005/pom.zip")
-        );
-        ArgZip argZip = new ArgZip(args);
+    public static List<File> searchFiles(ArgZip argZip) throws IOException {
         SearchFiles sf = new SearchFiles(new File(argZip.directory()), argZip.exclude());
         Files.walkFileTree(sf.getFile().toPath(), sf);
         List<File> listFiles = new ArrayList<>();
@@ -56,6 +50,15 @@ public class Zip {
                 listFiles.add(p.toFile());
             }
         }
-        new Zip().packFiles(listFiles, new File(argZip.output()));
+        return listFiles;
+    }
+
+    public static void main(String[] args) throws IOException {
+        new Zip().packSingleFile(
+                new File("./chapter_005/pom.xml"),
+                new File("./chapter_005/pom.zip")
+        );
+        ArgZip argZip = new ArgZip(args);
+        new Zip().packFiles(searchFiles(argZip), new File(argZip.output()));
     }
 }
