@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_006. Ввод-вывод[#633]
  * Task: 4.1. Сканирование файловой системы. [#106929]
  * Task: 3.0. Тестирование IO [#173905]
- * Task: 5. Валидация параметров запуска. [#246865]
+ * Task: 5. Валидация параметров запуска. [#246865] v2
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -15,6 +15,9 @@ import java.util.List;
 
 public class Search  {
     public static void main(String[] args) throws IOException {
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Root folder is null. Usage java -jar dir.jar ROOT_FOLDER.");
+        }
         File start = new File(args[0]);
         search(start, "java").forEach(System.out::println);
     }
