@@ -46,9 +46,7 @@ public class Zip {
         Files.walkFileTree(sf.getFile().toPath(), sf);
         List<File> listFiles = new ArrayList<>();
         for (Path p : sf.getPaths()) {
-            if (!sf.checkExclude(p)) {
-                listFiles.add(p.toFile());
-            }
+            listFiles.add(p.toFile());
         }
         return listFiles;
     }

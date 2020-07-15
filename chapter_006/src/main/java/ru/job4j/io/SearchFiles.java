@@ -6,7 +6,7 @@ package ru.job4j.io;
  * Task: 5. Валидация параметров запуска. [#246865]
  * Task: 5.2. Архивировать проект [#861]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 
@@ -30,24 +31,41 @@ public class SearchFiles  implements FileVisitor<Path> {
         this.ext = ext;
     }
 
+    public class ExtensionPredicate implements Predicate<File> {
+
+        String extension;
+
+        public ExtensionPredicate(String extension) {
+            this.extension = extension;
+        }
+
+        @Override
+        public boolean test(File file) {
+            return file != null && file.getName().endsWith(extension);
+        }
+    }
+
     @Override
-    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
         return CONTINUE;
     }
 
     @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        pathes.add(file.toAbsolutePath());
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+        ExtensionPredicate extensionPredicate = new ExtensionPredicate(ext);
+        if (extensionPredicate.test(file.toFile())) {
+            pathes.add(file.toAbsolutePath());
+        }
         return CONTINUE;
     }
 
     @Override
-    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+    public FileVisitResult visitFileFailed(Path file, IOException exc) {
         return CONTINUE;
     }
 
     @Override
-    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
         return CONTINUE;
     }
 
@@ -59,7 +77,4 @@ public class SearchFiles  implements FileVisitor<Path> {
         return file;
     }
 
-    public boolean checkExclude(Path file) {
-       return file.toFile().getName().endsWith(this.ext.substring(1));
-    }
 }
