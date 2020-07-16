@@ -18,8 +18,8 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     String str;
-                    while (!(str = in.readLine()).isEmpty()) {
-                        if(str.contains("bye")){
+                    while (!(str = in.readLine() ).isEmpty()) {
+                        if (str.contains("bye")) {
                             server.close();
                         }
                         System.out.println(str);
