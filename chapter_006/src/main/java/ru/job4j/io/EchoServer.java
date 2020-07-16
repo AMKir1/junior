@@ -11,9 +11,8 @@ import java.net.Socket;
 
 public class EchoServer {
     public static void main(String[] args) throws IOException {
-        boolean connect = true;
         try (ServerSocket server = new ServerSocket(9000)) {
-            while (connect) {
+            while (!server.isClosed()) {
                 Socket socket = server.accept();
                 try (OutputStream out = socket.getOutputStream();
                      BufferedReader in = new BufferedReader(
@@ -21,7 +20,6 @@ public class EchoServer {
                     String str;
                     while (!(str = in.readLine()).isEmpty()) {
                         if(str.contains("bye")){
-                            connect = false;
                             server.close();
                         }
                         System.out.println(str);
