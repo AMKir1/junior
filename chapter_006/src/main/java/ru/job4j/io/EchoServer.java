@@ -2,7 +2,7 @@ package ru.job4j.io;
 /*
  * Chapter_006. Ввод-вывод[#633]
  * Task: 0. Что такое Socket? [#4850]
- * Task: 1. Бот [#7921]
+ * Task: 1. Бот [#7921] v2
  * Task: 4. Slf4j - вывод exception. [#268853]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
@@ -40,8 +40,10 @@ public class EchoServer {
                         System.out.println(str);
                         str = in.readLine();
                     }
-                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                    out.write(msg.getBytes());
+                    if (!server.isClosed()) {
+                        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                        out.write(msg.getBytes());
+                    }
                 } catch (Exception e) {
                     LOG.error("OutputStream error: ", e);
                 }
