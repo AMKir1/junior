@@ -8,7 +8,6 @@ package ru.job4j.io;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 2
  */
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
@@ -23,26 +22,10 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 public class SearchFiles  implements FileVisitor<Path> {
 
     private List<Path> pathes = new ArrayList<>();
-    private File file;
-    private String ext;
+    private Predicate<Path> condition;
 
-    public SearchFiles(File file, String ext) {
-        this.file = file;
-        this.ext = ext;
-    }
-
-    public class ExtensionPredicate implements Predicate<File> {
-
-        String extension;
-
-        public ExtensionPredicate(String extension) {
-            this.extension = extension;
-        }
-
-        @Override
-        public boolean test(File file) {
-            return file != null && file.getName().endsWith(extension);
-        }
+    public SearchFiles(Predicate<Path> condition) {
+        this.condition = condition;
     }
 
     @Override
@@ -52,8 +35,7 @@ public class SearchFiles  implements FileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-        ExtensionPredicate extensionPredicate = new ExtensionPredicate(ext);
-        if (extensionPredicate.test(file.toFile())) {
+        if (condition.test(file)) {
             pathes.add(file.toAbsolutePath());
         }
         return CONTINUE;
@@ -72,9 +54,4 @@ public class SearchFiles  implements FileVisitor<Path> {
     public List<Path> getPaths() {
         return this.pathes;
     }
-
-    public File getFile() {
-        return file;
-    }
-
 }

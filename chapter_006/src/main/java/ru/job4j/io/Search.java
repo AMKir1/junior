@@ -29,7 +29,7 @@ public class Search  {
     }
 
     public static List<Path> search(File root, String ext) throws IOException {
-        SearchFiles searcher = new SearchFiles(root, ext);
+        SearchFiles searcher = new SearchFiles(t -> t.endsWith(ext));
         Files.walkFileTree(root.toPath(), searcher);
         return searcher.getPaths();
     }

@@ -8,6 +8,7 @@ package ru.job4j.io;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -42,8 +43,8 @@ public class Zip {
     }
 
     public static List<File> searchFiles(ArgZip argZip) throws IOException {
-        SearchFiles sf = new SearchFiles(new File(argZip.directory()), argZip.exclude());
-        Files.walkFileTree(sf.getFile().toPath(), sf);
+        SearchFiles sf = new SearchFiles(t -> t.toString().contains(argZip.exclude()));
+        Files.walkFileTree(Paths.get(argZip.directory()), sf);
         List<File> listFiles = new ArrayList<>();
         for (Path p : sf.getPaths()) {
             listFiles.add(p.toFile());
