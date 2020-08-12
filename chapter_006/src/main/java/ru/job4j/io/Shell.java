@@ -10,7 +10,7 @@ public class Shell {
     public void cd(String path) {
         String[] paths = path.split("/");
         for (String p : paths) {
-            if(rootPath.size() > 0) {
+            if (rootPath.size() > 0) {
                 if (p.equals("..")) {
                     rootPath.remove(rootPath.size() - 1);
                 } else {
@@ -26,7 +26,7 @@ public class Shell {
 
     public String pwd() {
         StringBuilder result = new StringBuilder();
-        if(rootPath.size() > 0) {
+        if (rootPath.size() > 0) {
             for (String s : rootPath) {
                 result.append(String.format("/%s", s));
             }
