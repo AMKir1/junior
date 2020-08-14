@@ -1,4 +1,4 @@
-package ru.job4j.mem_start;
+package ru.job4j.memstart;
 
 public class StunInput implements Input {
 	private String[] answers;

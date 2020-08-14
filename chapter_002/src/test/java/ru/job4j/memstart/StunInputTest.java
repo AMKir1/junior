@@ -1,4 +1,4 @@
-package ru.job4j.mem_start;
+package ru.job4j.memstart;
 
 	import org.junit.Test;
 	import static org.hamcrest.core.Is.is;
