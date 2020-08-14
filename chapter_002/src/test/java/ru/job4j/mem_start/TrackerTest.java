@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 
 	import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenAddItem() {
-		Tracker tracker = new Tracker();
+		MemTracker tracker = new MemTracker();
 		Item item1 = new Item("test1", "Description1", 123L, "1");
 		tracker.add(item1);
 		assertThat(tracker.findAll().get(0), is(item1));
@@ -25,7 +25,7 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenUpdateItem() {
-		Tracker tracker = new Tracker();
+		MemTracker tracker = new MemTracker();
 		tracker.add(new Item("test1", "testDescription", 1L, "1"));
 		tracker.update(new Item("test2", "testDescription2", 1L, "1"));
 		assertThat(tracker.findAll().get(0).getName(), is("test2"));
@@ -35,11 +35,11 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenDeleteItem() {
-		Tracker tracker = new Tracker();
+		MemTracker tracker = new MemTracker();
 		Item item3 = new Item("Test3", "Desc3", 3L, "1");
 		tracker.add(item3);
 		tracker.delete(item3.getId());
-		Tracker expected = null;
+		MemTracker expected = null;
 		assertThat(tracker.findById(item3.getId()), is(expected));
 	}
 	/**
@@ -47,8 +47,8 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenFindAll() {
-		Tracker tracker = new Tracker();
-		Tracker tracker2 = new Tracker();
+		MemTracker tracker = new MemTracker();
+		MemTracker tracker2 = new MemTracker();
 		tracker.add(new Item("Test1", "Desc1", 1L, "1"));
 		tracker.add(new Item("Test2", "Desc2", 2L, "2"));
 		tracker.add(new Item("Test3", "Desc3", 3L, "3"));
@@ -62,7 +62,7 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenFindByName() {
-		Tracker tracker = new Tracker();
+		MemTracker tracker = new MemTracker();
 		tracker.add(new Item("Test1", "Desc1", 1L, "1"));
 		tracker.add(new Item("Test2", "Desc2", 2L, "2"));
 		tracker.add(new Item("Test2", "Desc3", 3L, "3"));
@@ -75,7 +75,7 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenFindByIdAndNotNull() {
-		Tracker tracker = new Tracker();
+		MemTracker tracker = new MemTracker();
 		tracker.add(new Item("Test1", "Desc1", 1L, "1"));
 		tracker.add(new Item("Test2", "Desc2", 2L, "2"));
 		tracker.add(new Item("Test3", "Desc3", 3L, "3"));
@@ -87,12 +87,12 @@ public class TrackerTest {
 	*/
 	@Test
 	public void whenFindByIdAndNull() {
-		Tracker tracker = new Tracker();
+		MemTracker tracker = new MemTracker();
 		tracker.add(new Item("Test1", "Desc1", 1L, "1"));
 		tracker.add(new Item("Test3", "Desc3", 3L, "3"));
 		tracker.add(new Item("Test2", "Desc2", 2L, "2"));
 		tracker.add(new Item("Test4", "Desc4", 4L, "4"));
-		Tracker expected = null;
+		MemTracker expected = null;
 		assertThat(tracker.findById("5"), is(expected));
 	}
 }

@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 /*
  * Class StartUI.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
@@ -15,11 +15,11 @@ public class StartUI {
 	 */
 	private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6};
 	private Input input;
-	private Tracker tracker;
+	private MemTracker tracker;
 	private int id = 0;
     private static Consumer<String> output;
 
-	StartUI(Input input, Tracker tracker, Consumer<String> output) {
+	StartUI(Input input, MemTracker tracker, Consumer<String> output) {
 		this.input = input;
 		this.tracker = tracker;
 		this.output = output;
@@ -28,16 +28,16 @@ public class StartUI {
 	 * Main.
 	 * @param args - first args.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new StartUI(
 				new ValidateInput(new ConsoleInput()),
-				new Tracker(),
+				new MemTracker(),
                 System.out::println).init();
 	}
 	/**
 	 * Init
 	 */
-    void init() {
+    void init() throws Exception {
 		MenuTracker menu = new MenuTracker(this.input, this.tracker, output);
 		menu.fillAction();
 		do {
@@ -48,7 +48,7 @@ public class StartUI {
 	/**
 	 * Add new item.
 	 */
-	private void addNewItem() {
+	private void addNewItem() throws Exception {
         output.accept("Adding a new item");
 		String itemId = Integer.toString(this.id++);
 		String itemName = this.input.ask("Plesae, enter the item's name: ");
@@ -62,7 +62,7 @@ public class StartUI {
 	/**
 	 * Show all items.
 	 */
-	private void showAllItems() {
+	private void showAllItems() throws Exception {
         output.accept("All Items");
 		ArrayList<Item> items = tracker.findAll();
 		int position = 0;
@@ -83,7 +83,7 @@ public class StartUI {
 	/**
 	 * Edit item.
 	 */
-	private void editItem() {
+	private void editItem() throws Exception {
         output.accept("Edit Item");
 		String itemName = this.input.ask("Plesae, enter the item's name: ");
 		String itemDesc = this.input.ask("Plesae, enter the item's description: ");
@@ -97,7 +97,7 @@ public class StartUI {
 	/**
 	 * Delete item.
 	 */
-	private void deleteItem() {
+	private void deleteItem() throws Exception {
         output.accept("Delete Item");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
 		this.tracker.delete(itemId);
@@ -106,7 +106,7 @@ public class StartUI {
 	/**
 	 * Find item by id.
 	 */
-	private void findItembyId() {
+	private void findItembyId() throws Exception {
 		boolean id = false;
         output.accept("Find Items by Id");
 		String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
@@ -124,7 +124,7 @@ public class StartUI {
 	/**
 	 * Find item by name.
 	 */
-	private void findItemsbyName() {
+	private void findItemsbyName() throws Exception {
 		boolean name = false;
         output.accept("Find Items by Name");
 		String itemKey = this.input.ask("Plesae, enter the item's key, which you want to find: ");

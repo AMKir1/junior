@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 
 public class MenuOutException extends RuntimeException {
 	

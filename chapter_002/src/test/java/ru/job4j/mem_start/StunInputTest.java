@@ -1,13 +1,12 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 
 	import org.junit.Test;
 	import static org.hamcrest.core.Is.is;
 	import static org.junit.Assert.assertThat;
-	import org.junit.After;
+
 	import org.junit.Before;
 	import java.io.ByteArrayOutputStream;
 	import java.io.PrintStream;
-	import ru.job4j.start.*;
 	import java.util.function.Consumer;
 
 public class StunInputTest {
@@ -64,16 +63,16 @@ public class StunInputTest {
 	}
 
 	@Test
-	public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-	Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws Exception {
+	MemTracker tracker = new MemTracker(); // создаём Tracker
 	Input input = new StunInput(new String[]{"0", "nameItem", "DiscItem", "y"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker, output).init(); //создаём StartUI и вызываем метод init()
 	assertThat(tracker.findAll().get(0).getName(), is("nameItem")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
 	}
 
 	@Test
-	public void whenUpdateThenTrackerHasUpdatedValue() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenUpdateThenTrackerHasUpdatedValue() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     Item item = tracker.add(new Item("IUpd1", "DUpd1", 123L, "0")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"2", "0", "IUpd2", "DUpd2", "y"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker, output).init(); // создаём StartUI и вызываем метод init()
@@ -81,8 +80,8 @@ public class StunInputTest {
 	}
 
 	@Test
-	public void whenShowAllValuesWhenNoItem() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenShowAllValuesWhenNoItem() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     tracker.add(new Item()); //Напрямую добавляем заявку
 	Input input = new StunInput(new String[]{"1", "y"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker, output).init(); // создаём StartUI и вызываем метод init()
@@ -94,8 +93,8 @@ public class StunInputTest {
 	assertThat(result, is(expected)); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
 	}
  	@Test
-	public void whenDeleteItem() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenDeleteItem() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     tracker.add(new Item("I1", "D1", 123L, "0")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"3", "0", "y"}); //создаём StubInput с последовательностью действий
 	int firstsize = tracker.findAll().size();
@@ -104,8 +103,8 @@ public class StunInputTest {
  }
  
  	@Test
-	public void whenFindItemById() {
-    Tracker tracker = new Tracker(); //создаём Tracker
+	public void whenFindItemById() throws Exception {
+		MemTracker tracker = new MemTracker(); //создаём Tracker
     Item item = tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"4", "0", "y"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker, output).init(); //создаём StartUI и вызываем метод init()
@@ -113,8 +112,8 @@ public class StunInputTest {
  }
 
  	@Test
-	public void whenFindItemByIdandNoItems() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenFindItemByIdandNoItems() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
 	tracker.add(new Item("I1id", "D1id2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"4", "123456", "y"}); //создаём StubInput с последовательностью действий
@@ -128,8 +127,8 @@ public class StunInputTest {
  }
 
  	@Test
-	public void whenFindItemByNameandNoItems() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenFindItemByNameandNoItems() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     tracker.add(new Item("I1id", "D1id", 123L, "0")); //Напрямую добавляем заявку
 	tracker.add(new Item("I1id", "D1id2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"5", "I1", "y"}); //создаём StubInput с последовательностью действий
@@ -144,8 +143,8 @@ public class StunInputTest {
 
 
  	@Test
-	public void whenFindItemByName() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenFindItemByName() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     Item item = tracker.add(new Item("I1name", "D1name", 123L, "0")); //Напрямую добавляем заявку
 	Item item2 = tracker.add(new Item("I1name", "D1name2", 123L, "1")); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"5", "I1name", "y"}); //создаём StubInput с последовательностью действий
@@ -162,8 +161,8 @@ public class StunInputTest {
  }
 
  	@Test
-	public void whenUserWanttoExit() {
-    Tracker tracker = new Tracker(); // создаём Tracker
+	public void whenUserWanttoExit() throws Exception {
+		MemTracker tracker = new MemTracker(); // создаём Tracker
     tracker.add(new Item()); //Напрямую добавляем заявку
     Input input = new StunInput(new String[]{"6", "y"}); //создаём StubInput с последовательностью действий
 	new StartUI(input, tracker, output).init(); //создаём StartUI и вызываем метод init()

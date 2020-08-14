@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 
 public interface Input {
 	String ask(String question);

@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 /**
  * Class ValidateInputTest.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
@@ -12,7 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import ru.job4j.start.*;
 
 public class ValidateInputTest {
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();

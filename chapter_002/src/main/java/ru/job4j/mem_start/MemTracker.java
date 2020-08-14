@@ -1,12 +1,12 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 /**
- * Class Tracker.
+ * Class MemTracker.
  * @author Kirillovykh Andrei (andykirill@gmail.com)
  * @version $Id$
  * @since 0.1
  */
 import java.util.*;
-public class Tracker {
+public class MemTracker {
 	/**
 	* Params.
 	*/

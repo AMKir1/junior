@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 
 import java.util.function.Consumer;
 
@@ -13,20 +13,20 @@ import java.util.function.Consumer;
                 super(key, name);
             }
 		@Override
-		public void execute(Input input, Tracker tracker) { }
+		public void execute(Input input, MemTracker tracker) { }
 	}	
 	
 
 	public class MenuTracker {
 	
 	private Input input;
-	private Tracker tracker;
+	private MemTracker tracker;
 	private UserAction[] actions = new UserAction[7];
 	private int id;
 	private int position = 0;
 	private final Consumer<String> output;
 	
-	public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
+	public MenuTracker(Input input, MemTracker tracker, Consumer<String> output) {
 	this.input = input;
 	this.tracker = tracker;
 	this.output = output;
@@ -53,7 +53,7 @@ import java.util.function.Consumer;
 		this.actions[position++] = action;
 	}
 	
-	public void select(int key) {
+	public void select(int key) throws Exception {
 		this.actions[key].execute(this.input, this.tracker);
 	}
 	
@@ -69,7 +69,7 @@ import java.util.function.Consumer;
 		 private AddItem(int key, String name) {
                 super(key, name);
             }
-		 public void execute(Input input, Tracker tracker) {
+		 public void execute(Input input, MemTracker tracker) {
 			String itemId = Integer.toString(id++);
 			String itemName = input.ask("Plesae, enter the item's name: ");
 			String itemDesc = input.ask("Plesae, enter the item's description: ");
@@ -85,7 +85,7 @@ import java.util.function.Consumer;
                 super(key, name);
             }
 		@Override
-		public void execute(Input input, Tracker tracker) {
+		public void execute(Input input, MemTracker tracker) {
 			if (tracker.findAll().size() > 0) {
 				for (Item item : tracker.findAll()) {
 					if (item.getName() != null) {
@@ -106,7 +106,7 @@ import java.util.function.Consumer;
 		}
 
 		@Override
-		public void execute(Input input, Tracker tracker) {
+		public void execute(Input input, MemTracker tracker) {
 			String itemId = input.ask("Plesae, enter the item's id, which you want to delete: ");
 			for (Item item : tracker.findAll()) {
 				if (item.getId().equals(itemId)) {
@@ -122,7 +122,7 @@ import java.util.function.Consumer;
                 super(key, name);
         }
 		@Override
-		public void execute(Input input, Tracker tracker) {
+		public void execute(Input input, MemTracker tracker) {
 			boolean id = false;
 			String itemId = input.ask("Plesae, enter the item's id, which you want to find: ");
 			for (int i = 0; i < tracker.findAll().size(); i++) {
@@ -143,7 +143,7 @@ import java.util.function.Consumer;
                 super(key, name);
         }
 		@Override
-		public void execute(Input input, Tracker tracker) {
+		public void execute(Input input, MemTracker tracker) {
 			boolean name = false;
 			String itemKey = input.ask("Plesae, enter the item's key, which you want to find: ");
 			for (int i = 0; i < tracker.findAll().size(); i++) {
@@ -164,7 +164,7 @@ import java.util.function.Consumer;
                 super(key, name);
         }
 		@Override
-		public void execute(Input input, Tracker tracker) {
+		public void execute(Input input, MemTracker tracker) {
 				String itemId =  input.ask("Plesae, enter the item's id, which you want to edit: ");
 				String itemName = input.ask("Plesae, enter the item's name: ");
 				String itemDesc = input.ask("Plesae, enter the item's description: ");

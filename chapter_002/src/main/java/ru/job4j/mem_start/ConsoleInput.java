@@ -1,6 +1,6 @@
-package ru.job4j.start;
+package ru.job4j.mem_start;
 
-	import java.util.*;
+import java.util.*;
 
 public class ConsoleInput implements Input {
 	private Scanner scanner = new Scanner(System.in);	
