@@ -22,6 +22,6 @@ SELECT COUNT(id) FROM product WHERE type_id = 1;
 SELECT p.name AS name, p.expired_date AS expired_date, p.price AS price, t.name AS type FROM product AS p INNER JOIN type AS t ON p.type_id = t.id WHERE t.name = 'СЫР' OR t.name = 'МОЛОКО';
 
 -- 7. Написать запрос, который выводит тип продуктов, которых осталось меньше 10 штук.
-
+SELECT t.name AS type FROM product AS p RIGHT OUTER JOIN type AS t ON t.id = p.type_id GROUP BY t.name HAVING COUNT(type_id) < 10;
 -- 8. Вывести все продукты и их тип.
 SELECT p.name AS name, t.name AS type FROM product AS p LEFT JOIN type AS t ON p.type_id = t.id;
