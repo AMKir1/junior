@@ -1,0 +1,5 @@
+Petr Arsentev;parsentev@yandex.ru;
+Ivan Ivanov;iivanov@gmail.com;
+Andrei Popov;popov@gmail.ru;
+Igor Ignatyev;igor@rambler.ru;
+Fedya fedorov;fedfed@dog.gav;
