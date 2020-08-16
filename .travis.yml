@@ -13,17 +13,6 @@ before_install:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-
-addons:
-  postgresql: "12"
-  apt:
-    packages:
-      - postgresql-12
-      - postgresql-client-12
-env:
-  global:
-    - PGPORT=5434
-
 # Отправлять уведомление на почту youremail@smtp.ru (Изменить на свою) если сборка упала
 notifications:
   email:
