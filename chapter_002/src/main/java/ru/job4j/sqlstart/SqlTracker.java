@@ -109,7 +109,7 @@ public class SqlTracker implements Store {
         Item item = null;
         try (PreparedStatement st = cn.prepareStatement("select * from items WHERE id = '" + id + "'")) {
             ResultSet rs = st.executeQuery();
-                if(rs.next()) {
+                if (rs.next()) {
                     item = new Item(rs.getString("id"), rs.getString("name"));
                 }
             rs.close();
