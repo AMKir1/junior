@@ -161,9 +161,9 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<db.url>jdbc:postgresql://127.0.0.1:5434/tracker</db.url>
+				<db.url>jdbc:postgresql://loaclhost/tracker</db.url>
 				<db.username>postgres</db.username>
-				<db.password>SParox1$</db.password>
+<!--				<db.password></db.password>-->
 				<db.driver>org.postgresql.Driver</db.driver>
 			</properties>
 		</profile>
