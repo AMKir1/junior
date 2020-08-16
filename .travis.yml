@@ -7,7 +7,6 @@ services:
 
 before_install:
   - psql -c 'CREATE DATABASE tracker;' -U postgres
-  - cp config/database.yml.travis config/database.yml
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
