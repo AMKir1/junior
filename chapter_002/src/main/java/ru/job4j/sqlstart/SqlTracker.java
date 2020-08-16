@@ -43,8 +43,9 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         Item result = null;
-        try (PreparedStatement st = cn.prepareStatement("INSERT INTO items(name) VALUES ('" + item.getName() + "')")) {
+        try (PreparedStatement st = cn.prepareStatement("INSERT INTO items(name) VALUES ('" + item.getName() + "')", Statement.RETURN_GENERATED_KEYS)) {
             st.executeUpdate();
+            st.getGeneratedKeys();
             result = item;
         } catch (SQLException e) {
             System.out.println("DB error: " + e);
@@ -56,7 +57,7 @@ public class SqlTracker implements Store {
     public boolean replace(String id, Item item) {
         boolean result = false;
         try (PreparedStatement st = cn.prepareStatement("UPDATE items SET name = '" + item.getName() + "' WHERE id = '" + id + "'")) {
-            st.executeUpdate();
+            result = st.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println("DB error: " + e);
         }
@@ -67,8 +68,7 @@ public class SqlTracker implements Store {
     public boolean delete(String id) {
         boolean result = false;
         try (PreparedStatement st = cn.prepareStatement("DELETE FROM items WHERE id = '" + id + "'")) {
-            st.executeUpdate();
-            result = true;
+            result = st.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println("DB error: " + e);
         }
@@ -109,11 +109,9 @@ public class SqlTracker implements Store {
         Item item = null;
         try (PreparedStatement st = cn.prepareStatement("select * from items WHERE id = '" + id + "'")) {
             ResultSet rs = st.executeQuery();
-            if (rs.isBeforeFirst()) {
-                while (rs.next()) {
+                if(rs.next()) {
                     item = new Item(rs.getString("id"), rs.getString("name"));
                 }
-            }
             rs.close();
         } catch (SQLException e) {
             System.err.println("DB error: " + e);
