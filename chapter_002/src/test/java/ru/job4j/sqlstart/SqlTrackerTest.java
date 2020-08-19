@@ -35,8 +35,8 @@ public class SqlTrackerTest {
     @Test
     public void createItem() {
         try (Store tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            tracker.add(new Item("name", "desc"));
-            assertThat(tracker.findByName("desc").size(), is(1));
+            tracker.add(new Item( "desc"));
+            assertThat(tracker.findByName("desc").get(0).getName(), is("desc"));
         } catch (Exception throwables) {
             throwables.printStackTrace();
         }
@@ -48,7 +48,7 @@ public class SqlTrackerTest {
 @Test
 public void whenAddItem() throws Exception {
     Store tracker = new SqlTracker(ConnectionRollback.create(this.init()));
-    Item item1 = new Item("test1");
+    Item item1 = new Item("test_1984");
     tracker.add(item1);
     assertThat(tracker.findByName(item1.getName()).get(0).getName(), is(item1.getName()));
 }
@@ -58,9 +58,9 @@ public void whenAddItem() throws Exception {
 @Test
 public void whenUpdateItem() throws Exception {
     Store tracker = new SqlTracker(ConnectionRollback.create(this.init()));
-    Item item1 = tracker.findByName("test1").get(0);
-    tracker.replace(item1.getId(), new Item("test2", "testDescription2", 1L, "1"));
-    assertThat(tracker.findById(item1.getId()).getName(), is("test2"));
+    Item item1 = tracker.findByName("Item1").get(0);
+    tracker.replace(item1.getId(), new Item("Item_test", "testDescription2", 1L, "1"));
+    assertThat(tracker.findById(item1.getId()).getName(), is("Item_test"));
 }
 /**
 *
@@ -68,7 +68,7 @@ public void whenUpdateItem() throws Exception {
 @Test
 public void whenDeleteItem() throws Exception {
     Store tracker = new SqlTracker(ConnectionRollback.create(this.init()));
-    Item item3 = new Item("Test3");
+    Item item3 = new Item("Item100500");
     tracker.add(item3);
     tracker.delete(item3.getId());
     Store expected = null;
@@ -81,8 +81,8 @@ public void whenDeleteItem() throws Exception {
 @Test
 public void whenFindByName() throws SQLException {
     Store tracker = new SqlTracker(ConnectionRollback.create(this.init()));
-    List<Item> items = tracker.findByName("test_1");
-    assertThat(items.size(), is(3));
+    List<Item> items = tracker.findByName("Item1");
+    assertThat(items.size(), is(1));
 }
 /**
 *
@@ -90,7 +90,7 @@ public void whenFindByName() throws SQLException {
 @Test
 public void whenFindByIdAndNotNull() throws SQLException {
     Store tracker = new SqlTracker(ConnectionRollback.create(this.init()));
-    assertThat(tracker.findById("10").getName(), is("test_3434"));
+    assertThat(tracker.findById("1").getName(), is("Item1"));
 }
 /**
 *
@@ -99,6 +99,6 @@ public void whenFindByIdAndNotNull() throws SQLException {
 public void whenFindByIdAndNull() throws SQLException {
     Store tracker = new SqlTracker(ConnectionRollback.create(this.init()));
     Store expected = null;
-    assertThat(tracker.findById("7"), is(expected));
+    assertThat(tracker.findById("100"), is(expected));
 }
 }
