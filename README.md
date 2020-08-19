@@ -1,7 +1,31 @@
 [![Build Status](https://travis-ci.org/AMKir1/junior.svg?branch=master)](https://travis-ci.org/AMKir1/junior)
 [![codecov](https://codecov.io/gh/AMKir1/junior/branch/master/graph/badge.svg)](https://codecov.io/gh/AMKir1/junior)
 
-# junior
+# Курсы программирования на JAVA job4j.ru
 http://job4j.ru/
-Хочу пройти полный курс, лучше разбираться в программирвании на Java. 
-Планирую до конца года пройти весь курс.
+
+
+<p align="center">
+
+<h1>Законченные блоки</h1> 
+
+<h3>1. Уровень - Стажер</h3>
+
+- **Блок 1.** Базовый Синтаксис <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 2.** ООП <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 3.** Collections.Lite <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 4.** FP, Lambda, Stream API <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+
+<h3>2. Уровень - Junior</h3>
+
+- **Блок 1.** Структуры данных и алгоритмы <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 2.** IO <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 3.** SQL, JDBC <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 4.** Garbage Collection
+- **Блок 5.** ООД
+
+<h3>3. Уровень - Middle</h3>
+
+- **To be Continue...**
+
+</p>
