@@ -16,7 +16,7 @@ services:
 
 before_install:
   - psql -c 'CREATE DATABASE tracker;' -U postgres
-  - psql -U postgres -p -D tracker < job4j\chapter_002\src\main\java\ru\job4j\sqlstart\db\create.sql
+  - psql -U postgres -p -D tracker < job4j/chapter_002/src/main/java/ru/job4j/sqlstart/db/create.sql
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
