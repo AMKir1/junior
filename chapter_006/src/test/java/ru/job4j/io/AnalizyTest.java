@@ -59,8 +59,8 @@ public class AnalizyTest {
             in.lines().forEach(rsl::append);
         }
 
-        String result = "10:58:01;10:59:01;" +
-                "11:01:02;11:02:02;";
+        String result = "10:58:01;10:59:01;"
+                + "11:01:02;11:02:02;";
         assertThat(rsl.toString(), is(result));
     }
 }
