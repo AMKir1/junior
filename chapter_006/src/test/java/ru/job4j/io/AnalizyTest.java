@@ -32,13 +32,13 @@ public class AnalizyTest {
         assertThat(
                 sj.toString(),
                 is(anal.readFile("unavailable.csv")));
-    };
+    }
 
     @Test
     public void whenPairWithoutCommentForTemporaryFolder() throws IOException {
         Analizy anal = new Analizy();
-        File source = folder.newFile("server.log");
-        File target = folder.newFile("unavailable.csv");
+        File source = folder.newFile("./server.log");
+        File target = folder.newFile("./unavailable.csv");
 
         StringJoiner sj = new StringJoiner(System.lineSeparator());
             sj.add("200 10:56:01");
@@ -53,15 +53,14 @@ public class AnalizyTest {
         }
 
         anal.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
-        StringBuilder result = new StringBuilder();
-        result.append("10:58:01;10:59:01;");
-        result.append("11:01:02;11:02:02;");
 
         StringBuilder rsl = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(target))) {
             in.lines().forEach(rsl::append);
         }
 
-        assertThat(rsl.toString(), is(result.toString()));
-    };
+        String result = "10:58:01;10:59:01;" +
+                "11:01:02;11:02:02;";
+        assertThat(rsl.toString(), is(result));
+    }
 }
