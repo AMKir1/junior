@@ -31,10 +31,6 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
-	 </build>
-	<build>
-		<plugins>
 			<plugin>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
@@ -56,5 +52,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+	 </build>
 </project>
