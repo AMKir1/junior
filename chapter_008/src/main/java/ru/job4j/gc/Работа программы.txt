@@ -1,0 +1,49 @@
+VM Options: -Xmx3m
+
+определяем максимальный размер heap.
+
+Используемая память без учета созданных объектов.
+
+####### HEAP utilization statistic [MB] #######
+Used Memory: 1762kb
+Total Memory: 4096kb
+Max Memory: 4096kb
+
+Создаем объект с текстовым полем
+
+User{name='test2'}
+####### HEAP utilization statistic [MB] #######
+Used Memory: 2929kb
+Total Memory: 4096kb
+Max Memory: 4096kb
+
+Память, которую занимает этот объект
+
+Object User2 Used Memory: 1167kb
+
+Создаем пустой объект
+
+UserEmpty{}
+####### HEAP utilization statistic [MB] #######
+Used Memory: 3302kb
+Total Memory: 4096kb
+Max Memory: 4096kb
+
+Память, которую занимает пустой объект
+
+Object UserEmpty Used Memory: 373kb
+
+Создаем объект, который равен NULL
+
+null
+####### HEAP utilization statistic [MB] #######
+Used Memory: 3302kb
+Total Memory: 4096kb
+Max Memory: 4096kb
+
+Object User Used3 Memory: 0kb
+
+Так как мы превысили максимальный лимит памяти heap, для того чтобы ее автоматически очистить был вызван метод finalyze,
+который вызвал GC, который освободил занятую память.
+
+
