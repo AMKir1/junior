@@ -1,7 +1,7 @@
 package ru.job4j.gc.cache;
 /*
  * Chapter_008. Garbage Collection [#147]
- * Task: 4.1 Реализации кеша на SoftReference [#1592]
+ * Task: 4.1 Реализации кеша на SoftReference [#1592] v2
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -37,7 +37,7 @@ public class CacheTextFiles extends Cache<String, SoftReference<Content>> {
 
     public String getDataFromCache(String filename) {
         StringBuilder builder = new StringBuilder();
-        if (this.containsKey(filename)) {
+        if (this.containsKey(filename) && this.get(filename) != null) {
             this.get(filename).getText().forEach(builder::append);
         } else {
             this.put(filename, new Content(fr.getFileContent(filename))).getText().forEach(builder::append);

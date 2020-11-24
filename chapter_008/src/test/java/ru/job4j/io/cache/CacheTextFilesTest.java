@@ -1,7 +1,7 @@
 package ru.job4j.io.cache;
 /*
  * Chapter_008. Garbage Collection [#147]
- * Task: 4.1 Реализации кеша на SoftReference [#1592]
+ * Task: 4.1 Реализации кеша на SoftReference [#1592] v2
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 1
  */
@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class CacheTextFilesTest {
@@ -35,7 +36,7 @@ public class CacheTextFilesTest {
     }
 
     /*
-     * Тест. Получение данных из кэша, если в кэше есть файл по ключу, без чтения файла.
+     * Тест. Получение данных из кэша, если в кэше есть данные по ключу, без чтения файла.
      */
     @Test
     public void whenGetFirstFile() {
@@ -48,7 +49,6 @@ public class CacheTextFilesTest {
         String sameDataFromCache = cache.getDataFromCache(filename);
         assertThat(cache.size(), is(1));
         assertThat(sameDataFromCache, is("test1"));
-
     }
 
     /*
@@ -83,6 +83,21 @@ public class CacheTextFilesTest {
         String sameDataFromCache3 = cache.getDataFromCache(filename3);
         assertThat(cache.size(), is(3));
         assertThat(sameDataFromCache3, is("test3"));
+    }
 
+    /*
+     * Тест. Получение данных из кэша, если в кэше нет данных по ключу, но ключ есть.
+     */
+    @Test
+    public void whenGetNullByKey() {
+        assertThat(cache.size(), is(0));
+        String filename = "../test1.txt";
+        cache.put(filename, null);
+        assertThat(cache.size(), is(1));
+        assertThat(cache.get(filename), is(nullValue()));
+
+        String dataFromCache = cache.getDataFromCache(filename);
+        assertThat(cache.size(), is(1));
+        assertThat(dataFromCache, is("test1"));
     }
 }
