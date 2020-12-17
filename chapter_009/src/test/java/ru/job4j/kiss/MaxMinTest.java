@@ -33,5 +33,4 @@ public class MaxMinTest {
         assertThat(mm.max(usersList, User.lengthNameComparator).getName(), is("Alexandr"));
         assertThat(mm.min(usersList, User.lengthNameComparator).getName(), is("Boris"));
     }
-
 }
