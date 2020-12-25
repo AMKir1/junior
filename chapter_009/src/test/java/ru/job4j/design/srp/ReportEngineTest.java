@@ -3,7 +3,7 @@ package ru.job4j.design.srp;
  * Chapter_009. OOD [#143].
  * Task: 1. Отчеты. [#850].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -46,7 +46,7 @@ public class ReportEngineTest {
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker2);
         store.add(worker);
-        ReportEngine engine = new ReportEngine(store);
+        Report engine = new ReportEngineHR(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Salary;")
                 .append(System.lineSeparator())
@@ -55,7 +55,7 @@ public class ReportEngineTest {
                 .append(System.lineSeparator())
                 .append(worker.getName()).append(";")
                 .append(worker.getSalary()).append(";");
-        assertThat(engine.generateForHR(em -> true), is(expect.toString()));
+        assertThat(engine.generate(em -> true), is(expect.toString()));
     }
 
     /**
@@ -67,7 +67,7 @@ public class ReportEngineTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        ReportEngine engine = new ReportEngine(store);
+        Report engine = new ReportEngineDeveloper(store);
         StringBuilder expect = new StringBuilder()
                 .append("<html><head></head><body>")
                 .append("<div>").append(worker.getName()).append("</div>")
@@ -75,7 +75,7 @@ public class ReportEngineTest {
                 .append("<div>").append(worker.getFired()).append("</div>")
                 .append("<div>").append(worker.getSalary()).append("</div>")
                 .append("</body><html>");
-        assertThat(engine.generateForDeveloper(em -> true), is(expect.toString()));
+        assertThat(engine.generate(em -> true), is(expect.toString()));
     }
 
     /**
@@ -87,7 +87,7 @@ public class ReportEngineTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        ReportEngine engine = new ReportEngine(store);
+        Report engine = new ReportEngineAccounting(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Hired; Fired; OtherSalary;")
                 .append(System.lineSeparator())
@@ -95,6 +95,6 @@ public class ReportEngineTest {
                 .append(worker.getHired()).append(";")
                 .append(worker.getFired()).append(";")
                 .append(worker.getSalary()).append(";");
-        assertThat(engine.generateForAccounting(em -> true), is(expect.toString()));
+        assertThat(engine.generate(em -> true), is(expect.toString()));
     }
 }

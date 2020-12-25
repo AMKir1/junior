@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 /**
  * Class for creating reports.
  */
-public class ReportEngine implements Report {
+public class ReportEngineAccounting implements Report {
     /**
      * Employee storage.
      */
@@ -19,18 +19,19 @@ public class ReportEngine implements Report {
     /**
      * Designer.
      */
-    public ReportEngine(Store store) {
+    public ReportEngineAccounting(Store store) {
         this.store = store;
     }
 
     /**
-     * Creating an old report.
+     * Creating a report for Accounting.
      * @param filter - filter.
      * @return string.
      */
+    @Override
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
-        text.append("Name; Hired; Fired; Salary;");
+        text.append("Name; Hired; Fired; OtherSalary;");
         for (Employee employee : store.findBy(filter)) {
             text.append(System.lineSeparator())
                     .append(employee.getName()).append(";")
