@@ -67,9 +67,8 @@ public class ExerciseWord {
      */
     @Override
     public String toString() {
-        return "ExerciseWord{" +
-                "word='" + word + '\'' +
-                ", translate='" + translate + '\'' +
-                '}';
+        return "ExerciseWord{"
+                + "word='" + word + '\''
+                + ", translate='" + translate + '\'' + '}';
     }
 }
