@@ -3,42 +3,54 @@ package ru.job4j.lsp;
  * Chapter_009. OOD [#143]
  * Task: 1. Хранилище продуктов [#852]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * Trash class.
  */
-public class Trash implements Store {
-    /**
-     * list of food.
-     */
-    private List<Food> food;
+public class Trash implements Storage {
 
+    public Trash(List<Food> foods) {
+        this.foods = foods;
+    }
+
+    private List<Food> foods;
     /**
-     * Designer.
-     * @param food - list of food.
+     * add food to storage.
+     *
+     * @param food - food.
      */
-    public Trash(List<Food> food) {
-        this.food = food;
+    @Override
+    public void add(Food food) {
+        foods.add(food);
     }
 
     /**
-     * get store.
+     * add in storage.
+     *
+     * @param food
+     */
+    @Override
+    public boolean accept(Food food) {
+        long created = food.getCreateDate().getTimeInMillis();
+        long expaire = food.getExpaireDate().getTimeInMillis();
+        long accept = (((Calendar.getInstance().getTimeInMillis() - created) * 100) / (expaire - created));
+        return accept >= 100;
+    }
+
+    /**
+     * clear storage.
+     *
      * @return list of food.
      */
     @Override
-    public List<Food> getStore() {
-        return food;
-    }
-
-    /**
-     * put in store.
-     * @param f - food.
-     */
-    @Override
-    public void putInStore(Food f) {
-        food.add(f);
+    public List<Food> clear() {
+        List<Food> result = new ArrayList<>(foods);
+        foods.clear();
+        return result;
     }
 }
