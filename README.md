@@ -21,7 +21,7 @@ http://job4j.ru/
 - **Блок 1.** Структуры данных и алгоритмы <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 2.** IO <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 3.** SQL, JDBC <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
-- **Блок 4.** Garbage Collection
+- **Блок 4.** Garbage Collection <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 5.** ООД
 
 <h3>3. Уровень - Middle</h3>
