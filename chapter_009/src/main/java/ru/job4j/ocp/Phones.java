@@ -15,7 +15,7 @@ public class Phones {
 
     private static class MobilePhone implements Callable {
         @Override
-        public String call(){
+        public String call() {
             return "Ding-Ding";
         }
     }

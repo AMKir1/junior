@@ -20,7 +20,7 @@ public class Peoples {
     }
 
     public static void main(String[] args) {
-        List<Girl> girls = List.of( new Girl(), new Boy());
+        List<Girl> girls = List.of(new Girl(), new Boy());
         girls.forEach(p -> System.out.println(p.getGender()));
     }
 
