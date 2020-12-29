@@ -87,7 +87,7 @@ public class ControllQualityTest {
 
         Calendar expired = getInstance();
 
-        List<Storage> storages = List.of( new Warehouse(new ArrayList<>()), new Shop(new ArrayList<>()), new Trash(new ArrayList<>()));
+        List<Storage> storages = List.of(new Warehouse(new ArrayList<>()), new Shop(new ArrayList<>()), new Trash(new ArrayList<>()));
         ControllQuality controllQuality = new ControllQuality(storages);
 
         List<Food> food = List.of(
@@ -119,7 +119,7 @@ public class ControllQualityTest {
         Calendar expired2 = getInstance();
         expired2.add(Calendar.DATE, 1);
 
-        List<Storage> storages = List.of( new Warehouse(new ArrayList<>()), new Shop(new ArrayList<>()), new Trash(new ArrayList<>()));
+        List<Storage> storages = List.of(new Warehouse(new ArrayList<>()), new Shop(new ArrayList<>()), new Trash(new ArrayList<>()));
 
         ControllQuality controllQuality = new ControllQuality(storages);
 
@@ -147,6 +147,6 @@ public class ControllQualityTest {
         assertThat(resultTrash.toString(), is(trash.toString()));
         assertThat(resultShop.toString(), is(shop.toString()));
 
-        assertThat(shopResult.get(0).getDisscount(), is(10l));
+        assertThat(shopResult.get(0).getDisscount(), is(10L));
     }
 }
