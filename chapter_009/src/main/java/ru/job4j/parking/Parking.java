@@ -3,32 +3,41 @@ package ru.job4j.parking;
  * Chapter_009. OOD [#143]
  * Task: 2. Парковка машин [#853]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Parking interface.
+ * Parking class
  */
-public interface Parking {
+public class Parking {
+
+    private int parkingSize;
+    private List<ParkingPlace> parkingPlaces;
 
     /**
-     * Add transport to parking.
-     * @param vehicle - vehicle.
+     * Designer.
+     * @param parkingSize - size.
      */
-    void add(Vehicle vehicle);
+    public Parking(int parkingSize) {
+        this.parkingSize = parkingSize;
+        this.parkingPlaces = new ArrayList<>(this.parkingSize);
+    }
 
     /**
-     * Checking available seats.
-     * @param vehicle - vehicle.
-     * @return boolean.
+     * getter parking size.
+     * @return int.
      */
-    boolean accept(Vehicle vehicle);
+    public int getParkingSize() {
+        return parkingSize;
+    }
 
     /**
-     * freeing up space.
-     * @return list of vehicle.
+     * getter parking places.
+     * @return
      */
-    List<Vehicle> clear();
-
+    public List<ParkingPlace> getParkingPlaces() {
+        return parkingPlaces;
+    }
 }

@@ -3,22 +3,21 @@ package ru.job4j.parking;
  * Chapter_009. OOD [#143]
  * Task: 2. Парковка машин [#853]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
-import java.util.ArrayList;
+
 import java.util.List;
 
-public class CarParking implements Parking {
+public class CarParkingPlace implements ParkingPlace {
 
-    private int size;
-    private List<Vehicle> vehicles;
+    private static final int SIZE = 1;
+    private long number;
     /**
      * Designer.
-     * @param size - size of list.
+     * @param number - number of place.
      */
-    public CarParking(int size) {
-        this.size = size;
-        this.vehicles = new ArrayList<>(this.size);
+    public CarParkingPlace(int number) {
+        this.number = number;
     }
 
     /**
