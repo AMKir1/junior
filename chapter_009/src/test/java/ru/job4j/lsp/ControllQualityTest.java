@@ -2,6 +2,7 @@ package ru.job4j.lsp;
 /*
  * Chapter_009. OOD [#143]
  * Task: 1. Хранилище продуктов [#852]
+ * Task: 1. Динамическое перераспределение продуктов [#854]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 2
  */
@@ -9,7 +10,9 @@ package ru.job4j.lsp;
 import static java.util.Calendar.getInstance;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+
 import org.junit.Test;
+
 import java.util.*;
 
 /**
@@ -148,5 +151,54 @@ public class ControllQualityTest {
         assertThat(resultShop.toString(), is(shop.toString()));
 
         assertThat(shopResult.get(0).getDisscount(), is(10L));
+    }
+
+    /**
+     * when All Products Put In Shop, but in 5 day put in Trash.
+     */
+    @Test
+    public void whenResortProducts() {
+        Calendar created = getInstance();
+        created.add(Calendar.DATE, -20);
+
+        Calendar expired = getInstance();
+        expired.add(Calendar.DATE, 60);
+
+        List<Storage> storages = List.of(new Warehouse(new ArrayList<>()), new Shop(new ArrayList<>()), new Trash(new ArrayList<>()));
+
+        ControllQuality controllQuality = new ControllQuality(storages);
+
+        List<Food> food = List.of(
+                new Milk("Домик в дервне", expired, created, 100, 0),
+                new Bread("Нарезной", expired, created, 30, 0),
+                new Eggs("Лето", expired, created, 140, 0));
+
+        food.forEach(controllQuality::distribute);
+
+        StringBuilder shop = new StringBuilder();
+        storages.get(1).clear().forEach(f -> shop.append(f.toString()));
+
+        StringBuilder result = new StringBuilder();
+        food.forEach(f -> result.append(f.toString()));
+
+        assertThat(shop.toString(), is(result.toString()));
+
+        created.add(Calendar.DATE, -10);
+        expired.add(Calendar.DATE, -60);
+
+        food.forEach(f -> {
+            f.setCreateDate(created);
+            f.setExpireDate(expired);
+        });
+
+        controllQuality.resort();
+
+        StringBuilder trash = new StringBuilder();
+        storages.get(1).clear().forEach(f -> shop.append(f.toString()));
+
+        StringBuilder result2 = new StringBuilder();
+        food.forEach(f -> result.append(f.toString()));
+
+        assertThat(trash.toString(), is(result2.toString()));
     }
 }
