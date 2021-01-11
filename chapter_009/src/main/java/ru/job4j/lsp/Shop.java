@@ -28,7 +28,7 @@ public class Shop implements Storage {
     @Override
     public boolean accept(Food food) {
         long created = food.getCreateDate().getTimeInMillis();
-        long expaire = food.getExpaireDate().getTimeInMillis();
+        long expaire = food.getExpireDate().getTimeInMillis();
         long accept = (((Calendar.getInstance().getTimeInMillis() - created) * 100) / (expaire - created));
         if (accept >= 25 && accept < 100) {
             if (accept >= 75) {

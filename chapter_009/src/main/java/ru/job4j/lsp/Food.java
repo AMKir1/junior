@@ -35,11 +35,11 @@ public class Food {
         this.name = name;
     }
 
-    public Calendar getExpaireDate() {
+    public Calendar getExpireDate() {
         return expaireDate;
     }
 
-    public void setExpaireDate(Calendar expaireDate) {
+    public void setExpireDate(Calendar expaireDate) {
         this.expaireDate = expaireDate;
     }
 

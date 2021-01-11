@@ -38,7 +38,7 @@ public class Warehouse implements Storage {
     @Override
     public boolean accept(Food food) {
         long created = food.getCreateDate().getTimeInMillis();
-        long expaire = food.getExpaireDate().getTimeInMillis();
+        long expaire = food.getExpireDate().getTimeInMillis();
         long accept = (((Calendar.getInstance().getTimeInMillis() - created) * 100) / (expaire - created));
         return accept < 25;
     }
