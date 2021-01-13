@@ -3,18 +3,17 @@ package ru.job4j.menu;
  * Chapter_009. OOD [#143]
  * Task: Создать меню. [#4748]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
-import java.util.ArrayList;
-import java.util.List;
 
 public class Item implements Component {
 
     private String name;
-    private List<Component> components = new ArrayList<>();
+    private Action action;
 
-    public Item(String name) {
+    public Item(String name, Action action) {
         this.name = name;
+        this.action = action;
     }
 
     public String getName() {
@@ -42,7 +41,7 @@ public class Item implements Component {
      * @return String.
      */
     @Override
-    public String chooseItem(String item) {
-        return getName().equals(item) ? "Choose: " + getName() : "";
+    public Action chooseItem(String item) {
+        return getName().equals(item) ? this.action : null;
     }
 }

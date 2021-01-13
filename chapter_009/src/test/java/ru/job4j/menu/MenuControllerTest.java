@@ -3,7 +3,7 @@ package ru.job4j.menu;
  * Chapter_009. OOD [#143]
  * Task: Создать меню. [#4748]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 1
+ * @version 2
  */
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -44,9 +44,9 @@ public class MenuControllerTest {
         MenuController mc = new MenuController();
         Composite composite = mc.initComposite();
         String item = "3.1.1";
-        String chooseItem = composite.chooseItem(item);
+        Action chooseItem = composite.chooseItem(item);
         String result = "Choose: 3.1.1";
-        assertThat(result, is(chooseItem));
+        assertThat(result, is(chooseItem.doAction()));
     }
 
 
@@ -58,8 +58,7 @@ public class MenuControllerTest {
         MenuController mc = new MenuController();
         Composite composite = mc.initComposite();
         String item = "6";
-        String chooseItem = composite.chooseItem(item);
-        String result = "";
-        assertThat(result, is(chooseItem));
+        Action chooseItem = composite.chooseItem(item);
+        assertThat(null, is(chooseItem));
     }
 }
