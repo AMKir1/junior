@@ -3,13 +3,12 @@ package ru.job4j.parking;
  * Chapter_009. OOD [#143]
  * Task: 2. Парковка машин [#853]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 import java.util.List;
 
 public class TruckParkingPlace implements ParkingPlace {
 
-    private static final int SIZE = 3;
     private long number;
 
     /**

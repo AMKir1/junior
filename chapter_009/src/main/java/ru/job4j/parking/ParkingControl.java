@@ -3,7 +3,7 @@ package ru.job4j.parking;
  * Chapter_009. OOD [#143]
  * Task: 2. Парковка машин [#853]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 import java.util.List;
 
@@ -12,13 +12,23 @@ import java.util.List;
  */
 public class ParkingControl {
 
-    private final Parking parking;
+    private final Parking carParking;
+    private final Parking truckParking;
 
-    public ParkingControl(int size) {
-        this.parking = new Parking(size);
+    public ParkingControl(int sizeCar, int sizeTruck) {
+        this.carParking = new Parking(sizeCar);
+        this.truckParking = new Parking(sizeTruck);
     }
 
     public void distribute(Vehicle vehicle) {
+        if (vehicle.getSize() > 1) {
+            parkVehicle(truckParking, vehicle);
+        } else {
+            parkVehicle(carParking, vehicle);
+        }
+    }
+
+    public void parkVehicle(Parking parking, Vehicle vehicle) {
         parking.getParkingPlaces().forEach(p -> {
             if (p.accept(vehicle)) {
                 p.add(vehicle);
