@@ -21,21 +21,20 @@ public class ParkingControlTest {
      */
     @Test
     public void whenParkingIsFree() {
-        List<Parking> parkings = List.of(new CarParking(3), new TruckParking(3));
 
-        ParkingControl parkingControl = new ParkingControl(parkings);
+        ParkingControl parkingControl = new ParkingControl(3, 3);
 
         List<Vehicle> vehicles = List.of(
-                new Car("KIA", 1),
-                new Truck("KAMAZ", 1));
+                new Car("KIA"),
+                new Truck("KAMAZ"));
 
         vehicles.forEach(parkingControl::distribute);
 
         StringBuilder carParking = new StringBuilder();
-        parkings.get(0).clear().forEach(v -> carParking.append(v.toString()));
+        parkingControl.getCarParking().getParkingPlaces().forEach(v -> carParking.append(v.toString()));
 
         StringBuilder truckParking = new StringBuilder();
-        parkings.get(1).clear().forEach(v -> truckParking.append(v.toString()));
+        parkingControl.getTruckParking().getParkingPlaces().forEach(v -> truckParking.append(v.toString()));
 
         StringBuilder resultCar = new StringBuilder();
         resultCar.append(vehicles.get(0));
@@ -50,44 +49,42 @@ public class ParkingControlTest {
     /**
      * When No place.
      */
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void whenNoPlace() {
-        List<Parking> parkings = List.of(new CarParking(1), new TruckParking(1));
 
-        ParkingControl parkingControl = new ParkingControl(parkings);
+        ParkingControl parkingControl = new ParkingControl(1, 1);
 
         List<Vehicle> vehicles = List.of(
-                new Car("KIA", 1),
-                new Truck("KAMAZ", 1));
+                new Car("KIA"),
+                new Truck("KAMAZ"));
 
         vehicles.forEach(parkingControl::distribute);
 
-        Vehicle track = new Truck("MAZ", 1);
+        Vehicle track = new Truck("MAZ");
 
         parkingControl.distribute(track);
     }
 
     /**
-     * When No Place In TruckParking And put a Truck to CarParking.
+     * When No Place In TruckParkingPlace And put a Truck to CarParking.
      */
     @Test
     public void whenNoPlaceInTruckParkingAddTruck() {
-        List<Parking> parkings = List.of(new CarParking(4), new TruckParking(1));
 
-        ParkingControl parkingControl = new ParkingControl(parkings);
+        ParkingControl parkingControl = new ParkingControl(4, 1);
 
         List<Vehicle> vehicles = List.of(
-                new Car("KIA", 1),
-                new Truck("KAMAZ", 1),
-                new Truck("MAZ", 1));
+                new Car("KIA"),
+                new Truck("KAMAZ"),
+                new Truck("MAZ"));
 
         vehicles.forEach(parkingControl::distribute);
 
         StringBuilder carParking = new StringBuilder();
-        parkings.get(0).clear().forEach(v -> carParking.append(v.toString()));
+        parkingControl.getCarParking().getParkingPlaces().forEach(v -> carParking.append(v.toString()));
 
         StringBuilder truckParking = new StringBuilder();
-        parkings.get(1).clear().forEach(v -> truckParking.append(v.toString()));
+        parkingControl.getTruckParking().getParkingPlaces().forEach(v -> truckParking.append(v.toString()));
 
         StringBuilder resultCar = new StringBuilder();
         resultCar.append(vehicles.get(0)).append(vehicles.get(2));
@@ -100,26 +97,25 @@ public class ParkingControlTest {
     }
 
     /**
-     * When No Place In TruckParking And No Place In CarParking For Tracks but try to put a Truck.
+     * When No Place In TruckParkingPlace And No Place In CarParking For Tracks but try to put a Truck.
      */
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenNoPlaceInTruckParkingAndNoPlaceInCarParkingForTracksAddTruck() {
-        List<Parking> parkings = List.of(new CarParking(3), new TruckParking(1));
 
-        ParkingControl parkingControl = new ParkingControl(parkings);
+        ParkingControl parkingControl = new ParkingControl(3, 1);
 
         List<Vehicle> vehicles = List.of(
-                new Car("KIA", 1),
-                new Truck("KAMAZ", 1),
-                new Truck("MAZ", 1));
+                new Car("KIA"),
+                new Truck("KAMAZ"),
+                new Truck("MAZ"));
 
         vehicles.forEach(parkingControl::distribute);
 
         StringBuilder carParking = new StringBuilder();
-        parkings.get(0).clear().forEach(v -> carParking.append(v.toString()));
+        parkingControl.getCarParking().getParkingPlaces().forEach(v -> carParking.append(v.toString()));
 
         StringBuilder truckParking = new StringBuilder();
-        parkings.get(1).clear().forEach(v -> truckParking.append(v.toString()));
+        parkingControl.getTruckParking().getParkingPlaces().forEach(v -> truckParking.append(v.toString()));
 
         StringBuilder resultCar = new StringBuilder();
         resultCar.append(vehicles.get(0));
@@ -136,21 +132,20 @@ public class ParkingControlTest {
      */
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenNoPlaceInCarParkingAddCar() {
-        List<Parking> parkings = List.of(new CarParking(1), new TruckParking(3));
 
-        ParkingControl parkingControl = new ParkingControl(parkings);
+        ParkingControl parkingControl = new ParkingControl(1, 3);
 
         List<Vehicle> vehicles = List.of(
-                new Car("KIA", 1),
-                new Truck("KAMAZ", 1));
+                new Car("KIA"),
+                new Truck("KAMAZ"));
 
         vehicles.forEach(parkingControl::distribute);
 
         StringBuilder carParking = new StringBuilder();
-        parkings.get(0).clear().forEach(v -> carParking.append(v.toString()));
+        parkingControl.getCarParking().getParkingPlaces().forEach(v -> carParking.append(v.toString()));
 
         StringBuilder truckParking = new StringBuilder();
-        parkings.get(0).clear().forEach(v -> truckParking.append(v.toString()));
+        parkingControl.getTruckParking().getParkingPlaces().forEach(v -> truckParking.append(v.toString()));
 
         StringBuilder resultCar = new StringBuilder();
         resultCar.append(vehicles.get(0));
@@ -161,7 +156,7 @@ public class ParkingControlTest {
         assertThat(carParking.toString(), is(resultCar.toString()));
         assertThat(truckParking.toString(), is(resultTruck.toString()));
 
-        Vehicle car = new Car("MINI", 1);
+        Vehicle car = new Car("MINI");
 
         parkingControl.distribute(car);
     }

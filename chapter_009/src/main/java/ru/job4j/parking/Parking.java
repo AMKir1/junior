@@ -24,7 +24,6 @@ public class Parking {
         this.parkingSize = parkingSize;
         this.parkingPlaces = new ArrayList<>(this.parkingSize);
     }
-
     /**
      * getter parking size.
      * @return int.

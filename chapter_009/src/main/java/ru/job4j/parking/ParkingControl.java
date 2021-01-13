@@ -5,6 +5,7 @@ package ru.job4j.parking;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 3
  */
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,15 @@ public class ParkingControl {
         }
     }
 
-    public void parkVehicle(Parking parking, Vehicle vehicle) {
+    public Parking getCarParking() {
+        return carParking;
+    }
+
+    public Parking getTruckParking() {
+        return truckParking;
+    }
+
+    private void parkVehicle(Parking parking, Vehicle vehicle) {
         parking.getParkingPlaces().forEach(p -> {
             if (p.accept(vehicle)) {
                 p.add(vehicle);
