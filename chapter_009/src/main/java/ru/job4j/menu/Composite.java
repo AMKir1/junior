@@ -3,7 +3,7 @@ package ru.job4j.menu;
  * Chapter_009. OOD [#143]
  * Task: Создать меню. [#4748]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 3
+ * @version 4
  */
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +14,11 @@ public class Composite implements Component {
      */
     private List<Component> components = new ArrayList<>();
 
+    private int id;
     /**
      * Composite's action.
      */
-    private Action action;
+    private Action action = new ActionNo();
 
     /**
      * Composite's name.
@@ -28,9 +29,9 @@ public class Composite implements Component {
      * Designer.
      * @param name Composite's name.
      */
-    public Composite(String name, Action action) {
+    public Composite(int id, String name) {
+        this.id = id;
         this.name = name;
-        this.action = action;
     }
 
     /**
@@ -39,6 +40,14 @@ public class Composite implements Component {
      */
     public void addComponent(Component component) {
         this.components.add(component);
+    }
+
+    /**
+     * Add action to component.
+     * @param action - action.
+     */
+    public void setAction(Action action) {
+        this.action = action;
     }
 
     /**
@@ -55,6 +64,10 @@ public class Composite implements Component {
      */
     public String getName() {
         return this.name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /**

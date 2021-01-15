@@ -3,17 +3,19 @@ package ru.job4j.menu;
  * Chapter_009. OOD [#143]
  * Task: Создать меню. [#4748]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 3
+ * @version 4
  */
 
 public class Item implements Component {
 
+    private int id;
     private String name;
-    private Action action;
+    private Action action = new ActionNo();
 
-    public Item(String name, Action action) {
+
+    public Item(int id, String name) {
+        this.id = id;
         this.name = name;
-        this.action = action;
     }
 
     public String getName() {
@@ -22,6 +24,10 @@ public class Item implements Component {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
     }
     /**
      * get String Item.
