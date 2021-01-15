@@ -3,7 +3,7 @@ package ru.job4j.menu;
  * Chapter_009. OOD [#143]
  * Task: Создать меню. [#4748]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 
 public class Item implements Component {
@@ -35,13 +35,4 @@ public class Item implements Component {
         return sb.toString();
     }
 
-    /**
-     * choose item.
-     * @param item - item.
-     * @return String.
-     */
-    @Override
-    public Action chooseItem(String item) {
-        return getName().equals(item) ? this.action : null;
-    }
 }

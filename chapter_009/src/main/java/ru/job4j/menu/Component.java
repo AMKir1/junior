@@ -3,7 +3,7 @@ package ru.job4j.menu;
  * Chapter_009. OOD [#143]
  * Task: Создать меню. [#4748]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 public interface Component {
     /**
@@ -12,11 +12,4 @@ public interface Component {
      * @return - menu.
      */
     String print(String level);
-
-    /**
-     * Choose menu.
-     * @param item - item.
-     * @return - String.
-     */
-    Action chooseItem(String item);
 }

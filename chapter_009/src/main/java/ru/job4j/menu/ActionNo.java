@@ -5,8 +5,12 @@ package ru.job4j.menu;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
  * @version 3
  */
-public interface Action {
+public class ActionNo implements Action {
 
-    boolean execute();
+    public ActionNo() { }
 
+    @Override
+    public boolean execute() {
+        return false;
+    }
 }
