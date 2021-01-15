@@ -3,7 +3,7 @@ package ru.job4j.parking;
  * Chapter_009. OOD [#143]
  * Task: 2. Парковка машин [#853]
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com)
- * @version 2
+ * @version 3
  */
 /**Parking
  * Truck class.
@@ -14,7 +14,7 @@ public class Truck extends Vehicle {
      *
      * @param name - vehicle's name.
      */
-    public Truck(String name) {
-        super(name, 3);
+    public Truck(String name, int size) {
+        super(name, size);
     }
 }
