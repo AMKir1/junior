@@ -5,9 +5,9 @@ package ru.job4j.concurrent;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
  * @version 1.
  */
-public class ConsoleProgress implements Runnable{
+public class ConsoleProgress implements Runnable {
 
-    private String[] process = {"\\","|", "/"};
+    private String[] process = {"\\", "|", "/"};
 
     /**
      * When an object implementing interface <code>Runnable</code> is used
@@ -25,7 +25,7 @@ public class ConsoleProgress implements Runnable{
         Thread loading = new Thread(() -> {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
-                    for(int i = 0; i < process.length; i++) {
+                    for (int i = 0; i < process.length; i++) {
                         System.out.print("\r load: " + process[i]);
                         Thread.sleep(500);
                     }
