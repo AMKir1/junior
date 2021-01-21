@@ -2,6 +2,7 @@ package ru.job4j.concurrent;
 /*
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1.2. Режим ожидания.[231217#453892].
+ * Task: 3.1. Прерывание блокированной нити.[267413#453893].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
  * @version 1.
  */
@@ -14,7 +15,7 @@ public class Wget {
                     Thread.sleep(60);
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         });
         loading.start();
