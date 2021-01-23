@@ -3,7 +3,7 @@ package ru.job4j.thread;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 4. Скачивание файла с ограничением.[144271#453890].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
 
 import java.io.BufferedInputStream;
@@ -47,10 +47,12 @@ public class Wget implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        String url = args[0];
-        int speed = Integer.parseInt(args[1]);
-        Thread wget = new Thread(new Wget(url, speed));
-        wget.start();
-        wget.join();
+        if (args.length > 1) {
+            String url =  args[0];
+            int speed = Integer.parseInt(args[1]);
+            Thread wget = new Thread(new Wget(url, speed));
+            wget.start();
+            wget.join();
+        }
     }
 }
