@@ -3,7 +3,7 @@ package ru.job4j.jcip;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 3. Класс хранилища пользователей UserStorage[1104#453906].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
@@ -51,7 +51,7 @@ public class UserStorage {
     }
 
     @Override
-    public String toString() {
+    public synchronized String toString() {
         return "UserStorage{" +
                 "userStorage=" + userStorage +
                 '}';
