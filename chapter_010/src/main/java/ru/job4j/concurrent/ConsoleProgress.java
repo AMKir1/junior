@@ -3,11 +3,9 @@ package ru.job4j.concurrent;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 3. Прерывание нити[1019#453895].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
 public class ConsoleProgress implements Runnable {
-
-    private String[] process = {"\\", "|", "/"};
 
     /**
      * When an object implementing interface <code>Runnable</code> is used
@@ -22,6 +20,7 @@ public class ConsoleProgress implements Runnable {
      */
     @Override
     public void run() {
+        String[] process = {"\\", "|", "/"};
         Thread loading = new Thread(() -> {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
