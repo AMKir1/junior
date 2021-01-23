@@ -52,8 +52,6 @@ public class UserStorage {
 
     @Override
     public synchronized String toString() {
-        return "UserStorage{" +
-                "userStorage=" + userStorage +
-                '}';
+        return "UserStorage{" + "userStorage=" + userStorage + '}';
     }
 }
