@@ -3,7 +3,7 @@ package ru.job4j.synch;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 4. ThreadSafe динамический список [1105#453907].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
 import net.jcip.annotations.ThreadSafe;
 import ru.job4j.list.DynamicList;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 @ThreadSafe
 public class SingleLockList<T> implements Iterable<T> {
 
-    private DynamicList list = new DynamicList(10);
+    private final DynamicList list = new DynamicList(10);
 
     public synchronized void add(T value) {
         this.list.add(value);
