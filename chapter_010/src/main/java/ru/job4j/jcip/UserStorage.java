@@ -5,27 +5,26 @@ package ru.job4j.jcip;
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
  * @version 2.
  */
+
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ThreadSafe
 public class UserStorage {
     @GuardedBy("this")
-    private List<User> userStorage;
-
-    public UserStorage() {
-        this.userStorage = new ArrayList<>();
-    }
+    private Map<Integer, User> userStorage = new HashMap<>();
 
     public synchronized boolean add(User user) {
-        return this.userStorage.add(user);
+        this.userStorage.put(user.getId(), user);
+        return true;
     }
 
     public synchronized boolean update(User user) {
         boolean result = false;
-        for (User u : this.userStorage) {
+        for (User u : this.userStorage.values()) {
             if (u.getId() == user.getId()) {
                 u.setAmount(user.getAmount());
                 result = true;
@@ -35,19 +34,13 @@ public class UserStorage {
     }
 
     public synchronized boolean delete(User user) {
-        return this.userStorage.remove(user);
+        this.userStorage.remove(user.getId());
+        return true;
     }
 
     public synchronized void transfer(int fromId, int toId, int amount) {
-        for (int i = 0; i < this.userStorage.size(); i++) {
-            if (this.userStorage.get(i).getId() == fromId) {
-                this.delete(this.userStorage.get(i));
-            }
-            if (this.userStorage.get(i).getId() == toId) {
-                this.userStorage.get(i).setId(fromId);
-                this.userStorage.get(i).setAmount(amount);
-            }
-        }
+        this.userStorage.remove(fromId);
+        this.userStorage.replace(toId, this.userStorage.get(toId), new User(fromId, amount));
     }
 
     @Override
