@@ -3,7 +3,7 @@ package ru.job4j.io;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1. Visibility. Общий ресурс вне критической секции[1102#453905].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 2.
+ * @version 3.
  */
 
 import org.slf4j.Logger;
@@ -25,8 +25,8 @@ public class ParseFile {
         return file;
     }
 
-    public synchronized String getContent() {
-        return getContent();
+    public synchronized String getContent() throws IOException {
+        return getContent(x -> true);
     }
 
     public synchronized String getContentWithoutUnicode() throws IOException {
