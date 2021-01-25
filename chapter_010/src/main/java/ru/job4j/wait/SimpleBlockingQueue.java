@@ -28,10 +28,8 @@ public class SimpleBlockingQueue<T> {
                     e.printStackTrace();
                 }
             }
-            if(!isFull()) {
-                this.queue.offer(value);
-                notifyAll();
-            }
+            this.queue.offer(value);
+            notifyAll();
         }
     }
 
