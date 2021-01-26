@@ -3,7 +3,7 @@ package ru.job4j.atomicreference;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1. Неблокирующий кеш[4741#453912].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,9 +19,8 @@ public class NonBlockingCache {
         if (this.cache.get(model.getId()).getVersion() == model.getVersion()) {
             model.setVersion(model.getVersion() + 1);
             return this.cache.computeIfPresent(model.getId(), (key, val) -> val = model) != null;
-        } else {
-            throw new OptimisticException("Failed to update data for : " + model.toString());
         }
+        throw new OptimisticException("Failed to update data for : " + model.toString());
     }
 
     public boolean delete(Base model) {
