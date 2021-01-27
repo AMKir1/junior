@@ -2,6 +2,7 @@ package ru.job4j.wait;
 /*
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1. Реализовать шаблон Producer Consumer.[1098#453887].
+ * Task: 1. Реализовать ThreadPool[1099#453883].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
  * @version 2.
  */
@@ -16,8 +17,12 @@ import java.util.Queue;
 public class SimpleBlockingQueue<T> {
 
     @GuardedBy("this")
-    private static final int SIZE = 10;
+    private final int size;
     private final Queue<T> queue = new LinkedList<>();
+
+    public SimpleBlockingQueue(int size) {
+        this.size = size;
+    }
 
     public void offer(T value) {
         synchronized (this) {
@@ -55,6 +60,6 @@ public class SimpleBlockingQueue<T> {
     }
 
     public synchronized boolean isFull() {
-        return this.queue.size() == SIZE;
+        return this.queue.size() == size;
     }
 }
