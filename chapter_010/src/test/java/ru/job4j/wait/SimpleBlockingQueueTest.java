@@ -24,7 +24,7 @@ public class SimpleBlockingQueueTest {
     @Test
     public void whenFetchAllThenGetIt() throws InterruptedException {
         final CopyOnWriteArrayList<Integer> buffer = new CopyOnWriteArrayList<>();
-        final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>();
+        final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(10);
         Thread producer = new Thread(
                 () -> {
                     IntStream.range(0, 5).forEach(
@@ -58,7 +58,7 @@ public class SimpleBlockingQueueTest {
     @Test
     public void whenDidNotOffer() throws InterruptedException {
         final CopyOnWriteArrayList<Integer> buffer = new CopyOnWriteArrayList<>();
-        final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>();
+        final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(10);
         Thread producer = new Thread();
         producer.start();
         Thread consumer = new Thread(
@@ -86,7 +86,7 @@ public class SimpleBlockingQueueTest {
     @Test
     public void whenQueueIsFull() throws InterruptedException {
         final CopyOnWriteArrayList<Integer> buffer = new CopyOnWriteArrayList<>();
-        final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>();
+        final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(10);
         Thread producer = new Thread(
                 () -> {
                     IntStream.range(0, 13).forEach(
