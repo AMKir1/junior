@@ -3,10 +3,8 @@ package ru.job4j.pool;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1. Реализовать ThreadPool[1099#453883].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
-import ru.job4j.wait.SimpleBlockingQueue;
-
 public class ThreadPoolTask implements Runnable {
     /**
      * When an object implementing interface <code>Runnable</code> is used
@@ -20,18 +18,14 @@ public class ThreadPoolTask implements Runnable {
      * @see Thread#run()
      */
 
-    private SimpleBlockingQueue<Runnable> tasks;
+    private int task;
 
-    public ThreadPoolTask(SimpleBlockingQueue<Runnable> tasks) {
-        this.tasks = tasks;
+    public ThreadPoolTask(int task) {
+        this.task = task;
     }
 
     @Override
     public void run() {
-        try {
-            tasks.poll();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println(String.format("Task %s", this.task));
     }
 }

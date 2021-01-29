@@ -3,8 +3,9 @@ package ru.job4j.pool;
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1. Реализовать ThreadPool[1099#453883].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 1.
+ * @version 2.
  */
+
 import ru.job4j.wait.SimpleBlockingQueue;
 
 import java.util.LinkedList;
@@ -17,15 +18,8 @@ public class ThreadPool {
 
     public void work(Runnable job) {
         tasks.offer(job);
-        notifyAll();
-        for (Thread thread : threads) {
-            if (tasks.isEmpty()) {
-                try {
-                    thread.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+        if (tasks.isFull()) {
+            notify();
         }
     }
 
@@ -33,5 +27,41 @@ public class ThreadPool {
         for (Thread thread : threads) {
             thread.interrupt();
         }
+    }
+
+    public void addTasksToThreads(SimpleBlockingQueue<Runnable> tasks) {
+        threads.add(new Thread(() -> {
+           while (!tasks.isEmpty()) {
+               try {
+                   ThreadPoolTask tpt = (ThreadPoolTask) tasks.poll();
+                   if (tpt != null) {
+                       tpt.run();
+                   }
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+                   Thread.currentThread().interrupt();
+               }
+           }
+        }));
+    }
+
+    public void startThreads() {
+        for (Thread thread : threads) {
+            thread.start();
+        }
+    }
+
+    public void joinThreads() {
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public SimpleBlockingQueue<Runnable> getTasks() {
+        return tasks;
     }
 }
