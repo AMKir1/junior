@@ -34,11 +34,11 @@ public class ThreadPool {
         threads.forEach(Thread::start);
     }
 
-    public synchronized void work(Runnable job) {
+    public void work(Runnable job) {
         tasks.offer(job);
     }
 
-    public synchronized void shutdown() {
+    public void shutdown() {
         threads.forEach(Thread::interrupt);
     }
 }
