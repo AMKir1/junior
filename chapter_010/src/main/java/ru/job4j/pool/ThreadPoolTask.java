@@ -1,9 +1,12 @@
 package ru.job4j.pool;
+
+import static java.lang.String.*;
+
 /*
  * Chapter_010. 1. Multithreading[171#453877].
  * Task: 1. Реализовать ThreadPool[1099#453883].
  * @author Andrei Kirillovykh (mailto:andykirill@gmail.com).
- * @version 2.
+ * @version 3.
  */
 public class ThreadPoolTask implements Runnable {
     /**
@@ -26,6 +29,6 @@ public class ThreadPoolTask implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(String.format("Task %s", this.task));
+        System.out.println(format("Task %s", this.task));
     }
 }
