@@ -17,21 +17,17 @@ import java.util.Queue;
 public class SimpleBlockingQueue<T> {
 
     @GuardedBy("this")
+    private volatile Queue<T> queue = new LinkedList<>();
     private final int size;
-    private final Queue<T> queue = new LinkedList<>();
 
     public SimpleBlockingQueue(int size) {
         this.size = size;
     }
 
-    public void offer(T value) {
+    public void offer(T value) throws InterruptedException {
         synchronized (this) {
             while (isFull()) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                wait();
             }
             this.queue.offer(value);
             notifyAll();
@@ -42,7 +38,7 @@ public class SimpleBlockingQueue<T> {
         T t;
         synchronized (this) {
             while (isEmpty()) {
-                wait();
+                    wait();
             }
             t = this.queue.poll();
             notifyAll();

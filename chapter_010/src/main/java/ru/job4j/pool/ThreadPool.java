@@ -17,16 +17,21 @@ public class ThreadPool {
     private final SimpleBlockingQueue<Runnable> tasks = new SimpleBlockingQueue<>(100);
 
     ThreadPool() {
+        init();
+    }
+
+    private synchronized void init() {
         for (int i = 0; i < size; i++) {
             threads.add(new Thread(() -> {
                 while (!tasks.isEmpty() || !Thread.currentThread().isInterrupted()) {
+                    ThreadPoolTask tpt = null;
                     try {
-                        ThreadPoolTask tpt = (ThreadPoolTask) tasks.poll();
-                        if (tpt != null) {
-                            tpt.run();
-                        }
+                        tpt = (ThreadPoolTask) tasks.poll();
                     } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                        e.printStackTrace();
+                    }
+                    if (tpt != null) {
+                        tpt.run();
                     }
                 }
             }));
@@ -35,7 +40,11 @@ public class ThreadPool {
     }
 
     public void work(Runnable job) {
-        tasks.offer(job);
+        try {
+            tasks.offer(job);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void shutdown() {
