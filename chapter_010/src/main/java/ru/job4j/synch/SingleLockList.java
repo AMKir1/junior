@@ -13,7 +13,7 @@ import java.util.Iterator;
 @ThreadSafe
 public class SingleLockList<T> implements Iterable<T> {
 
-    private final DynamicList list = new DynamicList(10);
+    private final DynamicList<T> list = new DynamicList<>(10);
 
     public synchronized void add(T value) {
         this.list.add(value);
@@ -28,8 +28,8 @@ public class SingleLockList<T> implements Iterable<T> {
         return copy(this.list).iterator();
     }
 
-    private synchronized Iterable<T> copy(DynamicList list) {
-        DynamicList result = new DynamicList(10);
+    private synchronized Iterable<T> copy(DynamicList<T> list) {
+        DynamicList<T> result = new DynamicList<>(10);
         list.iterator().forEachRemaining(result::add);
         return result;
     }
