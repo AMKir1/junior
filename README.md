@@ -11,8 +11,8 @@ http://job4j.ru/
 
 <h3>1. Уровень - Стажер</h3>
 
-- **Блок 1.** Базовый Синтаксис <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
-- **Блок 2.** ООП <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 1.** Базовый Синтаксис <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png"> 
+- **Блок 2.** ООП <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">     
 - **Блок 3.** Collections.Lite <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 4.** FP, Lambda, Stream API <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 
@@ -22,10 +22,16 @@ http://job4j.ru/
 - **Блок 2.** IO <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 3.** SQL, JDBC <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 4.** Garbage Collection <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
-- **Блок 5.** ООД
+- **Блок 5.** ООД <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 
 <h3>3. Уровень - Middle</h3>
 
-- **To be Continue...**
+- **Блок 1.** Multithreading <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 2.** Servlet JSP
+- **Блок 3.** Hibernate
+- **Блок 4.** Spring
+
+
+
 
 </p>
