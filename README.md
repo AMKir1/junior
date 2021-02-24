@@ -7,12 +7,12 @@ http://job4j.ru/
 
 <p align="center">
 
-<h1>Законченные блоки</h1> 
+<h1>Изученные блоки</h1> 
 
 <h3>1. Уровень - Стажер</h3>
 
-- **Блок 1.** Базовый Синтаксис <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
-- **Блок 2.** ООП <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 1.** Базовый Синтаксис <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png"> 
+- **Блок 2.** ООП <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">     
 - **Блок 3.** Collections.Lite <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 4.** FP, Lambda, Stream API <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 
@@ -31,3 +31,6 @@ http://job4j.ru/
 - **Блок 3.** Hibernate
 - **Блок 4.** Spring
 </p>
+
+Создание ветки из IDEA
+Добавили изменение в последний коммит
