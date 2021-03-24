@@ -1,13 +1,17 @@
 package ru.job4j.memstart;
 
-	import org.junit.Test;
-	import static org.hamcrest.core.Is.is;
-	import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Test;
 
-	import org.junit.Before;
-	import java.io.ByteArrayOutputStream;
-	import java.io.PrintStream;
-	import java.util.function.Consumer;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.function.Consumer;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class StunInputTest {
      /**
@@ -65,7 +69,12 @@ public class StunInputTest {
 	@Test
 	public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws Exception {
 	MemTracker tracker = new MemTracker(); // создаём Tracker
-	Input input = new StunInput(new String[]{"0", "nameItem", "DiscItem", "y"}); //создаём StubInput с последовательностью действий
+//	Input input = new StunInput(new String[]{"0", "nameItem", "DiscItem", "y"}); //создаём StubInput с последовательностью действий
+	Input input = mock(StunInput.class);
+	when(input.ask(any(String.class))).thenReturn("0");
+	when(input.ask(any(String.class))).thenReturn("nameItem");
+	when(input.ask(any(String.class))).thenReturn("DiscItem");
+	when(input.ask(any(String.class))).thenReturn("y");
 	new StartUI(input, tracker, output).init(); //создаём StartUI и вызываем метод init()
 	assertThat(tracker.findAll().get(0).getName(), is("nameItem")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
 	}

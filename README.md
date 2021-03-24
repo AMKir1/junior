@@ -27,7 +27,7 @@ http://job4j.ru/
 <h3>3. Уровень - Middle</h3>
 
 - **Блок 1.** Multithreading <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
-- **Блок 2.** Servlet JSP
+- **Блок 2.** Servlet JSP <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 3.** Hibernate
 - **Блок 4.** Spring
 </p>
