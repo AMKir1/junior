@@ -6,60 +6,60 @@ import java.sql.SQLException;
 
 public class BasicDataSource {
 
-    private Connection cn;
-    private String url;
-    private String driverClassName;
-    private String username;
-    private String password;
-    private int maxTotal;
+    private final String driverClassName;
+    private final String url;
+    private final String username;
+    private final String password;
+    private final int maxTotal;
+
+    public BasicDataSource(Builder builder) {
+        this.driverClassName = builder.driverClassName;
+        this.url = builder.url;
+        this.username = builder.username;
+        this.password = builder.password;
+        this.maxTotal = builder.maxTotal;
+    }
 
     public Connection getConnection() throws SQLException {
-        return cn = DriverManager.getConnection(
-                getUrl(),
-                getUsername(),
-                getPassword()
-        );
+        return DriverManager.getConnection(this.url, this.username, this.password);
     }
 
+    public static class Builder {
+        private String driverClassName;
+        private String url;
+        private String username;
+        private String password = "";
+        private int maxTotal;
 
-    public String getDriverClassName() {
-        return driverClassName;
-    }
+        Builder buildDriverClassName(String driverClassName) {
+            this.driverClassName = driverClassName;
+            return this;
+        }
 
-    public void setDriverClassName(String driverClassName) {
-        this.driverClassName = driverClassName;
-    }
+        Builder buildUrl(String url) {
+            this.url = url;
+            return this;
+        }
 
-    public String getUrl() {
-        return url;
-    }
+        Builder buildUsername(String username) {
+            this.username = username;
+            return this;
+        }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+        Builder buildPassword(String password) {
+            this.password = password;
+            return this;
+        }
 
-    public String getUsername() {
-        return username;
-    }
+        Builder buildMaxTotal(int maxTotal) {
+            this.maxTotal = maxTotal;
+            return this;
+        }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+        BasicDataSource build() {
+            return new BasicDataSource(this);
+        }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getMaxTotal() {
-        return maxTotal;
-    }
-
-    public void setMaxTotal(int maxTotal) {
-        this.maxTotal = maxTotal;
     }
 
 }
