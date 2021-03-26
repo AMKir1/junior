@@ -15,17 +15,18 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class OrdersStoreTest {
-    private BasicDataSource pool = new BasicDataSource.Builder()
-            .buildDriverClassName("org.hsqldb.jdbcDriver")
-            .buildUrl("jdbc:hsqldb:mem:tests;sql.syntax_pgs=true")
-            .buildUsername("sa")
-            .buildMaxTotal(2)
-            .build();
-
-    private OrderStore store = new OrderStore(pool);;
+    private BasicDataSource pool;
+    private OrderStore store;
 
     @Before
     public void setUp() throws SQLException {
+        pool = new BasicDataSource.Builder()
+                .buildDriverClassName("org.hsqldb.jdbcDriver")
+                .buildUrl("jdbc:hsqldb:mem:tests;sql.syntax_pgs=true")
+                .buildUsername("sa")
+                .buildMaxTotal(2)
+                .build();
+        store = new OrderStore(pool);
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream("./db/update_001.sql")))
