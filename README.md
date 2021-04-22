@@ -28,6 +28,6 @@ http://job4j.ru/
 
 - **Блок 1.** Multithreading <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 - **Блок 2.** Servlet JSP <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
-- **Блок 3.** Hibernate
-- **Блок 4.** Spring
+- **Блок 3.** Hibernate <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
+- **Блок 4.** Spring <img width="10px" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Photos.png">
 </p>
